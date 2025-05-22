@@ -70,12 +70,17 @@
 
                   <div class="carousel-info">
                     <strong>{{ product.title }}</strong><br>
-                    {% if product.price_varies %}
-                      Desde {{ product.price | money }} 
-                    {% else %}
-                      {{ product.price | money }}
-                    {% endif %}
+                  
+                    <div class="price-container">
+                      {% if product.compare_at_price > product.price %}
+                        <span class="compare-price">{{ product.compare_at_price | money }}</span>
+                        <span class="sale-price">{{ product.price | money }}</span>
+                      {% else %}
+                        <span class="regular-price">{{ product.price | money }}</span>
+                      {% endif %}
+                    </div>
                   </div>
+
                 </a>
               </div>
             {% endfor %}
