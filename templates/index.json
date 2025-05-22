@@ -357,7 +357,7 @@
         "height": 41,
         "fontsize": 18,
         "cl": "#000000",
-        "bg": "#ffffff",
+        "bg": "#109533",
         "bg_op": 100,
         "close": "0",
         "cl_btn": "#ffffff",
@@ -724,16 +724,6 @@
         "use_cus_css": false,
         "code_cus_css": ""
       }
-    },
-    "marquee_text_ccMEFq": {
-      "type": "marquee-text",
-      "name": "Cintilla de texto",
-      "settings": {
-        "marquee_text": "TEXTO DE EJEMPLO EN MOVIMIENTO TEXTO DE EJEMPLO EN MOVIMIENTOTEXTO DE EJEMPLO EN MOVIMIENTO",
-        "background_color": "#66ff66",
-        "text_color": "#000000",
-        "speed": 21
-      }
     }
   },
   "order": [
@@ -742,7 +732,6 @@
     "marquee_frmll_rDa88m",
     "collections_list_simple_aUGNAQ",
     "tabs_collection_CtNBTY",
-    "image_text_enM8b3",
-    "marquee_text_ccMEFq"
+    "image_text_enM8b3"
   ]
 }
