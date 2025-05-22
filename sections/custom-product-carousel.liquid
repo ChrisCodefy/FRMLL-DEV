@@ -1,84 +1,45 @@
-{% schema %}
-{
-  "name": "Carrusel de productos",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Título del carrusel",
-      "default": "Carrusel de productos"
-    },
-    {
-      "type": "collection",
-      "id": "collection",
-      "label": "Colección de productos"
-    },
-    {
-      "type": "range",
-      "id": "image_width",
-      "label": "Ancho de las imágenes (px)",
-      "min": 100,
-      "max": 1000,
-      "step": 10,
-      "default": 600
-    },
-    {
-      "type": "range",
-      "id": "image_height",
-      "label": "Alto de las imágenes (px)",
-      "min": 100,
-      "max": 1000,
-      "step": 10,
-      "default": 600
-    }
-  ],
-  "presets": [
-    {
-      "name": "Custom - Carrusel de productos"
-    }
-  ]
-}
-{% endschema %}
-
-<div class="custom-product-carousel">
-    <div class="title-container">
-        <h2>{{ section.settings.title }}</h2>
-    </div>
-    <div class="carousel-container">
-        <div class="carousel-track" id="carousel-track">
-          {% if section.settings.collection %}
-            {% assign products = section.settings.collection.products %}
-            {% for product in products %}
-              <div class="carousel-item">
-                <a href="{{ product.url }}">
-                  <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title }}" width="{{ section.settings.image_width }}" height="{{ section.settings.image_height }}" style="width: {{ section.settings.image_width }}px; height: {{ section.settings.image_height }}px;">
-                  <div class="carousel-info">
-                    <strong>{{ product.title }}</strong><br>
-                    {% if product.price_varies %}
-                      Desde {{ product.price | money }}
-                    {% else %}
-                      {{ product.price | money }}
-                    {% endif %}
-                  </div>
-                </a>
+{% assign product_count = section.settings.collection.products_count %}
+<div class="custom-product-carousel" id="carousel-{{ section.id }}">
+  <div class="title-container">
+    <h2>{{ section.settings.title }}</h2>
+  </div>
+  <div class="carousel-container">
+    <div class="carousel-track" id="carousel-track-{{ section.id }}">
+      {% if section.settings.collection %}
+        {% assign products = section.settings.collection.products %}
+        {% for product in products %}
+          <div class="carousel-item">
+            <a href="{{ product.url }}">
+              <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title }}"
+                   width="{{ section.settings.image_width }}" height="{{ section.settings.image_height }}"
+                   style="width: {{ section.settings.image_width }}px; height: {{ section.settings.image_height }}px;">
+              <div class="carousel-info">
+                <strong>{{ product.title }}</strong><br>
+                {% if product.price_varies %}
+                  Desde {{ product.price | money }}
+                {% else %}
+                  {{ product.price | money }}
+                {% endif %}
               </div>
-            {% endfor %}
-          {% else %}
-            <p>No se ha seleccionado ninguna colección.</p>
-          {% endif %}
-        </div>
-        <div class="dots-and-arrows">
-          <div class="dots" id="dots"></div>
-      
-          <div class="arrows">
-            <span class="arrow" onclick="moveSlide(-1)">←</span>
-            <span class="arrow" onclick="moveSlide(1)">→</span>
+            </a>
           </div>
+        {% endfor %}
+      {% else %}
+        <p>No se ha seleccionado ninguna colección.</p>
+      {% endif %}
+    </div>
+
+    {% if product_count > 2 %}
+      <div class="dots-and-arrows">
+        <div class="dots" id="dots-{{ section.id }}"></div>
+        <div class="arrows">
+          <span class="arrow" onclick="moveSlide_{{ section.id }}(-1)" aria-label="Anterior">←</span>
+          <span class="arrow" onclick="moveSlide_{{ section.id }}(1)" aria-label="Siguiente">→</span>
         </div>
       </div>
+    {% endif %}
+  </div>
 </div>
-
-
 
 <style>
   .custom-product-carousel {
@@ -151,8 +112,9 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const track = document.getElementById('carousel-track');
-    const dotsContainer = document.getElementById('dots');
+    const sectionId = '{{ section.id }}';
+    const track = document.getElementById('carousel-track-' + sectionId);
+    const dotsContainer = document.getElementById('dots-' + sectionId);
     const items = track.querySelectorAll('.carousel-item');
     const itemsToShow = 2.5;
     const totalSlides = Math.ceil(items.length - itemsToShow + 1);
@@ -168,7 +130,7 @@
       });
     }
 
-    window.moveSlide = function (direction) {
+    window['moveSlide_' + sectionId] = function (direction) {
       currentSlide += direction;
       if (currentSlide < 0) currentSlide = 0;
       if (currentSlide >= totalSlides) currentSlide = totalSlides - 1;
@@ -188,3 +150,45 @@
     }
   });
 </script>
+
+{% schema %}
+{
+  "name": "Carrusel de productos",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título del carrusel",
+      "default": "Carrusel de productos"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Colección de productos"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "Ancho de las imágenes (px)",
+      "min": 100,
+      "max": 1000,
+      "step": 10,
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "label": "Alto de las imágenes (px)",
+      "min": 100,
+      "max": 1000,
+      "step": 10,
+      "default": 600
+    }
+  ],
+  "presets": [
+    {
+      "name": "Carrusel de productos"
+    }
+  ]
+}
+{% endschema %}
