@@ -51,7 +51,23 @@
             {% for product in products %}
               <div class="carousel-item">
                 <a href="{{ product.url }}">
-                  <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title }}" width="{{ section.settings.image_width }}" height="{{ section.settings.image_height }}" style="width: {{ section.settings.image_width }}px; height: {{ section.settings.image_height }}px;">
+                  <div class="product-image-container" style="width: {{ section.settings.image_width }}px; height: {{ section.settings.image_height }}px;">
+                    <img 
+                      src="{{ product.featured_image | img_url: '600x' }}" 
+                      alt="{{ product.title }}" 
+                      class="primary-image" 
+                      loading="lazy"
+                    >
+                    {% if product.images.size > 1 %}
+                      <img 
+                        src="{{ product.images[1] | img_url: '600x' }}" 
+                        alt="{{ product.title }} - vista secundaria" 
+                        class="secondary-image" 
+                        loading="lazy"
+                      >
+                    {% endif %}
+                  </div>
+
                   <div class="carousel-info">
                     <strong>{{ product.title }}</strong><br>
                     {% if product.price_varies %}
@@ -147,6 +163,35 @@
     cursor: pointer;
     font-size: 20px;
   }
+  .product-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.product-image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+.primary-image {
+  opacity: 1;
+  z-index: 1;
+}
+.secondary-image {
+  opacity: 0;
+  z-index: 2;
+}
+.product-image-container:hover .secondary-image {
+  opacity: 1;
+}
+.product-image-container:hover .primary-image {
+  opacity: 0;
+}
+
 </style>
 
 <script>
