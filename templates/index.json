@@ -9,6 +9,46 @@
  */
 {
   "sections": {
+    "marquee_frmll_rDa88m": {
+      "type": "Marquee_FRMLL",
+      "blocks": {
+        "announcement_wPqnAC": {
+          "type": "announcement",
+          "settings": {
+            "link": "",
+            "content": "<p>Today deal sale off 70%.</p>",
+            "adding_border": false,
+            "countdown": "2023/12/26",
+            "txt_day": "days",
+            "dayx": 0
+          }
+        }
+      },
+      "block_order": [
+        "announcement_wPqnAC"
+      ],
+      "name": "Product Announcement Bar",
+      "settings": {
+        "show_announcement": true,
+        "design": "marquee",
+        "effect": "0",
+        "au_time": 3.5,
+        "speed": 11,
+        "pause_when_hover": false,
+        "direction": "rtl",
+        "height": 41,
+        "fontsize": 18,
+        "cl": "#000000",
+        "bg": "#109533",
+        "bg_op": 100,
+        "close": "0",
+        "cl_btn": "#ffffff",
+        "version": "1",
+        "date": 60,
+        "padding": "10px 0",
+        "margin": "20px 0"
+      }
+    },
     "1646028739ae283905": {
       "type": "slideshow",
       "blocks": {
@@ -133,238 +173,6 @@
         "pd_mb": "",
         "use_cus_css": false,
         "code_cus_css": ".SectionID {\nbackground-color:red\n}"
-      }
-    },
-    "featured_product_z8ibGx": {
-      "type": "featured-product",
-      "blocks": {
-        "title_paPzpY": {
-          "type": "title",
-          "settings": {
-            "txt_tr_pr": "none",
-            "fnt_df_pr": "1",
-            "size_pr": 30,
-            "fw_pr": 600,
-            "lh_pr": 0,
-            "ls_pr": 0,
-            "pr_title_color": "#222222",
-            "pr_title_color_hover": "#56cfe1"
-          }
-        },
-        "price_review_pdKhpw": {
-          "type": "price_review",
-          "settings": {
-            "price": "0",
-            "type_sale": "0",
-            "tax_ship": true,
-            "rating": true,
-            "review_liquid": "",
-            "size_price_pr": 22,
-            "fw_price_pr": 400,
-            "price_color": "#696969",
-            "price_sale_color": "#ec0101"
-          }
-        },
-        "order_LdKrYK": {
-          "type": "order",
-          "settings": {
-            "hide_pre": true,
-            "icon": "2",
-            "icon_name": "las la-truck",
-            "ani": "none",
-            "txt": "get it between [date_start] and [date_end]",
-            "ds": 10,
-            "de": 15,
-            "mode": "1",
-            "cut_day": "SAT,SUN",
-            "frm_day": "t44, DD t46",
-            "time": "16:00:00",
-            "hr": "hours",
-            "min": "minutes"
-          }
-        },
-        "description_4GYFX6": {
-          "type": "description",
-          "settings": {
-            "des": "1",
-            "text": "<p><br/></p>",
-            "length": 31
-          }
-        },
-        "form_4PftTR": {
-          "type": "form",
-          "settings": {
-            "selector_mode": "block",
-            "color_mode": "color",
-            "enable_fit_ratio_img": false,
-            "color_size": "medium",
-            "show_qty": true,
-            "enable_wishlist": false,
-            "enable_compare": false,
-            "btn_atc_full": true,
-            "pr_btn_round": 0,
-            "ani": "none",
-            "time": 6,
-            "btn_txt": "3",
-            "btn_icon": true,
-            "button_style": "outline",
-            "button_color": "dark",
-            "button_effect": "fade",
-            "wishlist_color": "#222222",
-            "wishlist_color_hover": "#56cfe1",
-            "wishlist_color_active": "#e81e1e",
-            "compare_color": "#222222",
-            "compare_color_hover": "#56cfe1",
-            "compare_color_active": "#222222",
-            "show_dynamic_checkout": true,
-            "btn_txt2": "3",
-            "button_color_payment": "primary",
-            "show_gift_card_recipient": true,
-            "product_list": [],
-            "show_product_current": true,
-            "qty_val": "0",
-            "advance_label": "Choose style",
-            "advance_pr_list": []
-          }
-        },
-        "size_delivery_ask_jGELaD": {
-          "type": "size_delivery_ask",
-          "disabled": true,
-          "settings": {
-            "size_chart": "3",
-            "pos_sizeg": "1",
-            "sc_type": "1",
-            "page": "",
-            "size_ck": "",
-            "delivery": false,
-            "page_dr": "",
-            "ask": false,
-            "phone": true
-          }
-        },
-        "social_mKCLGW": {
-          "type": "social",
-          "disabled": true,
-          "settings": {
-            "socials_align": "start",
-            "social_mode": "2",
-            "social_style": "3",
-            "social_size": "medium",
-            "bd_radius": 0,
-            "use_color_set": false,
-            "icon_cl": "#878787",
-            "bg_cl": "#222222",
-            "space_h_item": "5",
-            "space_v_item": "5",
-            "space_h_item_mb": "2",
-            "space_v_item_mb": "2"
-          }
-        },
-        "btn_detail_LmtAkU": {
-          "type": "btn_detail",
-          "settings": {
-            "button_label": "Más opciones de pago",
-            "button_link": "",
-            "open_link": "_self",
-            "btn_icon": true,
-            "button_style": "link",
-            "btn_size": "small",
-            "btn_cl": "dark",
-            "button_effect": "default"
-          }
-        }
-      },
-      "block_order": [
-        "title_paPzpY",
-        "price_review_pdKhpw",
-        "order_LdKrYK",
-        "description_4GYFX6",
-        "form_4PftTR",
-        "size_delivery_ask_jGELaD",
-        "social_mKCLGW",
-        "btn_detail_LmtAkU"
-      ],
-      "name": "Featured product",
-      "settings": {
-        "product": "prueba",
-        "image": "shopify://shop_images/disco_3e995637-e8b9-478e-8c2f-741a50bb96ff.png",
-        "enable_sticky_info": false,
-        "media_layout": "thumbnails_bottom",
-        "media_size": "medium",
-        "thumb_lr_size": "medium",
-        "image_ratio": "ratioadapt",
-        "image_size": "cover",
-        "image_position": "8",
-        "main_click": "zoom",
-        "zoom_tp": "external",
-        "enable_zoom_icon": true,
-        "enable_zoom_click_mb": true,
-        "enable_video_looping": false,
-        "enable_video_muting": true,
-        "enable_video_autoplaying": true,
-        "eff": "fade",
-        "nav_btn": true,
-        "btn_vi": "always",
-        "btn_owl": "outline",
-        "btn_shape": "round",
-        "btn_cl": "dark",
-        "btn_size": "small",
-        "btn_hidden_mobile": false,
-        "nav_dot": false,
-        "dot_owl": "default",
-        "dots_cl": "dark",
-        "dots_round": true,
-        "dots_space": 10,
-        "dots_hidden_mobile": false,
-        "layout": "t4s-container-wrap",
-        "cl_bg": "",
-        "cl_bg_gradient": "",
-        "mg": ",,50px,",
-        "pd": "",
-        "mg_tb": "",
-        "pd_tb": "",
-        "mg_mb": ",,30px,",
-        "pd_mb": ""
-      }
-    },
-    "marquee_frmll_rDa88m": {
-      "type": "Marquee_FRMLL",
-      "blocks": {
-        "announcement_wPqnAC": {
-          "type": "announcement",
-          "settings": {
-            "link": "",
-            "content": "<p>Today deal sale off 70%.</p>",
-            "adding_border": false,
-            "countdown": "2023/12/26",
-            "txt_day": "days",
-            "dayx": 0
-          }
-        }
-      },
-      "block_order": [
-        "announcement_wPqnAC"
-      ],
-      "name": "Product Announcement Bar",
-      "settings": {
-        "show_announcement": true,
-        "design": "marquee",
-        "effect": "0",
-        "au_time": 3.5,
-        "speed": 11,
-        "pause_when_hover": false,
-        "direction": "rtl",
-        "height": 41,
-        "fontsize": 18,
-        "cl": "#000000",
-        "bg": "#109533",
-        "bg_op": 100,
-        "close": "0",
-        "cl_btn": "#ffffff",
-        "version": "1",
-        "date": 60,
-        "padding": "10px 0",
-        "margin": "20px 0"
       }
     },
     "collections_list_simple_aUGNAQ": {
@@ -798,15 +606,22 @@
         "use_cus_css": false,
         "code_cus_css": ""
       }
+    },
+    "custom_product_carousel_Hj3xck": {
+      "type": "custom-product-carousel",
+      "name": "Custom - Carrusel de productos",
+      "settings": {
+        "collection": "frontpage"
+      }
     }
   },
   "order": [
-    "1646028739ae283905",
-    "featured_product_z8ibGx",
     "marquee_frmll_rDa88m",
+    "1646028739ae283905",
     "collections_list_simple_aUGNAQ",
     "tabs_collection_CtNBTY",
     "image_text_enM8b3",
-    "featured_collection_6hi4Mx"
+    "featured_collection_6hi4Mx",
+    "custom_product_carousel_Hj3xck"
   ]
 }
