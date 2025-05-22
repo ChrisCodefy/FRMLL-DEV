@@ -215,11 +215,17 @@
 
 
     window.moveSlide = function (direction) {
-      currentSlide += direction;
-      if (currentSlide < 0) currentSlide = 0;
-      if (currentSlide >= totalSlides) currentSlide = totalSlides - 1;
-      updateCarousel();
-    };
+  currentSlide += direction;
+
+  if (currentSlide >= totalSlides) {
+    currentSlide = 0; // vuelve al primero
+  } else if (currentSlide < 0) {
+    currentSlide = totalSlides - 1; // opcional: vuelve al último si vas atrás desde el primero
+  }
+
+  updateCarousel();
+};
+
 
     // Crear los dots
     for (let i = 0; i < totalSlides; i++) {
