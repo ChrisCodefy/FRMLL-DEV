@@ -1,0 +1,143 @@
+{% schema %}
+{
+  "name": "Custom - Carrusel de productos",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Colección de productos"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom - Carrusel de productos"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="carousel-container">
+  <div class="carousel-track" id="carousel-track">
+    {% if section.settings.collection %}
+      {% assign products = section.settings.collection.products %}
+      {% for product in products %}
+        <div class="carousel-item">
+          <a href="{{ product.url }}">
+            <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title }}">
+            <div class="carousel-info">
+              <strong>{{ product.title }}</strong><br>
+              {% if product.price_varies %}
+                Desde {{ product.price | money }}
+              {% else %}
+                {{ product.price | money }}
+              {% endif %}
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No se ha seleccionado ninguna colección.</p>
+    {% endif %}
+  </div>
+
+  <div class="dots" id="dots"></div>
+
+  <div class="arrows">
+    <span class="arrow" onclick="moveSlide(-1)">←</span>
+    <span class="arrow" onclick="moveSlide(1)">→</span>
+  </div>
+</div>
+
+<style>
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  padding: 40px 20px;
+  background: #f5f3eb;
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+.carousel-item {
+  min-width: 40%;
+  margin-right: 20px;
+  background: white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+.carousel-item img {
+  width: 100%;
+  height: auto;
+}
+.carousel-info {
+  margin-top: 10px;
+}
+.dots {
+  position: absolute;
+  left: 20px;
+  bottom: 10px;
+  display: flex;
+  gap: 5px;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  background: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.dot.active {
+  background: #333;
+}
+.arrows {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+}
+.arrow {
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: 10px;
+}
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const track = document.getElementById('carousel-track');
+    const dotsContainer = document.getElementById('dots');
+    const items = track.querySelectorAll('.carousel-item');
+    const itemsToShow = 2.5;
+    const totalSlides = Math.ceil(items.length - itemsToShow + 1);
+    let currentSlide = 0;
+
+    function updateCarousel() {
+      const slideWidth = items[0].offsetWidth + 20;
+      track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+
+      const dots = dotsContainer.querySelectorAll('.dot');
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+    }
+
+    window.moveSlide = function (direction) {
+      currentSlide += direction;
+      if (currentSlide < 0) currentSlide = 0;
+      if (currentSlide >= totalSlides) currentSlide = totalSlides - 1;
+      updateCarousel();
+    };
+
+    // Crear los dots
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => {
+        currentSlide = i;
+        updateCarousel();
+      });
+      dotsContainer.appendChild(dot);
+    }
+  });
+</script>
