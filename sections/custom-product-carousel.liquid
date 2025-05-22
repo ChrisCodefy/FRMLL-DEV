@@ -10,9 +10,13 @@
         {% for product in products %}
           <div class="carousel-item">
             <a href="{{ product.url }}">
-              <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title }}"
-                   width="{{ section.settings.image_width }}" height="{{ section.settings.image_height }}"
-                   style="width: {{ section.settings.image_width }}px; height: {{ section.settings.image_height }}px;">
+              <img
+                src="{{ product.featured_image | img_url: '600x' }}"
+                alt="{{ product.title }}"
+                width="{{ section.settings.image_width }}"
+                height="{{ section.settings.image_height }}"
+                style="width: {{ section.settings.image_width }}px; height: {{ section.settings.image_height }}px;"
+              >
               <div class="carousel-info">
                 <strong>{{ product.title }}</strong><br>
                 {% if product.price_varies %}
@@ -111,10 +115,9 @@
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const sectionId = '{{ section.id }}';
-    const track = document.getElementById('carousel-track-' + sectionId);
-    const dotsContainer = document.getElementById('dots-' + sectionId);
+  function registerCarouselControls(sectionId, trackId, dotsId) {
+    const track = document.getElementById(trackId);
+    const dotsContainer = document.getElementById(dotsId);
     const items = track.querySelectorAll('.carousel-item');
     const itemsToShow = 2.5;
     const totalSlides = Math.ceil(items.length - itemsToShow + 1);
@@ -137,7 +140,6 @@
       updateCarousel();
     };
 
-    // Crear los dots
     for (let i = 0; i < totalSlides; i++) {
       const dot = document.createElement('div');
       dot.classList.add('dot');
@@ -148,6 +150,16 @@
       });
       dotsContainer.appendChild(dot);
     }
+
+    updateCarousel();
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    registerCarouselControls(
+      '{{ section.id }}',
+      'carousel-track-{{ section.id }}',
+      'dots-{{ section.id }}'
+    );
   });
 </script>
 
