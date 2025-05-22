@@ -71,7 +71,7 @@
                   <div class="carousel-info">
                     <strong>{{ product.title }}</strong><br>
                     {% if product.price_varies %}
-                      Desde {{ product.price | money }}
+                      Desde {{ product.price | money }} 1
                     {% else %}
                       {{ product.price | money }}
                     {% endif %}
