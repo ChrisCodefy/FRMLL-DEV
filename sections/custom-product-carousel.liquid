@@ -3,9 +3,33 @@
   "name": "Carrusel de productos",
   "settings": [
     {
+      "type": "text",
+      "id": "title",
+      "label": "Título del carrusel",
+      "default": "Carrusel de productos"
+    },
+    {
       "type": "collection",
       "id": "collection",
       "label": "Colección de productos"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "Ancho de las imágenes (px)",
+      "min": 100,
+      "max": 1000,
+      "step": 10,
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "label": "Alto de las imágenes (px)",
+      "min": 100,
+      "max": 1000,
+      "step": 10,
+      "default": 600
     }
   ],
   "presets": [
@@ -16,94 +40,117 @@
 }
 {% endschema %}
 
-<div class="carousel-container">
-  <div class="carousel-track" id="carousel-track">
-    {% if section.settings.collection %}
-      {% assign products = section.settings.collection.products %}
-      {% for product in products %}
-        <div class="carousel-item">
-          <a href="{{ product.url }}">
-            <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title }}">
-            <div class="carousel-info">
-              <strong>{{ product.title }}</strong><br>
-              {% if product.price_varies %}
-                Desde {{ product.price | money }}
-              {% else %}
-                {{ product.price | money }}
-              {% endif %}
-            </div>
-          </a>
+<div class="custom-product-carousel">
+    <div class="title-container">
+        <h2>{{ section.settings.title }}</h2>
+    </div>
+    <div class="carousel-container">
+        <div class="carousel-track" id="carousel-track">
+          {% if section.settings.collection %}
+            {% assign products = section.settings.collection.products %}
+            {% for product in products %}
+              <div class="carousel-item">
+                <a href="{{ product.url }}">
+                  <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title }}" width="{{ section.settings.image_width }}" height="{{ section.settings.image_height }}" style="width: {{ section.settings.image_width }}px; height: {{ section.settings.image_height }}px;">
+                  <div class="carousel-info">
+                    <strong>{{ product.title }}</strong><br>
+                    {% if product.price_varies %}
+                      Desde {{ product.price | money }}
+                    {% else %}
+                      {{ product.price | money }}
+                    {% endif %}
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+          {% else %}
+            <p>No se ha seleccionado ninguna colección.</p>
+          {% endif %}
         </div>
-      {% endfor %}
-    {% else %}
-      <p>No se ha seleccionado ninguna colección.</p>
-    {% endif %}
-  </div>
-
-  <div class="dots" id="dots"></div>
-
-  <div class="arrows">
-    <span class="arrow" onclick="moveSlide(-1)">←</span>
-    <span class="arrow" onclick="moveSlide(1)">→</span>
-  </div>
+        <div class="dots-and-arrows">
+          <div class="dots" id="dots"></div>
+      
+          <div class="arrows">
+            <span class="arrow" onclick="moveSlide(-1)">←</span>
+            <span class="arrow" onclick="moveSlide(1)">→</span>
+          </div>
+        </div>
+      </div>
 </div>
 
+
+
 <style>
-.carousel-container {
-  position: relative;
-  overflow: hidden;
-  padding: 40px 20px;
-  background: #f5f3eb;
-}
-.carousel-track {
-  display: flex;
-  transition: transform 0.4s ease-in-out;
-}
-.carousel-item {
-  min-width: 40%;
-  margin-right: 20px;
-  background: white;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
-  padding: 20px;
-}
-.carousel-item img {
-  width: 100%;
-  height: auto;
-}
-.carousel-info {
-  margin-top: 10px;
-}
-.dots {
-  position: absolute;
-  left: 20px;
-  bottom: 10px;
-  display: flex;
-  gap: 5px;
-}
-.dot {
-  width: 10px;
-  height: 10px;
-  background: #bbb;
-  border-radius: 50%;
-  cursor: pointer;
-}
-.dot.active {
-  background: #333;
-}
-.arrows {
-  position: absolute;
-  right: 20px;
-  bottom: 10px;
-}
-.arrow {
-  cursor: pointer;
-  font-size: 20px;
-  margin-left: 10px;
-}
+  .custom-product-carousel {
+    margin: 20px 0;
+  }
+  .title-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .title-container h2 {
+    font-size: 24px;
+    color: #333;
+  }
+  .carousel-container {
+    position: relative;
+    overflow: hidden;
+    padding: 40px 20px;
+    background: #f5f3eb;
+  }
+  .carousel-track {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+  }
+  .carousel-item {
+    min-width: 40%;
+    margin-right: 20px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  .carousel-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    aspect-ratio: 1/1;
+  }
+  .carousel-info {
+    margin-top: 10px;
+  }
+  .dots-and-arrows {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .dots {
+    display: flex;
+    gap: 5px;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    background: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .dot.active {
+    background: #333;
+  }
+  .arrows {
+    display: flex;
+    gap: 10px;
+  }
+  .arrow {
+    cursor: pointer;
+    font-size: 20px;
+  }
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener('DOMContentLoaded', function () {
     const track = document.getElementById('carousel-track');
     const dotsContainer = document.getElementById('dots');
     const items = track.querySelectorAll('.carousel-item');
