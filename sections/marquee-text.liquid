@@ -1,6 +1,6 @@
 {% schema %}
 {
-  "name": "Cintilla de texto en movimiento",
+  "name": "Cintilla de texto",
   "settings": [
     {
       "type": "text",
@@ -32,7 +32,7 @@
   ],
   "presets": [
     {
-      "name": "Cintilla de texto en movimiento"
+      "name": "Cintilla de texto"
     }
   ]
 }
@@ -51,7 +51,7 @@
   color: {{ section.settings.text_color }};
   font-size: 2rem;
   font-weight: bold;
-  animation: marquee {{ 40 - section.settings.speed }}s linear infinite;
+  animation: marquee {{ animation_duration }}s linear infinite;
 }
 @keyframes marquee {
   0% { transform: translateX(100%);}
@@ -64,3 +64,5 @@
     {{ section.settings.marquee_text }}
   </span>
 </div>
+
+{% assign animation_duration = 40 | minus: section.settings.speed %}
