@@ -308,6 +308,11 @@
       ],
       "name": "Colección con Video",
       "settings": {}
+    },
+    "custom_popular_works_table_Lc8773": {
+      "type": "custom-popular-works-table",
+      "name": "Tabla de obras populares",
+      "settings": {}
     }
   },
   "order": [
@@ -316,6 +321,7 @@
     "custom_about_us_home_nMP3ma",
     "image_text_enM8b3",
     "custom_product_carousel_Hj3xck",
-    "custom_collection_video_section_3AQNLq"
+    "custom_collection_video_section_3AQNLq",
+    "custom_popular_works_table_Lc8773"
   ]
 }
