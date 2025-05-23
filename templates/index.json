@@ -259,7 +259,9 @@
         "font_size": 30,
         "line_height": 1,
         "text_align": "left",
-        "font_family": "'Helvetica Neue', sans-serif"
+        "font_family": "Arial, sans-serif",
+        "padding_vertical": 20,
+        "padding_horizontal": 0
       }
     }
   },
