@@ -250,13 +250,13 @@
       "name": "Custom - Sobre Nosotros Inicio",
       "settings": {
         "description_text": "FARAMALLA ES EL PRIMER CLUB POR SUSCRIPCIÓN DE DISCOS DEVINILO DE SU TIPO EN MÉXICO.",
-        "link1_text": "",
+        "link1_text": "Read our story here.",
         "link1_url": "shopify://pages/contact",
-        "link2_text": "",
+        "link2_text": "Or buy some of our art.",
         "link2_url": "",
         "background_color": "#000000",
-        "text_color": "#fff",
-        "font_size": 24,
+        "text_color": "#ffffff",
+        "font_size": 46,
         "text_align": "center"
       }
     }
