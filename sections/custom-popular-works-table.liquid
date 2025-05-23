@@ -2,7 +2,13 @@
 {
   "name": "custom-obras-populares",
   "tag": "section",
-  "settings": [],
+  "settings": [
+    {
+      "type": "collection",
+      "id": "coleccion_obras",
+      "label": "Colección de obras"
+    }
+  ],
   "presets": [
     {
       "name": "Tabla de obras populares"
@@ -22,7 +28,7 @@
       </tr>
     </thead>
     <tbody>
-      {% assign productos_populares = collections.popular-products.products %}
+      {% assign productos_populares = section.settings.coleccion_obras.products %}
       {% for producto in productos_populares %}
         <tr>
           <td>{{ producto.title }}</td>
