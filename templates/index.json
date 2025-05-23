@@ -256,8 +256,10 @@
         "link2_url": "",
         "background_color": "#000000",
         "text_color": "#ffffff",
-        "font_size": 46,
-        "text_align": "center"
+        "font_size": 48,
+        "line_height": 1.5,
+        "text_align": "center",
+        "font_family": "'Helvetica Neue', sans-serif"
       }
     }
   },
