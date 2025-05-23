@@ -6,17 +6,24 @@
         <div style="flex: 1; min-width: 50%; position: relative;">
           {% if collection %}
             <a href="{{ collection.url }}">
-              {% if collection.featured_image %}
-                <img src="{{ collection.featured_image | image_url: 'master' }}" alt="{{ collection.title }}" style="width: 100%; height: auto;" />
-              {% elsif collection.products_count > 0 %}
-                {% assign first_product = collection.products.first %}
-                {% if first_product.featured_image %}
-                  <img src="{{ first_product.featured_image | image_url: 'master' }}" alt="{{ collection.title }}" style="width: 100%; height: auto;" />
+              {% assign image_url = collection.image | image_url: 'master' %}
+              {% if image_url contains 'no-image' or image_url == blank %}
+                {% if collection.products_count > 0 %}
+                  {% assign first_product = collection.products.first %}
+                  {% if first_product.featured_image %}
+                    <img src="{{ first_product.featured_image | image_url: 'master' }}" alt="{{ collection.title }}" style="width: 100%; height: auto;" />
+                  {% else %}
+                    <div style="width: 100%; height: 300px; background: #eee; display: flex; align-items: center; justify-content: center;">
+                      <span style="color: #888;">Sin imagen disponible</span>
+                    </div>
+                  {% endif %}
+                {% else %}
+                  <div style="width: 100%; height: 300px; background: #eee; display: flex; align-items: center; justify-content: center;">
+                    <span style="color: #888;">Sin imagen disponible</span>
+                  </div>
                 {% endif %}
               {% else %}
-                <div style="width: 100%; height: 300px; background: #eee; display: flex; align-items: center; justify-content: center;">
-                  <span style="color: #888;">Sin imagen disponible</span>
-                </div>
+                <img src="{{ image_url }}" alt="{{ collection.title }}" style="width: 100%; height: auto;" />
               {% endif %}
 
               {% if block.settings.position == 'top-left' %}
