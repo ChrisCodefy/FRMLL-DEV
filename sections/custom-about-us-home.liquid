@@ -1,34 +1,46 @@
-<div style="
-  background-color: {{ settings.background_color }};
-  color: {{ settings.text_color }};
-  text-align: {{ settings.text_align }};
-  padding: 40px 20px;
-  font-family: {{ settings.font_family }};
-">
-  {% if settings.description_text %}
-    <p style="
-      font-size: {{ settings.font_size }}px;
-      font-weight: bold;
-      text-transform: uppercase;
-      line-height: {{ settings.line_height }};
-      max-width: 1000px;
-      margin: 0 auto;
-    ">
-      {{ settings.description_text }}
-      
-      {% if settings.link1_url != blank %}
-        <a href="{{ settings.link1_url }}" style="color: {{ settings.text_color }}; text-decoration: underline;">
-          {{ settings.link1_text }}
-        </a>.
-      {% endif %}
+<style>
+  .custom-nosotros-inicio-wrapper {
+    padding: 40px 20px;
+  }
 
-      {% if settings.link2_url != blank %}
-        <a href="{{ settings.link2_url }}" style="color: {{ settings.text_color }}; text-decoration: underline;">
-          {{ settings.link2_text }}
-        </a>.
-      {% endif %}
-    </p>
-  {% endif %}
+  .custom-nosotros-inicio-text {
+    font-weight: bold;
+    text-transform: uppercase;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .custom-nosotros-inicio-text a {
+    text-decoration: underline;
+  }
+</style>
+
+<div
+  class="custom-nosotros-inicio-wrapper"
+  style="
+    background-color: {{ settings.background_color }};
+    text-align: {{ settings.text_align }};
+  "
+>
+  <p
+    class="custom-nosotros-inicio-text"
+    style="
+      color: {{ settings.text_color }};
+      font-size: {{ settings.font_size }}px;
+      line-height: {{ settings.line_height }};
+      font-family: {{ settings.font_family }};
+    "
+  >
+    {{ settings.description_text }}
+
+    {% if settings.link1_text and settings.link1_url %}
+      <a href="{{ settings.link1_url }}" style="color: {{ settings.text_color }};">{{ settings.link1_text }}</a>.
+    {% endif %}
+
+    {% if settings.link2_text and settings.link2_url %}
+      <a href="{{ settings.link2_url }}" style="color: {{ settings.text_color }};">{{ settings.link2_text }}</a>.
+    {% endif %}
+  </p>
 </div>
 
 {% schema %}
