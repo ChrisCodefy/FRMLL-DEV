@@ -1,6 +1,95 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Custom Nosotros Inicio",
+  "settings": [
+    {
+      "type": "text",
+      "id": "description_text",
+      "label": "Texto principal",
+      "default": "Somos una casa de arte digital con base en Ciudad de México y Barcelona."
+    },
+    {
+      "type": "text",
+      "id": "link1_text",
+      "label": "Texto del primer enlace",
+      "default": "Lee nuestra historia aquí"
+    },
+    {
+      "type": "url",
+      "id": "link1_url",
+      "label": "URL del primer enlace"
+    },
+    {
+      "type": "text",
+      "id": "link2_text",
+      "label": "Texto del segundo enlace",
+      "default": "Compra algunas de nuestras obras"
+    },
+    {
+      "type": "url",
+      "id": "link2_url",
+      "label": "URL del segundo enlace"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Color de fondo",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Color del texto",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Tamaño del texto (px)",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Alineación del texto",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Izquierda" },
+        { "value": "center", "label": "Centro" },
+        { "value": "right", "label": "Derecha" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom - Sobre Nosotros Inicio",
+      "category": "Secciones personalizadas"
+    }
+  ]
+}
 {% endschema %}
+
+<div style="
+  background-color: {{ settings.background_color }};
+  color: {{ settings.text_color }};
+  text-align: {{ settings.text_align }};
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+">
+  <p style="font-size: {{ settings.font_size }}px; font-weight: bold; text-transform: uppercase; line-height: 1.5; max-width: 1000px; margin: 0 auto;">
+    {{ settings.description_text }}
+    {% if settings.link1_url %}
+      <a href="{{ settings.link1_url }}" style="color: {{ settings.text_color }}; text-decoration: underline;">
+        {{ settings.link1_text }}
+      </a>.
+    {% endif %}
+    {% if settings.link2_url %}
+      <a href="{{ settings.link2_url }}" style="color: {{ settings.text_color }}; text-decoration: underline;">
+        {{ settings.link2_text }}
+      </a>.
+    {% endif %}
+  </p>
+</div>
