@@ -102,7 +102,18 @@
           "type": "announcement",
           "settings": {
             "link": "",
-            "content": "<p>El alma de la música gira en vinilo — Clásicos, rarezas y joyas que merecen ser escuchadas — El alma de la música gira en vinilo — Clásicos, rarezas y joyas que merecen ser escuchadas</p>",
+            "content": "<p>— EL ALMA DE LA MÚSICA GIRA EN VINILO — CLÁSICOS, RAREZAS Y JOYAS QUE MERECEN SER ESCUCHADAS</p>",
+            "adding_border": false,
+            "countdown": "2023/12/26",
+            "txt_day": "days",
+            "dayx": 0
+          }
+        },
+        "announcement_Vn7Dcd": {
+          "type": "announcement",
+          "settings": {
+            "link": "",
+            "content": "<p>— EL ALMA DE LA MÚSICA GIRA EN VINILO — CLÁSICOS, RAREZAS Y JOYAS QUE MERECEN SER ESCUCHADAS</p>",
             "adding_border": false,
             "countdown": "2023/12/26",
             "txt_day": "days",
@@ -111,14 +122,15 @@
         }
       },
       "block_order": [
-        "announcement_wPqnAC"
+        "announcement_wPqnAC",
+        "announcement_Vn7Dcd"
       ],
       "name": "Product Announcement Bar",
       "settings": {
         "show_announcement": true,
         "design": "marquee",
         "effect": "0",
-        "au_time": 3.5,
+        "au_time": 6,
         "speed": 30,
         "pause_when_hover": false,
         "direction": "rtl",
