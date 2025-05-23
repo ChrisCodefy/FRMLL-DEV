@@ -2,18 +2,30 @@
   background-color: {{ section.settings.background_color }};
   color: {{ section.settings.text_color }};
   padding: 40px 20px;
-  text-align: center;
-  font-family: Arial, sans-serif;
+  text-align: {{ section.settings.text_align }};
+  font-family: {{ section.settings.font_family }};
 ">
   <p style="
-    font-size: 24px;
+    font-size: {{ section.settings.font_size }}px;
     font-weight: bold;
     text-transform: uppercase;
-    line-height: 1.5;
+    line-height: {{ section.settings.line_height }};
     max-width: 1000px;
     margin: 0 auto;
   ">
     {{ section.settings.description_text }}
+
+    {% if section.settings.link1_text != blank and section.settings.link1_url != blank %}
+      <a href="{{ section.settings.link1_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
+        {{ section.settings.link1_text }}
+      </a>.
+    {% endif %}
+
+    {% if section.settings.link2_text != blank and section.settings.link2_url != blank %}
+      <a href="{{ section.settings.link2_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
+        {{ section.settings.link2_text }}
+      </a>.
+    {% endif %}
   </p>
 </div>
 
@@ -28,6 +40,28 @@
       "default": "Somos una casa de arte digital con base en Ciudad de México y Barcelona."
     },
     {
+      "type": "text",
+      "id": "link1_text",
+      "label": "Texto del primer enlace",
+      "default": "Lee nuestra historia aquí"
+    },
+    {
+      "type": "url",
+      "id": "link1_url",
+      "label": "URL del primer enlace"
+    },
+    {
+      "type": "text",
+      "id": "link2_text",
+      "label": "Texto del segundo enlace",
+      "default": "Compra algunas de nuestras obras"
+    },
+    {
+      "type": "url",
+      "id": "link2_url",
+      "label": "URL del segundo enlace"
+    },
+    {
       "type": "color",
       "id": "background_color",
       "label": "Color de fondo",
@@ -38,6 +72,48 @@
       "id": "text_color",
       "label": "Color del texto",
       "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Tamaño del texto (px)",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "line_height",
+      "label": "Altura de línea",
+      "min": 1,
+      "max": 2,
+      "step": 0.1,
+      "default": 1.5
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Alineación del texto",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Izquierda" },
+        { "value": "center", "label": "Centro" },
+        { "value": "right", "label": "Derecha" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "font_family",
+      "label": "Tipografía",
+      "default": "Arial, sans-serif",
+      "options": [
+        { "value": "Arial, sans-serif", "label": "Arial" },
+        { "value": "'Helvetica Neue', sans-serif", "label": "Helvetica Neue" },
+        { "value": "'Georgia', serif", "label": "Georgia" },
+        { "value": "'Courier New', monospace", "label": "Courier New" },
+        { "value": "'Times New Roman', serif", "label": "Times New Roman" }
+      ]
     }
   ],
   "presets": [
