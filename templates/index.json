@@ -312,7 +312,9 @@
     "custom_popular_works_table_Lc8773": {
       "type": "custom-popular-works-table",
       "name": "Tabla de obras populares",
-      "settings": {}
+      "settings": {
+        "coleccion_obras": "frontpage"
+      }
     }
   },
   "order": [
