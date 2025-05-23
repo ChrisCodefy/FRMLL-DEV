@@ -1,10 +1,11 @@
 <div style="
   background-color: {{ section.settings.background_color }};
   color: {{ section.settings.text_color }};
-  padding: 40px 20px;
+  padding: {{ section.settings.padding_vertical }}px {{ section.settings.padding_horizontal }}px;
   text-align: {{ section.settings.text_align }};
   font-family: {{ section.settings.font_family }};
 ">
+
   <p style="
     font-size: {{ section.settings.font_size }}px;
     font-weight: bold;
@@ -114,7 +115,26 @@
         { "value": "'Courier New', monospace", "label": "Courier New" },
         { "value": "'Times New Roman', serif", "label": "Times New Roman" }
       ]
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "label": "Padding vertical (arriba y abajo)",
+      "min": 0,
+      "max": 160,
+      "step": 10,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Padding horizontal (lados)",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "default": 20
     }
+
   ],
   "presets": [
     {
