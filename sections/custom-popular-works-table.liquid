@@ -1,6 +1,102 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "custom-obras-populares",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Tabla de obras populares"
+    }
+  ]
+}
 {% endschema %}
+
+<section class="obras-populares">
+  <h2>OBRAS POPULARES</h2>
+  <table id="tabla-obras-populares">
+    <thead>
+      <tr>
+        <th onclick="ordenarTabla(0)">↑ TÍTULO</th>
+        <th>ARTISTA</th>
+        <th onclick="ordenarTabla(2)">PRECIO</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% assign productos_populares = collections.popular-products.products %}
+      {% for producto in productos_populares %}
+        <tr>
+          <td>{{ producto.title }}</td>
+          <td>{{ producto.vendor }}</td>
+          <td>
+            {% if producto.compare_at_price > producto.price %}
+              <span class="precio-anterior">€{{ producto.compare_at_price | money_without_currency }}</span>
+              <span class="precio-descuento">€{{ producto.price | money_without_currency }}</span>
+            {% else %}
+              DESDE €{{ producto.price | money_without_currency }}
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<style>
+  .obras-populares {
+    font-family: sans-serif;
+    background: #f3f2eb;
+    padding: 2rem;
+  }
+
+  .obras-populares h2 {
+    font-size: 24px;
+    margin-bottom: 1rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 10px;
+    border: 1px solid black;
+    text-align: left;
+  }
+
+  th {
+    cursor: pointer;
+    background-color: #fefefe;
+  }
+
+  .precio-anterior {
+    text-decoration: line-through;
+    color: #888;
+    margin-right: 5px;
+  }
+
+  .precio-descuento {
+    color: #e60073;
+    font-weight: bold;
+  }
+</style>
+
+<script>
+function ordenarTabla(indiceColumna) {
+  const tabla = document.getElementById("tabla-obras-populares");
+  let filas = Array.from(tabla.rows).slice(1);
+  const ordenAsc = tabla.getAttribute("data-orden") !== "asc";
+  filas.sort((a, b) => {
+    const textoA = a.cells[indiceColumna].textContent.trim();
+    const textoB = b.cells[indiceColumna].textContent.trim();
+    if (!isNaN(parseFloat(textoA)) && !isNaN(parseFloat(textoB))) {
+      return ordenAsc ? textoA - textoB : textoB - textoA;
+    }
+    return ordenAsc
+      ? textoA.localeCompare(textoB)
+      : textoB.localeCompare(textoA);
+  });
+  tabla.setAttribute("data-orden", ordenAsc ? "asc" : "desc");
+  filas.forEach(fila => tabla.appendChild(fila));
+}
+</script>
