@@ -1,0 +1,168 @@
+<div style="
+  width: 100%;
+  background-color: {{ section.settings.background_color }};
+  padding: {{ section.settings.padding_vertical }}px 0;
+">
+  <div style="
+    max-width: 100%;
+    padding: 0 {{ section.settings.padding_horizontal }}px;
+  ">
+    <div style="
+      width: 100%;
+      margin: 0 auto;
+      color: {{ section.settings.text_color }};
+      text-align: {{ section.settings.text_align }};
+      font-family: {{ section.settings.font_family }};
+    ">
+      <p style="
+        font-size: {{ section.settings.font_size }}px;
+        font-weight: {{ section.settings.font_weight }};
+        text-transform: uppercase;
+        line-height: {{ section.settings.line_height }};
+      ">
+        {{ section.settings.description_text }}
+
+        {% if section.settings.link1_text != blank and section.settings.link1_url != blank %}
+          <a href="{{ section.settings.link1_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
+            {{ section.settings.link1_text }}
+          </a>.
+        {% endif %}
+
+        {% if section.settings.link2_text != blank and section.settings.link2_url != blank %}
+          <a href="{{ section.settings.link2_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
+            {{ section.settings.link2_text }}
+          </a>.
+        {% endif %}
+      </p>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Nosotros Inicio",
+  "settings": [
+    {
+      "type": "text",
+      "id": "description_text",
+      "label": "Texto principal",
+      "default": "Somos una casa de arte digital con base en Ciudad de México y Barcelona."
+    },
+    {
+      "type": "text",
+      "id": "link1_text",
+      "label": "Texto del primer enlace",
+      "default": "Lee nuestra historia aquí"
+    },
+    {
+      "type": "url",
+      "id": "link1_url",
+      "label": "URL del primer enlace"
+    },
+    {
+      "type": "text",
+      "id": "link2_text",
+      "label": "Texto del segundo enlace",
+      "default": "Compra algunas de nuestras obras"
+    },
+    {
+      "type": "url",
+      "id": "link2_url",
+      "label": "URL del segundo enlace"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Color de fondo",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Color del texto",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Tamaño del texto (px)",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "line_height",
+      "label": "Altura de línea",
+      "min": 1,
+      "max": 2,
+      "step": 0.1,
+      "default": 1.5
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Peso de la tipografía",
+      "default": "bold",
+      "options": [
+        { "value": "normal", "label": "Regular" },
+        { "value": "500", "label": "Semibold (500)" },
+        { "value": "bold", "label": "Bold (700)" },
+        { "value": "800", "label": "Extra Bold (800)" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Alineación del texto",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Izquierda" },
+        { "value": "center", "label": "Centro" },
+        { "value": "right", "label": "Derecha" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "font_family",
+      "label": "Tipografía",
+      "default": "Arial, sans-serif",
+      "options": [
+        { "value": "Arial, sans-serif", "label": "Arial" },
+        { "value": "'Helvetica Neue', sans-serif", "label": "Helvetica Neue" },
+        { "value": "'Georgia', serif", "label": "Georgia" },
+        { "value": "'Courier New', monospace", "label": "Courier New" },
+        { "value": "'Times New Roman', serif", "label": "Times New Roman" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "label": "Padding vertical (arriba y abajo)",
+      "min": 0,
+      "max": 160,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Padding horizontal (lados)",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 20
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "Custom Nosotros Inicio",
+      "category": "Secciones personalizadas"
+    }
+  ]
+}
+{% endschema %}
