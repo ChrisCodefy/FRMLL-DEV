@@ -1,207 +1,102 @@
-<section class="custom-collection-video-section">
-  <div class="collection-columns" style="display: flex; flex-wrap: wrap; width: 100%;">
-    {% for block in section.blocks %}
-      {% if block.type == 'collection_column' %}
-        {% assign collection = collections[block.settings.collection] %}
-        <div style="flex: 1; min-width: 50%; position: relative;">
-          {% if collection %}
-            <a href="{{ collection.url }}">
-              {% assign image_url = collection.image | image_url: 'master' %}
-              {% if image_url contains 'no-image' or image_url == blank %}
-                {% if collection.products_count > 0 %}
-                  {% assign first_product = collection.products.first %}
-                  {% if first_product.featured_image %}
-                    <img src="{{ first_product.featured_image | image_url: 'master' }}" alt="{{ collection.title }}" style="width: 100%; height: auto;" />
-                  {% else %}
-                    <div style="width: 100%; height: 300px; background: #eee; display: flex; align-items: center; justify-content: center;">
-                      <span style="color: #888;">Sin imagen disponible</span>
-                    </div>
-                  {% endif %}
-                {% else %}
-                  <div style="width: 100%; height: 300px; background: #eee; display: flex; align-items: center; justify-content: center;">
-                    <span style="color: #888;">Sin imagen disponible</span>
-                  </div>
-                {% endif %}
-              {% else %}
-                <img src="{{ image_url }}" alt="{{ collection.title }}" style="width: 100%; height: auto;" />
-              {% endif %}
-
-              {% if block.settings.position == 'top-left' %}
-                <div style="position: absolute; top: 0; left: 0; padding: 10px; background: rgba(255, 255, 255, 0.8); font-weight: bold;">
-                  {{ collection.title }}
-                </div>
-              {% elsif block.settings.position == 'bottom-right' %}
-                <div style="position: absolute; bottom: 0; right: 0; padding: 10px; background: rgba(255, 255, 255, 0.8); font-weight: bold;">
-                  {{ collection.title }}
-                </div>
-              {% endif %}
-            </a>
-          {% endif %}
-        </div>
-      {% endif %}
-    {% endfor %}
-  </div>
-
-  {% assign video_block = section.blocks | where: "type", "video_block" | first %}
-  {% if video_block %}
-    <div class="collection-video" style="position: relative; width: 100%; margin-top: 20px;">
-      <video autoplay muted loop playsinline style="width: 100%;">
-        <source src="{{ video_block.settings.video_url }}" type="video/mp4">
-      </video>
-      <div style="position: absolute; bottom: 20px; left: 20px;">
-        <h2 style="color: {{ video_block.settings.title_color }}; font-size: {{ video_block.settings.title_size }}px; text-align: {{ video_block.settings.title_align }};">
-          {{ video_block.settings.title }}
-        </h2>
-        <p style="color: {{ video_block.settings.subtitle_color }}; font-size: {{ video_block.settings.subtitle_size }}px; text-align: {{ video_block.settings.subtitle_align }};">
-          {{ video_block.settings.subtitle }}
-        </p>
-        <a href="{{ video_block.settings.button_link }}" class="btn"
-          style="background-color: {{ video_block.settings.button_bg }}; color: {{ video_block.settings.button_text_color }}; padding: 10px 20px; text-decoration: none; display: inline-block; margin-top: 10px;">
-          {{ video_block.settings.button_text }}
-        </a>
-      </div>
-    </div>
-  {% endif %}
-</section>
-
 {% schema %}
 {
-  "name": "Custom Colección Video",
+  "name": "custom-obras-populares",
+  "tag": "section",
   "settings": [],
-  "blocks": [
-    {
-      "type": "collection_column",
-      "name": "Columna de colección",
-      "settings": [
-        {
-          "type": "collection",
-          "id": "collection",
-          "label": "Seleccionar colección"
-        },
-        {
-          "type": "select",
-          "id": "position",
-          "label": "Posición del título",
-          "options": [
-            {
-              "value": "top-left",
-              "label": "Arriba a la izquierda"
-            },
-            {
-              "value": "bottom-right",
-              "label": "Abajo a la derecha"
-            }
-          ],
-          "default": "top-left"
-        }
-      ]
-    },
-    {
-      "type": "video_block",
-      "name": "Video",
-      "settings": [
-        {
-          "type": "url",
-          "id": "video_url",
-          "label": "URL del video (MP4)"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Título"
-        },
-        {
-          "type": "text",
-          "id": "subtitle",
-          "label": "Subtítulo"
-        },
-        {
-          "type": "text",
-          "id": "button_text",
-          "label": "Texto del botón",
-          "default": "SHOP NOW →"
-        },
-        {
-          "type": "url",
-          "id": "button_link",
-          "label": "Enlace del botón"
-        },
-        {
-          "type": "color",
-          "id": "title_color",
-          "label": "Color del título",
-          "default": "#ffffff"
-        },
-        {
-          "type": "range",
-          "id": "title_size",
-          "label": "Tamaño del título (px)",
-          "min": 12,
-          "max": 64,
-          "step": 1,
-          "default": 32
-        },
-        {
-          "type": "select",
-          "id": "title_align",
-          "label": "Alineación del título",
-          "options": [
-            { "value": "left", "label": "Izquierda" },
-            { "value": "center", "label": "Centro" },
-            { "value": "right", "label": "Derecha" }
-          ],
-          "default": "left"
-        },
-        {
-          "type": "color",
-          "id": "subtitle_color",
-          "label": "Color del subtítulo",
-          "default": "#ffffff"
-        },
-        {
-          "type": "range",
-          "id": "subtitle_size",
-          "label": "Tamaño del subtítulo (px)",
-          "min": 10,
-          "max": 48,
-          "step": 1,
-          "default": 18
-        },
-        {
-          "type": "select",
-          "id": "subtitle_align",
-          "label": "Alineación del subtítulo",
-          "options": [
-            { "value": "left", "label": "Izquierda" },
-            { "value": "center", "label": "Centro" },
-            { "value": "right", "label": "Derecha" }
-          ],
-          "default": "left"
-        },
-        {
-          "type": "color",
-          "id": "button_bg",
-          "label": "Color de fondo del botón",
-          "default": "#ffffff"
-        },
-        {
-          "type": "color",
-          "id": "button_text_color",
-          "label": "Color del texto del botón",
-          "default": "#000000"
-        }
-      ]
-    }
-  ],
   "presets": [
     {
-      "name": "Colección con Video",
-      "blocks": [
-        { "type": "collection_column" },
-        { "type": "collection_column" },
-        { "type": "video_block" }
-      ]
+      "name": "Tabla de obras populares"
     }
   ]
 }
 {% endschema %}
+
+<section class="obras-populares">
+  <h2>OBRAS POPULARES</h2>
+  <table id="tabla-obras-populares">
+    <thead>
+      <tr>
+        <th onclick="ordenarTabla(0)">↑ TÍTULO</th>
+        <th>ARTISTA</th>
+        <th onclick="ordenarTabla(2)">PRECIO</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% assign productos_populares = collections.popular-products.products %}
+      {% for producto in productos_populares %}
+        <tr>
+          <td>{{ producto.title }}</td>
+          <td>{{ producto.vendor }}</td>
+          <td>
+            {% if producto.compare_at_price > producto.price %}
+              <span class="precio-anterior">€{{ producto.compare_at_price | money_without_currency }}</span>
+              <span class="precio-descuento">€{{ producto.price | money_without_currency }}</span>
+            {% else %}
+              DESDE €{{ producto.price | money_without_currency }}
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<style>
+  .obras-populares {
+    font-family: sans-serif;
+    background: #f3f2eb;
+    padding: 2rem;
+  }
+
+  .obras-populares h2 {
+    font-size: 24px;
+    margin-bottom: 1rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 10px;
+    border: 1px solid black;
+    text-align: left;
+  }
+
+  th {
+    cursor: pointer;
+    background-color: #fefefe;
+  }
+
+  .precio-anterior {
+    text-decoration: line-through;
+    color: #888;
+    margin-right: 5px;
+  }
+
+  .precio-descuento {
+    color: #e60073;
+    font-weight: bold;
+  }
+</style>
+
+<script>
+function ordenarTabla(indiceColumna) {
+  const tabla = document.getElementById("tabla-obras-populares");
+  let filas = Array.from(tabla.rows).slice(1);
+  const ordenAsc = tabla.getAttribute("data-orden") !== "asc";
+  filas.sort((a, b) => {
+    const textoA = a.cells[indiceColumna].textContent.trim();
+    const textoB = b.cells[indiceColumna].textContent.trim();
+    if (!isNaN(parseFloat(textoA)) && !isNaN(parseFloat(textoB))) {
+      return ordenAsc ? textoA - textoB : textoB - textoA;
+    }
+    return ordenAsc
+      ? textoA.localeCompare(textoB)
+      : textoB.localeCompare(textoA);
+  });
+  tabla.setAttribute("data-orden", ordenAsc ? "asc" : "desc");
+  filas.forEach(fila => tabla.appendChild(fila));
+}
+</script>
