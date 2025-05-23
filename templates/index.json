@@ -258,10 +258,11 @@
         "text_color": "#ffffff",
         "font_size": 30,
         "line_height": 1,
+        "font_weight": "500",
         "text_align": "left",
         "font_family": "Arial, sans-serif",
         "padding_vertical": 20,
-        "padding_horizontal": 0
+        "padding_horizontal": 10
       }
     }
   },
