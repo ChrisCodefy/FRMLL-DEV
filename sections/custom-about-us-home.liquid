@@ -1,3 +1,34 @@
+<div style="
+  background-color: {{ settings.background_color | default: '#000000' }};
+  color: {{ settings.text_color | default: '#ffffff' }};
+  text-align: {{ settings.text_align | default: 'center' }};
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+">
+  <p style="
+    font-size: {{ settings.font_size | default: 24 }}px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.5;
+    max-width: 1000px;
+    margin: 0 auto;
+  ">
+    {{ settings.description_text | default: "Somos una casa de arte digital con base en Ciudad de México y Barcelona." }}
+    
+    {% if settings.link1_url != blank %}
+      <a href="{{ settings.link1_url }}" style="color: {{ settings.text_color }}; text-decoration: underline;">
+        {{ settings.link1_text | default: "Lee nuestra historia aquí" }}
+      </a>.
+    {% endif %}
+
+    {% if settings.link2_url != blank %}
+      <a href="{{ settings.link2_url }}" style="color: {{ settings.text_color }}; text-decoration: underline;">
+        {{ settings.link2_text | default: "Compra algunas de nuestras obras" }}
+      </a>.
+    {% endif %}
+  </p>
+</div>
+
 {% schema %}
 {
   "name": "Custom Nosotros Inicio",
@@ -65,31 +96,9 @@
   ],
   "presets": [
     {
-      "name": "Custom - Sobre Nosotros Inicio",
+      "name": "Custom Nosotros Inicio",
       "category": "Secciones personalizadas"
     }
   ]
 }
 {% endschema %}
-
-<div style="
-  background-color: {{ settings.background_color }};
-  color: {{ settings.text_color }};
-  text-align: {{ settings.text_align }};
-  padding: 40px 20px;
-  font-family: Arial, sans-serif;
-">
-  <p style="font-size: {{ settings.font_size }}px; font-weight: bold; text-transform: uppercase; line-height: 1.5; max-width: 1000px; margin: 0 auto;">
-    {{ settings.description_text }}
-    {% if settings.link1_url %}
-      <a href="{{ settings.link1_url }}" style="color: {{ settings.text_color }}; text-decoration: underline;">
-        {{ settings.link1_text }}
-      </a>.
-    {% endif %}
-    {% if settings.link2_url %}
-      <a href="{{ settings.link2_url }}" style="color: {{ settings.text_color }}; text-decoration: underline;">
-        {{ settings.link2_text }}
-      </a>.
-    {% endif %}
-  </p>
-</div>
