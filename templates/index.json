@@ -119,7 +119,7 @@
         "design": "marquee",
         "effect": "0",
         "au_time": 3.5,
-        "speed": 25,
+        "speed": 30,
         "pause_when_hover": false,
         "direction": "rtl",
         "height": 41,
