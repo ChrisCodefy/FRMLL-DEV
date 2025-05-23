@@ -6,15 +6,19 @@
         <div style="flex: 1; min-width: 50%; position: relative;">
           {% if collection %}
             <a href="{{ collection.url }}">
-              {% if collection.image %}
-                <img src="{{ collection.image | image_url: 'master' }}" alt="{{ collection.title }}" style="width: 100%; height: auto;" />
+              {% if collection.featured_image %}
+                <img src="{{ collection.featured_image | image_url: 'master' }}" alt="{{ collection.title }}" style="width: 100%; height: auto;" />
               {% elsif collection.products_count > 0 %}
-                <img src="{{ collection.products.first.featured_image | image_url: 'master' }}" alt="{{ collection.title }}" style="width: 100%; height: auto;" />
+                {% assign first_product = collection.products.first %}
+                {% if first_product.featured_image %}
+                  <img src="{{ first_product.featured_image | image_url: 'master' }}" alt="{{ collection.title }}" style="width: 100%; height: auto;" />
+                {% endif %}
               {% else %}
                 <div style="width: 100%; height: 300px; background: #eee; display: flex; align-items: center; justify-content: center;">
                   <span style="color: #888;">Sin imagen disponible</span>
                 </div>
               {% endif %}
+
 
               {% if block.settings.position == 'top-left' %}
                 <div style="position: absolute; top: 0; left: 0; padding: 10px; background: rgba(255, 255, 255, 0.8); font-weight: bold;">
