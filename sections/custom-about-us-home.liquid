@@ -1,32 +1,40 @@
-<div style="background-color: {{ section.settings.background_color }}; padding: {{ section.settings.padding_vertical }}px 0;">
+<div style="
+  width: 100%;
+  background-color: {{ section.settings.background_color }};
+  padding: {{ section.settings.padding_vertical }}px 0;
+">
   <div style="
-    color: {{ section.settings.text_color }};
+    max-width: 100%;
     padding: 0 {{ section.settings.padding_horizontal }}px;
-    text-align: {{ section.settings.text_align }};
-    font-family: {{ section.settings.font_family }};
-    max-width: 1000px;
-    margin: 0 auto;
   ">
-    <p style="
-      font-size: {{ section.settings.font_size }}px;
-      font-weight: bold;
-      text-transform: uppercase;
-      line-height: {{ section.settings.line_height }};
+    <div style="
+      max-width: 1000px;
+      margin: 0 auto;
+      color: {{ section.settings.text_color }};
+      text-align: {{ section.settings.text_align }};
+      font-family: {{ section.settings.font_family }};
     ">
-      {{ section.settings.description_text }}
+      <p style="
+        font-size: {{ section.settings.font_size }}px;
+        font-weight: bold;
+        text-transform: uppercase;
+        line-height: {{ section.settings.line_height }};
+      ">
+        {{ section.settings.description_text }}
 
-      {% if section.settings.link1_text != blank and section.settings.link1_url != blank %}
-        <a href="{{ section.settings.link1_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
-          {{ section.settings.link1_text }}
-        </a>.
-      {% endif %}
+        {% if section.settings.link1_text != blank and section.settings.link1_url != blank %}
+          <a href="{{ section.settings.link1_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
+            {{ section.settings.link1_text }}
+          </a>.
+        {% endif %}
 
-      {% if section.settings.link2_text != blank and section.settings.link2_url != blank %}
-        <a href="{{ section.settings.link2_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
-          {{ section.settings.link2_text }}
-        </a>.
-      {% endif %}
-    </p>
+        {% if section.settings.link2_text != blank and section.settings.link2_url != blank %}
+          <a href="{{ section.settings.link2_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
+            {{ section.settings.link2_text }}
+          </a>.
+        {% endif %}
+      </p>
+    </div>
   </div>
 </div>
 
