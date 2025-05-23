@@ -1,9 +1,9 @@
 <section class="custom-collection-video-section">
-  <div class="collection-columns" style="display: flex; width: 100%;">
+  <div class="collection-columns" style="display: flex; flex-wrap: wrap; width: 100%;">
     {% for block in section.blocks %}
       {% if block.type == 'collection_column' %}
-        {% assign collection = block.settings.collection %}
-        <div style="flex: 1; position: relative;">
+        {% assign collection = collections[block.settings.collection] %}
+        <div style="flex: 1; min-width: 50%; position: relative;">
           {% if collection %}
             <a href="{{ collection.url }}">
               {% if collection.image %}
@@ -16,16 +16,16 @@
                 </div>
               {% endif %}
 
+              {% if block.settings.position == 'top-left' %}
+                <div style="position: absolute; top: 0; left: 0; padding: 10px; background: rgba(255, 255, 255, 0.8); font-weight: bold;">
+                  {{ collection.title }}
+                </div>
+              {% elsif block.settings.position == 'bottom-right' %}
+                <div style="position: absolute; bottom: 0; right: 0; padding: 10px; background: rgba(255, 255, 255, 0.8); font-weight: bold;">
+                  {{ collection.title }}
+                </div>
+              {% endif %}
             </a>
-            {% if block.settings.position == 'top-left' %}
-              <div style="position: absolute; top: 0; left: 0; padding: 10px; background: rgba(255, 255, 255, 0.8); font-weight: bold;">
-                {{ collection.title }}
-              </div>
-            {% elsif block.settings.position == 'bottom-right' %}
-              <div style="position: absolute; bottom: 0; right: 0; padding: 10px; background: rgba(255, 255, 255, 0.8); font-weight: bold;">
-                {{ collection.title }}
-              </div>
-            {% endif %}
           {% endif %}
         </div>
       {% endif %}
