@@ -271,16 +271,14 @@
         "collection_column_Ui3cUY": {
           "type": "collection_column",
           "settings": {
-            "image": "shopify://shop_images/square1.webp",
-            "collection_title": "coleccion 1",
+            "collection": "takahashi-shotei",
             "position": "top-left"
           }
         },
         "collection_column_8EjV4f": {
           "type": "collection_column",
           "settings": {
-            "image": "shopify://shop_images/zoomed2_c91b7933-446b-475c-b695-6a7483146d5c.webp",
-            "collection_title": "coleccion 2",
+            "collection": "piet-mondrian",
             "position": "top-left"
           }
         },
@@ -291,7 +289,15 @@
             "title": "Coleccion Japonesa",
             "subtitle": "We're very fortunate to have a great collection of Japanese art available.",
             "button_text": "SHOP NOW →",
-            "button_link": ""
+            "button_link": "",
+            "title_color": "#ffffff",
+            "title_size": 32,
+            "title_align": "left",
+            "subtitle_color": "#ffffff",
+            "subtitle_size": 18,
+            "subtitle_align": "left",
+            "button_bg": "#ffffff",
+            "button_text_color": "#000000"
           }
         }
       },
