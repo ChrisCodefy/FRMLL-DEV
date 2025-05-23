@@ -8,7 +8,7 @@
     padding: 0 {{ section.settings.padding_horizontal }}px;
   ">
     <div style="
-      max-width: 100%;
+      width: 100%;
       margin: 0 auto;
       color: {{ section.settings.text_color }};
       text-align: {{ section.settings.text_align }};
@@ -16,7 +16,7 @@
     ">
       <p style="
         font-size: {{ section.settings.font_size }}px;
-        font-weight: bold;
+        font-weight: {{ section.settings.font_weight }};
         text-transform: uppercase;
         line-height: {{ section.settings.line_height }};
       ">
@@ -102,6 +102,18 @@
     },
     {
       "type": "select",
+      "id": "font_weight",
+      "label": "Peso de la tipografía",
+      "default": "bold",
+      "options": [
+        { "value": "normal", "label": "Regular" },
+        { "value": "500", "label": "Semibold (500)" },
+        { "value": "bold", "label": "Bold (700)" },
+        { "value": "800", "label": "Extra Bold (800)" }
+      ]
+    },
+    {
+      "type": "select",
       "id": "text_align",
       "label": "Alineación del texto",
       "default": "center",
@@ -131,6 +143,7 @@
       "min": 0,
       "max": 160,
       "step": 10,
+      "unit": "px",
       "default": 60
     },
     {
@@ -140,8 +153,10 @@
       "min": 0,
       "max": 100,
       "step": 10,
+      "unit": "px",
       "default": 20
     }
+
   ],
   "presets": [
     {
