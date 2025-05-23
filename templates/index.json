@@ -144,7 +144,27 @@
         "version": "1",
         "date": 60,
         "padding": "10px 0",
-        "margin": "20px 0"
+        "margin": "0px 0"
+      }
+    },
+    "custom_about_us_home_nMP3ma": {
+      "type": "custom-about-us-home",
+      "name": "Custom - Sobre Nosotros Inicio",
+      "settings": {
+        "description_text": "FARAMALLA ES EL PRIMER CLUB POR SUSCRIPCIÓN DE DISCOS DEVINILO DE SU TIPO EN MÉXICO.",
+        "link1_text": "LEA NUESTRA HISTORIA AQUÍ.",
+        "link1_url": "shopify://pages/contact",
+        "link2_text": "O COMPRE ALGO DE NUESTRO CATÁLOGO.",
+        "link2_url": "shopify://pages/contact",
+        "background_color": "#000000",
+        "text_color": "#ffffff",
+        "font_size": 30,
+        "line_height": 1,
+        "font_weight": "500",
+        "text_align": "left",
+        "font_family": "Arial, sans-serif",
+        "padding_vertical": 20,
+        "padding_horizontal": 10
       }
     },
     "image_text_enM8b3": {
@@ -244,33 +264,13 @@
         "image_width": 600,
         "image_height": 600
       }
-    },
-    "custom_about_us_home_nMP3ma": {
-      "type": "custom-about-us-home",
-      "name": "Custom - Sobre Nosotros Inicio",
-      "settings": {
-        "description_text": "FARAMALLA ES EL PRIMER CLUB POR SUSCRIPCIÓN DE DISCOS DEVINILO DE SU TIPO EN MÉXICO.",
-        "link1_text": "LEA NUESTRA HISTORIA AQUÍ.",
-        "link1_url": "shopify://pages/contact",
-        "link2_text": "O COMPRE ALGO DE NUESTRO CATÁLOGO.",
-        "link2_url": "shopify://pages/contact",
-        "background_color": "#000000",
-        "text_color": "#ffffff",
-        "font_size": 30,
-        "line_height": 1,
-        "font_weight": "500",
-        "text_align": "left",
-        "font_family": "Arial, sans-serif",
-        "padding_vertical": 20,
-        "padding_horizontal": 10
-      }
     }
   },
   "order": [
     "1646028739ae283905",
     "marquee_frmll_rDa88m",
+    "custom_about_us_home_nMP3ma",
     "image_text_enM8b3",
-    "custom_product_carousel_Hj3xck",
-    "custom_about_us_home_nMP3ma"
+    "custom_product_carousel_Hj3xck"
   ]
 }
