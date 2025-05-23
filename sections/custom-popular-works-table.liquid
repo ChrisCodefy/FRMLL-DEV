@@ -31,9 +31,9 @@
       {% assign productos_populares = section.settings.coleccion_obras.products %}
       {% for producto in productos_populares %}
         <tr>
-          <td>{{ producto.title }}</td>
-          <td>{{ producto.vendor }}</td>
-          <td>
+          <td data-label="TÍTULO">{{ producto.title }}</td>
+          <td data-label="ARTISTA">{{ producto.vendor }}</td>
+          <td data-label="PRECIO">
             {% if producto.compare_at_price > producto.price %}
               <span class="precio-anterior">€{{ producto.compare_at_price | money_without_currency }}</span>
               <span class="precio-descuento">€{{ producto.price | money_without_currency }}</span>
@@ -49,41 +49,100 @@
 
 <style>
   .obras-populares {
-    font-family: sans-serif;
+    font-family: 'Helvetica Neue', sans-serif;
     background: #f3f2eb;
     padding: 2rem;
   }
 
   .obras-populares h2 {
-    font-size: 24px;
-    margin-bottom: 1rem;
+    font-size: 28px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #333;
   }
 
-  table {
+  #tabla-obras-populares {
     width: 100%;
     border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   }
 
-  th, td {
-    padding: 10px;
-    border: 1px solid black;
+  #tabla-obras-populares thead {
+    background-color: #e0dfd7;
+  }
+
+  #tabla-obras-populares th,
+  #tabla-obras-populares td {
+    padding: 1rem;
     text-align: left;
+    border-bottom: 1px solid #ddd;
   }
 
-  th {
+  #tabla-obras-populares th {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
     cursor: pointer;
-    background-color: #fefefe;
+    user-select: none;
+  }
+
+  #tabla-obras-populares td {
+    font-size: 14px;
+    color: #444;
   }
 
   .precio-anterior {
     text-decoration: line-through;
-    color: #888;
-    margin-right: 5px;
+    color: #999;
+    margin-right: 0.5rem;
   }
 
   .precio-descuento {
-    color: #e60073;
-    font-weight: bold;
+    color: #c92064;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    #tabla-obras-populares,
+    #tabla-obras-populares thead,
+    #tabla-obras-populares tbody,
+    #tabla-obras-populares th,
+    #tabla-obras-populares td,
+    #tabla-obras-populares tr {
+      display: block;
+      width: 100%;
+    }
+
+    #tabla-obras-populares thead {
+      display: none;
+    }
+
+    #tabla-obras-populares tr {
+      margin-bottom: 1.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 1rem;
+      background-color: #fff;
+    }
+
+    #tabla-obras-populares td {
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+    }
+
+    #tabla-obras-populares td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      font-weight: bold;
+      text-align: left;
+      color: #555;
+    }
   }
 </style>
 
