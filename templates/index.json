@@ -264,6 +264,44 @@
         "image_width": 600,
         "image_height": 600
       }
+    },
+    "custom_collection_video_section_3AQNLq": {
+      "type": "custom-collection-video-section",
+      "blocks": {
+        "collection_column_Ui3cUY": {
+          "type": "collection_column",
+          "settings": {
+            "image": "shopify://shop_images/square1.webp",
+            "collection_title": "coleccion 1",
+            "position": "top-left"
+          }
+        },
+        "collection_column_8EjV4f": {
+          "type": "collection_column",
+          "settings": {
+            "image": "shopify://shop_images/zoomed2_c91b7933-446b-475c-b695-6a7483146d5c.webp",
+            "collection_title": "coleccion 2",
+            "position": "top-left"
+          }
+        },
+        "video_block_GRynTm": {
+          "type": "video_block",
+          "settings": {
+            "video_url": "https://baseline-theme-bold.myshopify.com/cdn/shop/videos/c/vp/3b900cca948b49e6b56839db837dfca5/3b900cca948b49e6b56839db837dfca5.HD-720p-3.0Mbps-20343353.mp4?v=0",
+            "title": "Coleccion Japonesa",
+            "subtitle": "We're very fortunate to have a great collection of Japanese art available.",
+            "button_text": "SHOP NOW →",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_column_Ui3cUY",
+        "collection_column_8EjV4f",
+        "video_block_GRynTm"
+      ],
+      "name": "Colección con Video",
+      "settings": {}
     }
   },
   "order": [
@@ -271,6 +309,7 @@
     "marquee_frmll_rDa88m",
     "custom_about_us_home_nMP3ma",
     "image_text_enM8b3",
-    "custom_product_carousel_Hj3xck"
+    "custom_product_carousel_Hj3xck",
+    "custom_collection_video_section_3AQNLq"
   ]
 }
