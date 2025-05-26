@@ -315,6 +315,14 @@
       "settings": {
         "coleccion_obras": "frontpage"
       }
+    },
+    "custom_product_section_waxPJa": {
+      "type": "custom-product-section",
+      "name": "Custom Product Grid",
+      "settings": {
+        "heading": "EXIT THROUGH THE BOOK SHOP",
+        "collection": "frontpage"
+      }
     }
   },
   "order": [
@@ -324,6 +332,7 @@
     "image_text_enM8b3",
     "custom_product_carousel_Hj3xck",
     "custom_collection_video_section_3AQNLq",
-    "custom_popular_works_table_Lc8773"
+    "custom_popular_works_table_Lc8773",
+    "custom_product_section_waxPJa"
   ]
 }
