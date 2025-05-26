@@ -1,9 +1,9 @@
-<!-- custom-product-section.liquid -->
+<!-- sections/custom-product-section.liquid -->
 <section class="custom-product-section">
   <div class="custom-container">
-    <h2 class="custom-heading">EXIT THROUGH THE BOOK SHOP</h2>
+    <h2 class="custom-heading">{{ section.settings.heading }}</h2>
     <div class="custom-products-grid">
-      {% for product in collections['nombre-de-tu-coleccion'].products limit:4 %}
+      {% for product in collections[section.settings.collection].products limit:4 %}
         <div class="custom-product-card">
           <a href="{{ product.url }}">
             <img src="{{ product.featured_image | img_url: '500x' }}" alt="{{ product.title }}" class="custom-product-image">
@@ -83,3 +83,29 @@
   font-weight: bold;
 }
 </style>
+
+{% schema %}
+{
+  "name": "Custom Product Grid",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "EXIT THROUGH THE BOOK SHOP"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Product Grid",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
