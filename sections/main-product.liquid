@@ -772,7 +772,7 @@ endif -%}
       {%- endif -%}
 
       {%- capture hourHTML -%}
-        <span data-hour-delivery class="t4s-h_delivery t4s-dn">[totalHours] {{ bk_stts.hr }} %M {{ bk_stts.min }}</span>
+        <span data-hour-delivery class="t4s-h_delivery t4s-dn">[totalHours] horas %M minutos</span>
       {%- endcapture -%}
       {{ bk_stts.txt | replace: '[hour]', hourHTML | replace: '[date_start]', '<span data-start-delivery class="t4s-start_delivery t4s-fwm"></span>' | replace: '[date_end]', '<span data-end-delivery class="t4s-end_delivery t4s-fwm"></span>' }}
     </div>
