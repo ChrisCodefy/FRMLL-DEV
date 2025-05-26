@@ -559,8 +559,8 @@ endif -%}
                       render 'grouped-form', product: product, bk_stts: bk_stts, pr_se_id: pr_se_id, product_list: product_list, shopify_attributes: block.shopify_attributes, cus_qty: cus_qty
                     endif
                   -%}
-                {% if product.metafields.custom.preventa %}
-  <p>Preventa: {{ product.metafields.custom.preventa }}</p>
+                {% if product.metafields.custom.preventa.value != blank %}
+  <p>Preventa: {{ product.metafields.custom.preventa.value }}</p>
 {% endif %}
 
                 {%- when 'size_delivery_ask' -%}
