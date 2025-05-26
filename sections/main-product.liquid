@@ -560,8 +560,14 @@ endif -%}
                     endif
                   -%}
                 {% if product.metafields.custom.preventa.value != blank %}
-<p style="color: #e74c3c; font-weight: bold;">Preventa: {{ product.metafields.custom.preventa }}</p>
+<p style="color: #e74c3c; font-weight: bold;">Preventa Envío estimado: {{ product.metafields.custom.preventa }}</p>
 {% endif %}
+                {% unless product.metafields.custom.preventa %}
+  <div id="t4s-deliveryorder_gcr4Ug" class="t4s-pr_delivery  t4s-ch t4s-dn" data-order-delivery="{ &quot;timezone&quot;:false, &quot;format_day&quot;:&quot;t44, t45 t46&quot;, &quot;mode&quot;:&quot;1&quot;, &quot;cut_day&quot;: &quot;SAT,SUN&quot;, &quot;estimateStartDate&quot;: 10, &quot;estimateEndDate&quot;: 15, &quot;time&quot;:&quot;16:00:00&quot;, &quot;hideWithPreorder&quot;:true }" style="display: block;">
+    <i class="t4s-ani-none las la-truck"></i>
+    Order in the next <span data-hour-delivery="" class="t4s-h_delivery t4s-dn" style="display: inline;">2 hours 01 minutes</span> to get it between <span data-start-delivery="" class="t4s-start_delivery t4s-fwm">Thursday, 5th June</span> and <span data-end-delivery="" class="t4s-end_delivery t4s-fwm">Tuesday, 10th June</span>
+  </div>
+{% endunless %}
 
                 {%- when 'size_delivery_ask' -%}
                   <div class="t4s-extra-link" {{ block.shopify_attributes }}>
