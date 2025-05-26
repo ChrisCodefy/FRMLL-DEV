@@ -253,30 +253,83 @@
     const itemsToShow = 2.5;
     const totalSlides = Math.ceil(items.length - itemsToShow + 1);
     let currentSlide = 0;
+    let isDragging = false;
+    let startPos = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    let animationID = 0;
 
     function updateCarousel() {
-  const slideWidth = items[0].offsetWidth + 20;
-  track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+      const slideWidth = items[0].offsetWidth + 20;
+      track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
 
-  const dots = dotsContainer.querySelectorAll('.dot');
-  dots.forEach((dot, index) => {
-    dot.classList.toggle('active', index === currentSlide);
-  });
-}
+      const dots = dotsContainer.querySelectorAll('.dot');
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+    }
 
+    function startDrag(e) {
+      isDragging = true;
+      startPos = getPositionX(e);
+      prevTranslate = currentTranslate;
+      track.style.transition = 'none';
+      animationID = requestAnimationFrame(animation);
+    }
+
+    function drag(e) {
+      if (isDragging) {
+        const currentPosition = getPositionX(e);
+        currentTranslate = prevTranslate + currentPosition - startPos;
+      }
+    }
+
+    function endDrag() {
+      if (isDragging) {
+        isDragging = false;
+        cancelAnimationFrame(animationID);
+        const movedBy = currentTranslate - prevTranslate;
+        const slideWidth = items[0].offsetWidth + 20;
+
+        if (movedBy < -50 && currentSlide < totalSlides - 1) {
+          currentSlide += 1;
+        } else if (movedBy > 50 && currentSlide > 0) {
+          currentSlide -= 1;
+        }
+
+        track.style.transition = 'transform 0.4s ease-in-out';
+        updateCarousel();
+      }
+    }
+
+    function getPositionX(e) {
+      return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+    }
+
+    function animation() {
+      track.style.transform = `translateX(${currentTranslate}px)`;
+      animationID = requestAnimationFrame(animation);
+    }
+
+    track.addEventListener('mousedown', startDrag);
+    track.addEventListener('touchstart', startDrag, { passive: true });
+    track.addEventListener('mousemove', drag);
+    track.addEventListener('touchmove', drag, { passive: true });
+    track.addEventListener('mouseup', endDrag);
+    track.addEventListener('touchend', endDrag);
+    track.addEventListener('mouseleave', endDrag);
 
     window.moveSlide = function (direction) {
-  currentSlide += direction;
+      currentSlide += direction;
 
-  if (currentSlide >= totalSlides) {
-    currentSlide = 0; // vuelve al primero
-  } else if (currentSlide < 0) {
-    currentSlide = totalSlides - 1; // opcional: vuelve al último si vas atrás desde el primero
-  }
+      if (currentSlide >= totalSlides) {
+        currentSlide = totalSlides - 1;
+      } else if (currentSlide < 0) {
+        currentSlide = 0;
+      }
 
-  updateCarousel();
-};
-
+      updateCarousel();
+    };
 
     // Crear los dots
     for (let i = 0; i < totalSlides; i++) {
