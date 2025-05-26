@@ -778,6 +778,7 @@ endif -%}
     </div>
   {% endunless %}
 
+
                 {%- when 'countdown' %}
                   {% unless bk_stts.source == '1' or pr_tags contains 'has_stock_countdown' %}{% continue %}{% endunless -%}
                   {{ 'countdown.css' | asset_url | stylesheet_tag }}
