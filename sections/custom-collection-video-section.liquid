@@ -7,7 +7,7 @@
           {% if collection %}
             <a href="{{ collection.url }}">
               {% if collection.image %}
-                <div class="hover-image-wrapper" style="overflow: hidden;">
+                <div class="hover-image-wrapper" style="overflow: hidden;border-right: 2px solid #000;">
                   <img src="{{ collection.image | img_url: 'master' | prepend: 'https:' }}" alt="{{ collection.title }}" class="hover-zoom" style="width: 100%; height: auto; transition: transform 0.4s ease;" />
                 </div>
               {% elsif collection.products_count > 0 %}
