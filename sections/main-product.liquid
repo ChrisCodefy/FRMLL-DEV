@@ -562,9 +562,7 @@ endif -%}
                 {% if product.metafields.custom.preventa.value != blank %}
 <p style="color: #e74c3c; font-weight: bold;">Preventa Envío estimado: {{ product.metafields.custom.preventa }}</p>
 {% endif %}
-                {% unless product.metafields.custom.preventa %}
-  <div id="t4s-deliveryorder_gcr4Ug" class="t4s-pr_delivery  t4s-ch t4s-dn" data-order-delivery="{ &quot;timezone&quot;:false, &quot;format_day&quot;:&quot;t44, t45 t46&quot;, &quot;mode&quot;:&quot;1&quot;, &quot;cut_day&quot;: &quot;SAT,SUN&quot;, &quot;estimateStartDate&quot;: 10, &quot;estimateEndDate&quot;: 15, &quot;time&quot;:&quot;16:00:00&quot;, &quot;hideWithPreorder&quot;:true }" style="display: block;">
-{% endunless %}
+              
 
                 {%- when 'size_delivery_ask' -%}
                   <div class="t4s-extra-link" {{ block.shopify_attributes }}>
@@ -757,18 +755,28 @@ endif -%}
                       {{ bk_stts.text | replace: '[sold]', '<span data-sold class="t4s-pr__sold t4s-fwm"></span>' | replace: '[hour]', '<span data-hour class="t4s-pr__hrs t4s-fwm"></span>' }}
                   </div>
 
-                {%- when 'order' -%}{% unless isProductAvailable %}{% continue %}{% endunless -%}{% if isPreoder and variants_size == 1 and bk_stts.hide_pre %}{% continue %}{% endif -%}
-                  <div id="t4s-delivery{{ bk_id }}" class="t4s-pr_delivery  t4s-ch t4s-dn" data-order-delivery='{ "timezone":false, "format_day":"{{ bk_stts.frm_day }}", "mode":"{{ bk_stts.mode }}", "cut_day": {{ bk_stts.cut_day | json }}, "estimateStartDate": {{ meta_theme.estimateStartDate | default: bk_stts.ds | json }}, "estimateEndDate": {{ meta_theme.estimateEndDate | default: bk_stts.de | json }}, "time":{{ bk_stts.time | default: 19041994 | json }}, "hideWithPreorder":{{ bk_stts.hide_pre }} }' {{ block.shopify_attributes }}>
-                    {%- if bk_stts.icon != '1' -%}{%- assign image = bk_stts.img -%}
-                      {%- if bk_stts.icon == '3' and image != blank -%}<img class="lazyloadt4s t4s-w-100 t4s-ani-{{ bk_stts.ani }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{ image | image_url: width: 50 }}" width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.alt }}">
-                      {%- else -%}<i class="t4s-ani-{{ bk_stts.ani }} {{ bk_stts.icon_name }}"></i>
-                      {%- endif -%}
-                      {%- if bk_stts.ani != 'none' %}<link href="{{ 'ani-atc.min.css' | asset_url }}" rel="stylesheet" media="print" onload="this.media='all'">{% endif -%}
-                      {%- endif -%}
+                {%- when 'order' -%}
+  {% unless isProductAvailable %}{% continue %}{% endunless %}
+  {% if isPreoder and variants_size == 1 and bk_stts.hide_pre %}{% continue %}{% endif %}
+  {% unless product.metafields.custom.preventa != blank %}
+    <div id="t4s-delivery{{ bk_id }}" class="t4s-pr_delivery  t4s-ch t4s-dn" data-order-delivery='{ "timezone":false, "format_day":"{{ bk_stts.frm_day }}", "mode":"{{ bk_stts.mode }}", "cut_day": {{ bk_stts.cut_day | json }}, "estimateStartDate": {{ meta_theme.estimateStartDate | default: bk_stts.ds | json }}, "estimateEndDate": {{ meta_theme.estimateEndDate | default: bk_stts.de | json }}, "time":{{ bk_stts.time | default: 19041994 | json }}, "hideWithPreorder":{{ bk_stts.hide_pre }} }' {{ block.shopify_attributes }}>
+      {%- if bk_stts.icon != '1' -%}{%- assign image = bk_stts.img -%}
+        {%- if bk_stts.icon == '3' and image != blank -%}
+          <img class="lazyloadt4s t4s-w-100 t4s-ani-{{ bk_stts.ani }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{ image | image_url: width: 50 }}" width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.alt }}">
+        {%- else -%}
+          <i class="t4s-ani-{{ bk_stts.ani }} {{ bk_stts.icon_name }}"></i>
+        {%- endif -%}
+        {%- if bk_stts.ani != 'none' %}
+          <link href="{{ 'ani-atc.min.css' | asset_url }}" rel="stylesheet" media="print" onload="this.media='all'">
+        {% endif -%}
+      {%- endif -%}
 
-                      {%- capture hourHTML -%}<span data-hour-delivery class="t4s-h_delivery t4s-dn">[totalHours] {{ bk_stts.hr }} %M {{ bk_stts.min }}</span>{%- endcapture -%}
-                    {{ bk_stts.txt | replace: '[hour]', hourHTML | replace: '[date_start]', '<span data-start-delivery class="t4s-start_delivery t4s-fwm"></span>' | replace: '[date_end]', '<span data-end-delivery class="t4s-end_delivery t4s-fwm"></span>' }}
-                  </div>
+      {%- capture hourHTML -%}
+        <span data-hour-delivery class="t4s-h_delivery t4s-dn">[totalHours] {{ bk_stts.hr }} %M {{ bk_stts.min }}</span>
+      {%- endcapture -%}
+      {{ bk_stts.txt | replace: '[hour]', hourHTML | replace: '[date_start]', '<span data-start-delivery class="t4s-start_delivery t4s-fwm"></span>' | replace: '[date_end]', '<span data-end-delivery class="t4s-end_delivery t4s-fwm"></span>' }}
+    </div>
+  {% endunless %}
 
                 {%- when 'countdown' %}
                   {% unless bk_stts.source == '1' or pr_tags contains 'has_stock_countdown' %}{% continue %}{% endunless -%}
