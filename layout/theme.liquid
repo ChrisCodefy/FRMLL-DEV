@@ -95,3 +95,47 @@ t4sp-theme t4s-wrapper__{{ settings.general_layout }}{% if settings.animations_r
 {% else %}
 {{ content_for_layout }}
 {%- endunless -%}
+document.addEventListener('DOMContentLoaded', function () {
+  const dayTranslations = {
+    'Monday': 'Lunes',
+    'Tuesday': 'Martes',
+    'Wednesday': 'Miércoles',
+    'Thursday': 'Jueves',
+    'Friday': 'Viernes',
+    'Saturday': 'Sábado',
+    'Sunday': 'Domingo'
+  };
+
+  const monthTranslations = {
+    'January': 'Enero',
+    'February': 'Febrero',
+    'March': 'Marzo',
+    'April': 'Abril',
+    'May': 'Mayo',
+    'June': 'Junio',
+    'July': 'Julio',
+    'August': 'Agosto',
+    'September': 'Septiembre',
+    'October': 'Octubre',
+    'November': 'Noviembre',
+    'December': 'Diciembre'
+  };
+
+  const deliveryText = document.querySelector('.t4s-pr_delivery');
+
+  if (deliveryText) {
+    let html = deliveryText.innerHTML;
+
+    Object.entries(dayTranslations).forEach(([en, es]) => {
+      const regex = new RegExp(en, 'g');
+      html = html.replace(regex, es);
+    });
+
+    Object.entries(monthTranslations).forEach(([en, es]) => {
+      const regex = new RegExp(en, 'g');
+      html = html.replace(regex, es);
+    });
+
+    deliveryText.innerHTML = html;
+  }
+});
