@@ -124,30 +124,31 @@
 </style>
 
 <script>
-<script>
 document.addEventListener("DOMContentLoaded", function () {
   const buttons = document.querySelectorAll(".tab-button");
-  const mexicoTab = document.querySelector(".tab-mexico");
-  const usaTab = document.querySelector(".tab-usa");
+  const tabs = {
+    mexico: document.querySelector(".tab-mexico"),
+    usa: document.querySelector(".tab-usa")
+  };
 
   buttons.forEach(button => {
     button.addEventListener("click", () => {
-      // Desactivar todos los botones
+      const selectedTab = button.dataset.tab;
+
+      // Actualizar botones activos
       buttons.forEach(btn => btn.classList.remove("active"));
-      // Activar botón actual
       button.classList.add("active");
 
-      // Mostrar contenido según tab seleccionada
-      if (button.dataset.tab === "mexico") {
-        mexicoTab.classList.add("active");
-        usaTab.classList.remove("active");
-      } else {
-        usaTab.classList.add("active");
-        mexicoTab.classList.remove("active");
-      }
+      // Mostrar contenido correspondiente
+      Object.keys(tabs).forEach(tabKey => {
+        if (tabKey === selectedTab) {
+          tabs[tabKey].classList.add("active");
+        } else {
+          tabs[tabKey].classList.remove("active");
+        }
+      });
     });
   });
 });
 </script>
 
-</script>
