@@ -7,39 +7,23 @@
     {
       "type": "text",
       "id": "title",
-      "label": "Title",
+      "label": "Título principal",
       "default": "RECEIVE SPECIAL OFFERS AND FIRST LOOK AT NEW PRODUCTS."
-    }
-  ],
-  "blocks": [
-    {
-      "type": "tab_content",
-      "name": "Mexico Tab Column",
-      "settings": [
-        { "type": "textarea", "id": "mexico_text", "label": "Mexico Content" }
-      ]
     },
-    {
-      "type": "tab_content_usa",
-      "name": "USA Tab Column",
-      "settings": [
-        { "type": "textarea", "id": "usa_text", "label": "USA Content" }
-      ]
-    }
+
+    { "type": "textarea", "id": "mexico_col_1", "label": "México - Columna 1" },
+    { "type": "textarea", "id": "mexico_col_2", "label": "México - Columna 2" },
+    { "type": "textarea", "id": "mexico_col_3", "label": "México - Columna 3" },
+    { "type": "textarea", "id": "mexico_col_4", "label": "México - Columna 4" },
+
+    { "type": "textarea", "id": "usa_col_1", "label": "USA - Column 1" },
+    { "type": "textarea", "id": "usa_col_2", "label": "USA - Column 2" },
+    { "type": "textarea", "id": "usa_col_3", "label": "USA - Column 3" },
+    { "type": "textarea", "id": "usa_col_4", "label": "USA - Column 4" }
   ],
   "presets": [
     {
-      "name": "Custom Subscription Tabs Columns",
-      "blocks": [
-        { "type": "tab_content", "settings": { "mexico_text": "Contenido México 1" } },
-        { "type": "tab_content", "settings": { "mexico_text": "Contenido México 2" } },
-        { "type": "tab_content", "settings": { "mexico_text": "Contenido México 3" } },
-        { "type": "tab_content", "settings": { "mexico_text": "Contenido México 4" } },
-        { "type": "tab_content_usa", "settings": { "usa_text": "Contenido USA 1" } },
-        { "type": "tab_content_usa", "settings": { "usa_text": "Contenido USA 2" } },
-        { "type": "tab_content_usa", "settings": { "usa_text": "Contenido USA 3" } },
-        { "type": "tab_content_usa", "settings": { "usa_text": "Contenido USA 4" } }
-      ]
+      "name": "Custom Subscription Tabs Columns"
     }
   ]
 }
@@ -54,23 +38,17 @@
 </div>
 
 <div class="tab-columns tab-mexico active">
-  {% for block in section.blocks %}
-    {% if block.type == 'tab_content' %}
-      <div class="column">
-        {{ block.settings.mexico_text | newline_to_br }}
-      </div>
-    {% endif %}
-  {% endfor %}
+  <div class="column">{{ section.settings.mexico_col_1 | newline_to_br }}</div>
+  <div class="column">{{ section.settings.mexico_col_2 | newline_to_br }}</div>
+  <div class="column">{{ section.settings.mexico_col_3 | newline_to_br }}</div>
+  <div class="column">{{ section.settings.mexico_col_4 | newline_to_br }}</div>
 </div>
 
 <div class="tab-columns tab-usa">
-  {% for block in section.blocks %}
-    {% if block.type == 'tab_content_usa' %}
-      <div class="column">
-        {{ block.settings.usa_text | newline_to_br }}
-      </div>
-    {% endif %}
-  {% endfor %}
+  <div class="column">{{ section.settings.usa_col_1 | newline_to_br }}</div>
+  <div class="column">{{ section.settings.usa_col_2 | newline_to_br }}</div>
+  <div class="column">{{ section.settings.usa_col_3 | newline_to_br }}</div>
+  <div class="column">{{ section.settings.usa_col_4 | newline_to_br }}</div>
 </div>
 
 <style>
@@ -82,6 +60,7 @@
   padding: 20px;
   text-transform: uppercase;
   font-weight: bold;
+  flex-wrap: wrap;
 }
 .subscription-tabs-header .title {
   font-size: 16px;
@@ -103,8 +82,6 @@
 }
 .tab-columns {
   display: none;
-  width: 100%;
-  display: grid;
   grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid black;
   border-bottom: 1px solid black;
@@ -126,29 +103,22 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const buttons = document.querySelectorAll(".tab-button");
-  const tabs = {
-    mexico: document.querySelector(".tab-mexico"),
-    usa: document.querySelector(".tab-usa")
-  };
+  const mexicoTab = document.querySelector(".tab-mexico");
+  const usaTab = document.querySelector(".tab-usa");
 
   buttons.forEach(button => {
     button.addEventListener("click", () => {
-      const selectedTab = button.dataset.tab;
-
-      // Actualizar botones activos
       buttons.forEach(btn => btn.classList.remove("active"));
       button.classList.add("active");
 
-      // Mostrar contenido correspondiente
-      Object.keys(tabs).forEach(tabKey => {
-        if (tabKey === selectedTab) {
-          tabs[tabKey].classList.add("active");
-        } else {
-          tabs[tabKey].classList.remove("active");
-        }
-      });
+      if (button.dataset.tab === "mexico") {
+        mexicoTab.classList.add("active");
+        usaTab.classList.remove("active");
+      } else {
+        usaTab.classList.add("active");
+        mexicoTab.classList.remove("active");
+      }
     });
   });
 });
 </script>
-
