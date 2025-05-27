@@ -291,10 +291,12 @@
         const movedBy = currentTranslate - prevTranslate;
         const slideWidth = items[0].offsetWidth + 20;
 
-        if (movedBy < -50 && currentSlide < totalSlides - 1) {
-          currentSlide += 1;
-        } else if (movedBy > 50 && currentSlide > 0) {
-          currentSlide -= 1;
+        if (Math.abs(movedBy) > slideWidth / 4) {
+          if (movedBy < 0 && currentSlide < totalSlides - 1) {
+            currentSlide += 1;
+          } else if (movedBy > 0 && currentSlide > 0) {
+            currentSlide -= 1;
+          }
         }
 
         track.style.transition = 'transform 0.4s ease-in-out';
