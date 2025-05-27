@@ -82,14 +82,23 @@
 
 <!-- USA Columns -->
 <div class="tab-columns tab-usa">
+  {% for i in (1..4) %}
+  {% assign price_key = 'usa_' | append: i | append: '_price' %}
+  {% assign subtitle_key = 'usa_' | append: i | append: '_subtitle' %}
+  {% assign desc_key = 'usa_' | append: i | append: '_desc' %}
+  {% assign btn_key = 'usa_' | append: i | append: '_btn' %}
+  {% assign link_key = 'usa_' | append: i | append: '_link' %}
+
   <div class="column">
-    <div class="price">{{ section.settings.usa_1_price }}</div>
-    <div class="subtitle"><strong>{{ section.settings.usa_1_subtitle }}</strong></div>
-    <div class="desc">{{ section.settings.usa_1_desc | newline_to_br }}</div>
-    {% if section.settings.usa_1_link %}
-      <a href="{{ section.settings.usa_1_link }}" class="btn">{{ section.settings.usa_1_btn }}</a>
+    <div class="price">{{ section.settings[price_key] }}</div>
+    <div class="subtitle"><strong>{{ section.settings[subtitle_key] }}</strong></div>
+    <div class="desc">{{ section.settings[desc_key] | newline_to_br }}</div>
+    {% if section.settings[link_key] %}
+      <a href="{{ section.settings[link_key] }}" class="btn">{{ section.settings[btn_key] }}</a>
     {% endif %}
   </div>
+{% endfor %}
+
   <!-- Agrega más columnas como usa_2, usa_3, usa_4 si lo deseas -->
 </div>
 
