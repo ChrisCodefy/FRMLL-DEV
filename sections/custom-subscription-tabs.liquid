@@ -4,22 +4,16 @@
   "tag": "section",
   "class": "custom-subscription-tabs-columns",
   "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Título principal",
-      "default": "RECEIVE SPECIAL OFFERS AND FIRST LOOK AT NEW PRODUCTS."
-    },
+    { "type": "text", "id": "title", "label": "Título principal", "default": "RECEIVE SPECIAL OFFERS AND FIRST LOOK AT NEW PRODUCTS." },
 
-    { "type": "textarea", "id": "mexico_col_1", "label": "México - Columna 1" },
-    { "type": "textarea", "id": "mexico_col_2", "label": "México - Columna 2" },
-    { "type": "textarea", "id": "mexico_col_3", "label": "México - Columna 3" },
-    { "type": "textarea", "id": "mexico_col_4", "label": "México - Columna 4" },
+    { "type": "header", "content": "México - Columna 1" },
+    { "type": "text", "id": "mx_1_price", "label": "Precio", "default": "$2,640.00" },
+    { "type": "text", "id": "mx_1_subtitle", "label": "Subtítulo", "default": "Trimestral. $880/mes" },
+    { "type": "textarea", "id": "mx_1_desc", "label": "Descripción", "default": "3 Discos Selección Exclusiva del Club. 3 Ilustraciones Exclusivas. 3 Fundas protectoras. Incluye gastos de envío. Descuentos en nuestra tienda en línea." },
+    { "type": "text", "id": "mx_1_button_text", "label": "Texto del botón", "default": "Seleccionar" },
+    { "type": "url", "id": "mx_1_button_link", "label": "Enlace del botón" }
 
-    { "type": "textarea", "id": "usa_col_1", "label": "USA - Column 1" },
-    { "type": "textarea", "id": "usa_col_2", "label": "USA - Column 2" },
-    { "type": "textarea", "id": "usa_col_3", "label": "USA - Column 3" },
-    { "type": "textarea", "id": "usa_col_4", "label": "USA - Column 4" }
+    // Repite para mx_2, mx_3, mx_4 y luego usa_1, usa_2, usa_3, usa_4
   ],
   "presets": [
     {
@@ -29,6 +23,7 @@
 }
 {% endschema %}
 
+<!-- Header -->
 <div class="subscription-tabs-header">
   <div class="title">{{ section.settings.title }}</div>
   <div class="tab-switch">
@@ -37,49 +32,25 @@
   </div>
 </div>
 
+<!-- México -->
 <div class="tab-columns tab-mexico active">
-  <div class="column">{{ section.settings.mexico_col_1 | newline_to_br }}</div>
-  <div class="column">{{ section.settings.mexico_col_2 | newline_to_br }}</div>
-  <div class="column">{{ section.settings.mexico_col_3 | newline_to_br }}</div>
-  <div class="column">{{ section.settings.mexico_col_4 | newline_to_br }}</div>
+  <div class="column">
+    <div class="price">{{ section.settings.mx_1_price }}</div>
+    <div class="subtitle"><strong>{{ section.settings.mx_1_subtitle }}</strong></div>
+    <div class="desc">{{ section.settings.mx_1_desc | newline_to_br }}</div>
+    {% if section.settings.mx_1_button_link %}
+      <a href="{{ section.settings.mx_1_button_link }}" class="btn">{{ section.settings.mx_1_button_text }}</a>
+    {% endif %}
+  </div>
+  <!-- Agrega otras 3 columnas aquí con mx_2, mx_3, mx_4 -->
 </div>
 
+<!-- USA -->
 <div class="tab-columns tab-usa">
-  <div class="column">{{ section.settings.usa_col_1 | newline_to_br }}</div>
-  <div class="column">{{ section.settings.usa_col_2 | newline_to_br }}</div>
-  <div class="column">{{ section.settings.usa_col_3 | newline_to_br }}</div>
-  <div class="column">{{ section.settings.usa_col_4 | newline_to_br }}</div>
+  <!-- Similar con usa_1, usa_2, usa_3, usa_4 -->
 </div>
 
 <style>
-.subscription-tabs-header {
-  background-color: #66ff5c;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  text-transform: uppercase;
-  font-weight: bold;
-  flex-wrap: wrap;
-}
-.subscription-tabs-header .title {
-  font-size: 16px;
-}
-.tab-switch {
-  display: flex;
-  gap: 10px;
-}
-.tab-button {
-  background: none;
-  border: none;
-  padding: 10px 20px;
-  font-weight: bold;
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-}
-.tab-button.active {
-  border-bottom: 2px solid black;
-}
 .tab-columns {
   display: none;
   grid-template-columns: repeat(4, 1fr);
@@ -97,6 +68,24 @@
 }
 .column:last-child {
   border-right: none;
+}
+.price {
+  font-size: 22px;
+  font-weight: bold;
+}
+.subtitle {
+  margin: 5px 0 10px;
+}
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: black;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 6px;
 }
 </style>
 
