@@ -12,6 +12,8 @@
     "heading": {
       "type": "heading-template",
       "settings": {
+        "heading_fullwidth": false,
+        "use_specify_image": true,
         "parallax": false,
         "color": "#000000",
         "overlay": 54,
@@ -35,6 +37,8 @@
         "cl_bg_gradient": "",
         "mg": "60px,,60px,",
         "pd": "",
+        "mg_tb": "",
+        "pd_tb": "",
         "mg_mb": ",,30px,",
         "pd_mb": ""
       }
@@ -64,11 +68,20 @@
         "sidebar_bdr": 5,
         "sidebar_pd": 10
       }
+    },
+    "custom_subscription_about_hU4hzT": {
+      "type": "custom-subscription-about",
+      "name": "Custom Subscription About",
+      "settings": {
+        "heading": "Selecciona el plan de tu preferencia y forma parte de nuestra comunidad.",
+        "content": "El plan se cobrará en una sola exhibición y la renovación se aplicará de forma automática cuando la fecha del periodo de tu suscripción expire. En tu perfil podrás administrar las preferencias de tu suscripción."
+      }
     }
   },
   "order": [
     "heading",
     "main",
-    "sidebar-page"
+    "sidebar-page",
+    "custom_subscription_about_hU4hzT"
   ]
 }
