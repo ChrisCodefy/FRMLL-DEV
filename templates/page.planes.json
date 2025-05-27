@@ -76,12 +76,80 @@
         "heading": "Selecciona el plan de tu preferencia y forma parte de nuestra comunidad.",
         "content": "El plan se cobrará en una sola exhibición y la renovación se aplicará de forma automática cuando la fecha del periodo de tu suscripción expire. En tu perfil podrás administrar las preferencias de tu suscripción."
       }
+    },
+    "custom_subscription_tabs_KErf34": {
+      "type": "custom-subscription-tabs",
+      "blocks": {
+        "tab_content_RVjWW6": {
+          "type": "tab_content",
+          "settings": {
+            "mexico_text": "Contenido México 1"
+          }
+        },
+        "tab_content_wrrhHQ": {
+          "type": "tab_content",
+          "settings": {
+            "mexico_text": "Contenido México 2"
+          }
+        },
+        "tab_content_6zHTnV": {
+          "type": "tab_content",
+          "settings": {
+            "mexico_text": "Contenido México 3"
+          }
+        },
+        "tab_content_TmFiAE": {
+          "type": "tab_content",
+          "settings": {
+            "mexico_text": "Contenido México 4"
+          }
+        },
+        "tab_content_usa_3e37Hy": {
+          "type": "tab_content_usa",
+          "settings": {
+            "usa_text": "Contenido USA 1"
+          }
+        },
+        "tab_content_usa_rKR6Dg": {
+          "type": "tab_content_usa",
+          "settings": {
+            "usa_text": "Contenido USA 2"
+          }
+        },
+        "tab_content_usa_EkGDXK": {
+          "type": "tab_content_usa",
+          "settings": {
+            "usa_text": "Contenido USA 3"
+          }
+        },
+        "tab_content_usa_hgzNip": {
+          "type": "tab_content_usa",
+          "settings": {
+            "usa_text": "Contenido USA 4"
+          }
+        }
+      },
+      "block_order": [
+        "tab_content_RVjWW6",
+        "tab_content_wrrhHQ",
+        "tab_content_6zHTnV",
+        "tab_content_TmFiAE",
+        "tab_content_usa_3e37Hy",
+        "tab_content_usa_rKR6Dg",
+        "tab_content_usa_EkGDXK",
+        "tab_content_usa_hgzNip"
+      ],
+      "name": "Custom Subscription Tabs Columns",
+      "settings": {
+        "title": "RECEIVE SPECIAL OFFERS AND FIRST LOOK AT NEW PRODUCTS."
+      }
     }
   },
   "order": [
     "heading",
     "main",
     "sidebar-page",
-    "custom_subscription_about_hU4hzT"
+    "custom_subscription_about_hU4hzT",
+    "custom_subscription_tabs_KErf34"
   ]
 }
