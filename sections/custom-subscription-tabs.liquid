@@ -7,13 +7,41 @@
     { "type": "text", "id": "title", "label": "Título principal", "default": "RECEIVE SPECIAL OFFERS AND FIRST LOOK AT NEW PRODUCTS." },
 
     { "type": "header", "content": "México - Columna 1" },
-    { "type": "text", "id": "mx_1_price", "label": "Precio", "default": "$2,640.00" },
-    { "type": "text", "id": "mx_1_subtitle", "label": "Subtítulo", "default": "Trimestral. $880/mes" },
-    { "type": "textarea", "id": "mx_1_desc", "label": "Descripción", "default": "3 Discos Selección Exclusiva del Club. 3 Ilustraciones Exclusivas. 3 Fundas protectoras. Incluye gastos de envío. Descuentos en nuestra tienda en línea." },
-    { "type": "text", "id": "mx_1_button_text", "label": "Texto del botón", "default": "Seleccionar" },
-    { "type": "url", "id": "mx_1_button_link", "label": "Enlace del botón" }
+    { "type": "text", "id": "mx_1_price", "label": "Precio" },
+    { "type": "text", "id": "mx_1_subtitle", "label": "Subtítulo" },
+    { "type": "textarea", "id": "mx_1_desc", "label": "Descripción" },
+    { "type": "text", "id": "mx_1_btn", "label": "Texto botón", "default": "Seleccionar" },
+    { "type": "url", "id": "mx_1_link", "label": "Link botón" },
 
-    // Repite para mx_2, mx_3, mx_4 y luego usa_1, usa_2, usa_3, usa_4
+    { "type": "header", "content": "México - Columna 2" },
+    { "type": "text", "id": "mx_2_price", "label": "Precio" },
+    { "type": "text", "id": "mx_2_subtitle", "label": "Subtítulo" },
+    { "type": "textarea", "id": "mx_2_desc", "label": "Descripción" },
+    { "type": "text", "id": "mx_2_btn", "label": "Texto botón", "default": "Seleccionar" },
+    { "type": "url", "id": "mx_2_link", "label": "Link botón" },
+
+    { "type": "header", "content": "México - Columna 3" },
+    { "type": "text", "id": "mx_3_price", "label": "Precio" },
+    { "type": "text", "id": "mx_3_subtitle", "label": "Subtítulo" },
+    { "type": "textarea", "id": "mx_3_desc", "label": "Descripción" },
+    { "type": "text", "id": "mx_3_btn", "label": "Texto botón", "default": "Seleccionar" },
+    { "type": "url", "id": "mx_3_link", "label": "Link botón" },
+
+    { "type": "header", "content": "México - Columna 4" },
+    { "type": "text", "id": "mx_4_price", "label": "Precio" },
+    { "type": "text", "id": "mx_4_subtitle", "label": "Subtítulo" },
+    { "type": "textarea", "id": "mx_4_desc", "label": "Descripción" },
+    { "type": "text", "id": "mx_4_btn", "label": "Texto botón", "default": "Seleccionar" },
+    { "type": "url", "id": "mx_4_link", "label": "Link botón" },
+
+    { "type": "header", "content": "USA - Column 1" },
+    { "type": "text", "id": "usa_1_price", "label": "Price" },
+    { "type": "text", "id": "usa_1_subtitle", "label": "Subtitle" },
+    { "type": "textarea", "id": "usa_1_desc", "label": "Description" },
+    { "type": "text", "id": "usa_1_btn", "label": "Button text", "default": "Select" },
+    { "type": "url", "id": "usa_1_link", "label": "Button link" }
+
+    // Repite esto mismo para usa_2, usa_3, usa_4 si necesitas
   ],
   "presets": [
     {
@@ -32,25 +60,66 @@
   </div>
 </div>
 
-<!-- México -->
+<!-- México Columns -->
 <div class="tab-columns tab-mexico active">
+  {% for i in (1..4) %}
+    {% assign price_key = 'mx_' | append: i | append: '_price' %}
+    {% assign subtitle_key = 'mx_' | append: i | append: '_subtitle' %}
+    {% assign desc_key = 'mx_' | append: i | append: '_desc' %}
+    {% assign btn_key = 'mx_' | append: i | append: '_btn' %}
+    {% assign link_key = 'mx_' | append: i | append: '_link' %}
+  
+    <div class="column">
+      <div class="price">{{ section.settings[price_key] }}</div>
+      <div class="subtitle"><strong>{{ section.settings[subtitle_key] }}</strong></div>
+      <div class="desc">{{ section.settings[desc_key] | newline_to_br }}</div>
+      {% if section.settings[link_key] %}
+        <a href="{{ section.settings[link_key] }}" class="btn">{{ section.settings[btn_key] }}</a>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+
+<!-- USA Columns -->
+<div class="tab-columns tab-usa">
   <div class="column">
-    <div class="price">{{ section.settings.mx_1_price }}</div>
-    <div class="subtitle"><strong>{{ section.settings.mx_1_subtitle }}</strong></div>
-    <div class="desc">{{ section.settings.mx_1_desc | newline_to_br }}</div>
-    {% if section.settings.mx_1_button_link %}
-      <a href="{{ section.settings.mx_1_button_link }}" class="btn">{{ section.settings.mx_1_button_text }}</a>
+    <div class="price">{{ section.settings.usa_1_price }}</div>
+    <div class="subtitle"><strong>{{ section.settings.usa_1_subtitle }}</strong></div>
+    <div class="desc">{{ section.settings.usa_1_desc | newline_to_br }}</div>
+    {% if section.settings.usa_1_link %}
+      <a href="{{ section.settings.usa_1_link }}" class="btn">{{ section.settings.usa_1_btn }}</a>
     {% endif %}
   </div>
-  <!-- Agrega otras 3 columnas aquí con mx_2, mx_3, mx_4 -->
+  <!-- Agrega más columnas como usa_2, usa_3, usa_4 si lo deseas -->
 </div>
 
-<!-- USA -->
-<div class="tab-columns tab-usa">
-  <!-- Similar con usa_1, usa_2, usa_3, usa_4 -->
-</div>
-
+<!-- Estilos -->
 <style>
+.subscription-tabs-header {
+  background-color: #66ff5c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  flex-wrap: wrap;
+}
+.tab-switch {
+  display: flex;
+  gap: 10px;
+}
+.tab-button {
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+.tab-button.active {
+  border-bottom: 2px solid black;
+}
 .tab-columns {
   display: none;
   grid-template-columns: repeat(4, 1fr);
@@ -89,6 +158,7 @@
 }
 </style>
 
+<!-- Script funcional -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const buttons = document.querySelectorAll(".tab-button");
