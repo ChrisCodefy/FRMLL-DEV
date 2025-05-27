@@ -1,0 +1,176 @@
+{% schema %}
+{
+  "name": "Custom Subscription Tabs",
+  "tag": "section",
+  "class": "custom-subscription-tabs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "RECEIVE SPECIAL OFFERS AND FIRST LOOK AT NEW PRODUCTS."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Subscription Tabs"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="subscription-tabs-wrapper">
+  <div class="subscription-tabs-header">
+    <div class="tabs-title">{{ section.settings.title }}</div>
+    <div class="tabs-buttons">
+      <button class="tab-btn active" data-tab="mexico">México</button>
+      <button class="tab-btn" data-tab="usa">Estados Unidos</button>
+    </div>
+  </div>
+
+  <div class="tabs-content">
+    <div class="tab-content active" id="tab-mexico">
+      <div class="subscription-cards">
+        <div class="card">
+          <h3>$920.00</h3>
+          <p><strong>Mensual</strong></p>
+          <p>1 Disco Selección Exclusiva del Club. 1 Ilustración Exclusiva. 1 Funda protectora. Incluye gastos de envío. Descuentos en nuestra tienda en línea.</p>
+          <button>Seleccionar</button>
+        </div>
+        <div class="card">
+          <h3>$2,640.00</h3>
+          <p><strong>Trimestral. $880/mes</strong></p>
+          <p>3 Discos Selección Exclusiva del Club. 3 Ilustraciones Exclusivas. 3 Fundas protectoras. Incluye gastos de envío. Descuentos en nuestra tienda en línea.</p>
+          <button>Seleccionar</button>
+        </div>
+        <div class="card">
+          <h3>$4,920.00</h3>
+          <p><strong>Semestral. $820/mes</strong></p>
+          <p>6 Discos Selección Exclusiva del Club. 6 Ilustraciones Exclusivas. 6 Fundas protectoras. Incluye gastos de envío. Descuentos en nuestra tienda en línea.</p>
+          <button>Seleccionar</button>
+        </div>
+        <div class="card">
+          <h3>$149.00</h3>
+          <p><strong>Clientes Frecuentes. $149/mes</strong></p>
+          <p>Disfruta de todos los beneficios en nuestra tienda en línea y física: -Acceso a precios especiales. -Preventas exclusivas. *No incluye el Disco del Mes ni gastos de envío en tienda en línea.</p>
+          <button>Seleccionar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-usa">
+      <div class="subscription-cards">
+        <div class="card">
+          <h3>$30.00</h3>
+          <p><strong>Mensual</strong></p>
+          <p>1 Vinyl Exclusive Club Selection. 1 Exclusive Illustration. 1 Protective Sleeve. Free shipping. Discounts in our online store.</p>
+          <button>Select</button>
+        </div>
+        <div class="card">
+          <h3>$84.00</h3>
+          <p><strong>Quarterly. $28/mo</strong></p>
+          <p>3 Vinyls Exclusive Club Selection. 3 Exclusive Illustrations. 3 Protective Sleeves. Free shipping. Discounts in our online store.</p>
+          <button>Select</button>
+        </div>
+        <div class="card">
+          <h3>$150.00</h3>
+          <p><strong>Semiannual. $25/mo</strong></p>
+          <p>6 Vinyls Exclusive Club Selection. 6 Exclusive Illustrations. 6 Protective Sleeves. Free shipping. Discounts in our online store.</p>
+          <button>Select</button>
+        </div>
+        <div class="card">
+          <h3>$5.99</h3>
+          <p><strong>Loyal Members. $5.99/mo</strong></p>
+          <p>All online & in-store benefits: -Exclusive pricing. -Early access. *Does not include Monthly Vinyl or shipping.</p>
+          <button>Select</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.subscription-tabs-wrapper {
+  background-color: #66ff5c;
+  padding: 40px 20px;
+}
+.subscription-tabs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.tabs-title {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 18px;
+  flex: 1;
+}
+.tabs-buttons {
+  display: flex;
+  gap: 10px;
+}
+.tab-btn {
+  background: none;
+  border: none;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.tab-btn.active {
+  background: black;
+  color: white;
+}
+.tabs-content {
+  margin-top: 30px;
+}
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
+.subscription-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+.card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.card button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const buttons = document.querySelectorAll(".tab-btn");
+  const contents = document.querySelectorAll(".tab-content");
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      buttons.forEach(btn => btn.classList.remove("active"));
+      contents.forEach(tab => tab.classList.remove("active"));
+
+      button.classList.add("active");
+      document.getElementById("tab-" + button.dataset.tab).classList.add("active");
+    });
+  });
+});
+</script>
