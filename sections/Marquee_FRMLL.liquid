@@ -114,7 +114,7 @@
                       {%- capture cap_date %}{% assign se_dayx = bk_stts.dayx %}<span data-refresh-owl data-countdown-t4s data-loop="{% if se_dayx > 0 %}true{% else %}false{% endif %}" data-date="{{ bk_stts.countdown }}" data-dayl="{{ se_dayx }}">%D {{ bk_stts.txt_day }} %H:%M:%S</span>{% endcapture -%}
                       <div class="product-announcement-bar__item t4s-d-inline-block t4s-pr t4s-oh t4s-rte{% unless block.settings.adding_border %}--list{% endunless %}">
                         <div class="product-announcement-bar--marquee-content t4s-d-flex t4s-align-items-center">
-                          <div class="product-announcement---marquee-icon"><span></span></div>
+                          {% comment %} <div class="product-announcement---marquee-icon"><span></span></div> {% endcomment %}
                           <div class="product-announcement---marquee-text"> 
                             {{- bk_stts.content | replace: '[countdown]', cap_date | replace: '[icon_arrow]', cap_arrow | replace: '[product_title]', product.title | replace: '[product_vendor]', product.vendor | replace: '[product_type]', product.type -}}
                           </div>
