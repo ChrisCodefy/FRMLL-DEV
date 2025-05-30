@@ -79,69 +79,34 @@
     },
     "custom_subscription_tabs_KErf34": {
       "type": "custom-subscription-tabs",
-      "blocks": {
-        "tab_content_RVjWW6": {
-          "type": "tab_content",
-          "settings": {
-            "mexico_text": "Contenido México 1"
-          }
-        },
-        "tab_content_wrrhHQ": {
-          "type": "tab_content",
-          "settings": {
-            "mexico_text": "Contenido México 2"
-          }
-        },
-        "tab_content_6zHTnV": {
-          "type": "tab_content",
-          "settings": {
-            "mexico_text": "Contenido México 3"
-          }
-        },
-        "tab_content_TmFiAE": {
-          "type": "tab_content",
-          "settings": {
-            "mexico_text": "Contenido México 4"
-          }
-        },
-        "tab_content_usa_3e37Hy": {
-          "type": "tab_content_usa",
-          "settings": {
-            "usa_text": "Contenido USA 1"
-          }
-        },
-        "tab_content_usa_rKR6Dg": {
-          "type": "tab_content_usa",
-          "settings": {
-            "usa_text": "Contenido USA 2"
-          }
-        },
-        "tab_content_usa_EkGDXK": {
-          "type": "tab_content_usa",
-          "settings": {
-            "usa_text": "Contenido USA 3"
-          }
-        },
-        "tab_content_usa_hgzNip": {
-          "type": "tab_content_usa",
-          "settings": {
-            "usa_text": "Contenido USA 4"
-          }
-        }
-      },
-      "block_order": [
-        "tab_content_RVjWW6",
-        "tab_content_wrrhHQ",
-        "tab_content_6zHTnV",
-        "tab_content_TmFiAE",
-        "tab_content_usa_3e37Hy",
-        "tab_content_usa_rKR6Dg",
-        "tab_content_usa_EkGDXK",
-        "tab_content_usa_hgzNip"
-      ],
       "name": "Custom Subscription Tabs Columns",
       "settings": {
-        "title": "RECEIVE SPECIAL OFFERS AND FIRST LOOK AT NEW PRODUCTS."
+        "title": "Selecciona el plan de tu preferencia ",
+        "mx_1_price": "$920.00",
+        "mx_1_subtitle": "Mensual",
+        "mx_1_desc": "1 Disco Selección Exclusiva del Club. 1 Ilustración Exclusiva. 1 Funda protectora. Incluye gastos de envío. Descuentos en nuestra tienda en línea.",
+        "mx_1_btn": "Seleccionar",
+        "mx_1_link": "shopify://pages/planes",
+        "mx_2_price": "$2,640.00",
+        "mx_2_subtitle": "Trimestral. $880/mes",
+        "mx_2_desc": "3 Discos Selección Exclusiva del Club. 3 Ilustraciones Exclusivas. 3 Fundas protectoras. Incluye gastos de envío. Descuentos en nuestra tienda en línea.",
+        "mx_2_btn": "Seleccionar",
+        "mx_2_link": "shopify://pages/planes",
+        "mx_3_price": "$4,920.00",
+        "mx_3_subtitle": "Semestral. $820/mes",
+        "mx_3_desc": "6 Discos Selección Exclusiva del Club. 6 Ilustraciones Exclusivas. 6 Fundas protectoras. Incluye gastos de envío. Descuentos en nuestra tienda en línea.",
+        "mx_3_btn": "Seleccionar",
+        "mx_3_link": "shopify://pages/planes",
+        "mx_4_price": "$149.00",
+        "mx_4_subtitle": "Clientes Frecuentes. $149/mes",
+        "mx_4_desc": "Disfruta de todos los beneficios en nuestra tienda en línea y física: -Acceso a precios especiales. -Preventas exclusivas. *No incluye el Disco del Mes ni gastos de envío en tienda en línea.",
+        "mx_4_btn": "Seleccionar",
+        "mx_4_link": "shopify://pages/planes",
+        "usa_1_price": "",
+        "usa_1_subtitle": "",
+        "usa_1_desc": "",
+        "usa_1_btn": "Select",
+        "usa_1_link": ""
       }
     }
   },
