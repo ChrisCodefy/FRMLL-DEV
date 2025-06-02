@@ -7,3 +7,28 @@
                       </p>
                     {% endif %}
                   </div>
+
+<div class="alert-preventa">
+  <span>Este producto está en preventa</span>
+  <img src="{{ 'IconoPreVenta.svg' | asset_url }}" alt="Preventa" class="icono-preventa">
+</div>
+
+<style>
+.alert-preventa {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid #e74c3c;
+  border-radius: 10px;
+  padding: 12px 18px;
+  color: #e74c3c;
+  font-size: 1.2rem;
+  margin: 20px 0;
+  background: #fff;
+}
+.icono-preventa {
+  width: 32px;
+  height: 32px;
+  margin-left: 12px;
+}
+</style>
