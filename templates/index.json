@@ -272,14 +272,14 @@
         "collection_column_Ui3cUY": {
           "type": "collection_column",
           "settings": {
-            "collection": "takahashi-shotei",
+            "collection": "ediciones-especiales",
             "position": "top-left"
           }
         },
         "collection_column_8EjV4f": {
           "type": "collection_column",
           "settings": {
-            "collection": "piet-mondrian",
+            "collection": "accesorios",
             "position": "top-left"
           }
         },
