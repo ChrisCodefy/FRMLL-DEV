@@ -48,41 +48,42 @@
     <div class="carousel-track" id="carousel-track">
       {% if section.settings.collection %}
         {% assign products = section.settings.collection.products %}
-        {% assign all_products = products | concat: products %}
-        {% for product in all_products %}
-          <div class="carousel-item">
-            <a href="{{ product.url }}">
-              <div class="product-image-container" style="width: {{ section.settings.image_width }}px; height: {{ section.settings.image_height }}px;">
-                <img 
-                  src="{{ product.featured_image | img_url: '600x' }}" 
-                  alt="{{ product.title }}" 
-                  class="primary-image" 
-                  loading="lazy"
-                >
-                {% if product.images.size > 1 %}
+        {% for i in (1..2) %}
+          {% for product in products %}
+            <div class="carousel-item">
+              <a href="{{ product.url }}">
+                <div class="product-image-container" style="width: {{ section.settings.image_width }}px; height: {{ section.settings.image_height }}px;">
                   <img 
-                    src="{{ product.images[1] | img_url: '600x' }}" 
-                    alt="{{ product.title }} - vista secundaria" 
-                    class="secondary-image" 
+                    src="{{ product.featured_image | img_url: '600x' }}" 
+                    alt="{{ product.title }}" 
+                    class="primary-image" 
                     loading="lazy"
                   >
-                {% endif %}
-              </div>
-
-              <div class="carousel-info">
-                <strong>{{ product.title }}</strong><br>
-
-                <div class="price-container">
-                  {% if product.compare_at_price > product.price %}
-                    <span class="compare-price">{{ product.compare_at_price | money }}</span>
-                    <span class="sale-price">{{ product.price | money }}</span>
-                  {% else %}
-                    <span class="regular-price">{{ product.price | money }}</span>
+                  {% if product.images.size > 1 %}
+                    <img 
+                      src="{{ product.images[1] | img_url: '600x' }}" 
+                      alt="{{ product.title }} - vista secundaria" 
+                      class="secondary-image" 
+                      loading="lazy"
+                    >
                   {% endif %}
                 </div>
-              </div>
-            </a>
-          </div>
+
+                <div class="carousel-info">
+                  <strong>{{ product.title }}</strong><br>
+
+                  <div class="price-container">
+                    {% if product.compare_at_price > product.price %}
+                      <span class="compare-price">{{ product.compare_at_price | money }}</span>
+                      <span class="sale-price">{{ product.price | money }}</span>
+                    {% else %}
+                      <span class="regular-price">{{ product.price | money }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
         {% endfor %}
       {% else %}
         <p>No se ha seleccionado ninguna colección.</p>
@@ -90,7 +91,6 @@
     </div>
     <div class="dots-and-arrows">
       <div class="dots" id="dots"></div>
-
       <div class="arrows">
         <span class="arrow" onclick="moveSlide(-1)">←</span>
         <span class="arrow" onclick="moveSlide(1)">→</span>
@@ -100,7 +100,145 @@
 </div>
 
 <style>
-/* ... mismo CSS que ya tenías ... */
+  /* Tu mismo CSS de antes, no modificado */
+  .custom-product-carousel {
+    background: #f5f3eb;
+  }
+  .title-container {
+    text-align: start;
+    padding-block: 40px 0;
+    padding-inline: 20px;
+  }
+  .title-container h2 {
+    font-size: 24px;
+    color: #333;
+  }
+  .carousel-container {
+    position: relative;
+    overflow: hidden;
+    padding: 0px;
+    margin: 10px 0;    
+  }
+  .carousel-track {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+    border-top: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+  }
+  .carousel-item {
+    min-width: 40%;
+    background: white;
+    border-right: 2px solid #000000;
+    padding: 0px 0px 0 3px;
+    overflow: hidden; 
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  .carousel-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+  }
+  .carousel-info {
+    margin-block: 15px 25px;
+    margin-inline: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: #000;
+    font-size: 1.5rem;
+  }
+  .carousel-info:hover {
+    color: #e1007e;
+  }
+  .dots-and-arrows {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block: 15px 30px;
+    margin-inline: 20px;
+  }
+  .dots {
+    display: flex;
+    gap: 5px;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    background: transparent;
+    border: 1px solid #000;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .dot.active {
+    background: #333;
+  }
+  .arrows {
+    display: flex;
+    gap: 10px;
+    color: #000;
+  }
+  .arrow {
+    cursor: pointer;
+    font-size: 30px;
+  }
+  .product-image-container {
+    position: relative;
+    overflow: hidden;
+  }
+  .product-image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+  }
+  .primary-image {
+    opacity: 1;
+    z-index: 1;
+  }
+  .secondary-image {
+    opacity: 0;
+    z-index: 2;
+  }
+  .product-image-container:hover .secondary-image {
+    opacity: 1;
+  }
+  .product-image-container:hover .primary-image {
+    opacity: 0;
+  }
+
+  .price-container {
+    margin-top: 5px;
+    font-size: 16px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    white-space: nowrap;
+    font-size: 1.8rem;
+    color: #000;
+  }
+
+  .compare-price {
+    text-decoration: line-through;
+    color: #333;
+    font-weight: normal;
+  }
+
+  .sale-price {
+    color: #e1007e;
+    font-weight: bold;
+  }
+
+  .regular-price {
+    color: #333;
+    font-weight: normal;
+  }
 </style>
 
 <script>
@@ -183,7 +321,6 @@ document.addEventListener('DOMContentLoaded', function () {
     updateCarousel();
   };
 
-  // Dots
   const halfSlides = totalSlides / 2;
   for (let i = 0; i < halfSlides; i++) {
     const dot = document.createElement('div');
