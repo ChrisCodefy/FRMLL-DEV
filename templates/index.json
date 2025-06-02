@@ -322,7 +322,7 @@
       "name": "Custom Product Grid",
       "settings": {
         "heading": "VINILOS QUE NO TE PUEDES PERDER",
-        "collection": "frontpage",
+        "collection": "preventas",
         "products_to_show": 8
       }
     }
