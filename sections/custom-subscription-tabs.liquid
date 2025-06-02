@@ -1,66 +1,102 @@
 {% schema %}
 {
-  "name": "Custom Subscription Tabs",
+  "name": "Custom Subscription",
   "tag": "section",
   "class": "custom-subscription-tabs-columns",
   "settings": [
     { "type": "text", "id": "title", "label": "Título principal", "default": "RECEIVE SPECIAL OFFERS AND FIRST LOOK AT NEW PRODUCTS." },
 
-    { "type": "header", "content": "México - Columna 1" },
-    { "type": "text", "id": "mx_1_price", "label": "Precio" },
-    { "type": "text", "id": "mx_1_subtitle", "label": "Subtítulo" },
-    { "type": "textarea", "id": "mx_1_desc", "label": "Descripción" },
-    { "type": "text", "id": "mx_1_btn", "label": "Texto botón", "default": "Seleccionar" },
-    { "type": "url", "id": "mx_1_link", "label": "Link botón" },
+    { "type": "header", "content": "Estilos de Texto" },
+    { "type": "color", "id": "price_color", "label": "Color del precio", "default": "#000000" },
+    { "type": "range", "id": "price_size", "min": 16, "max": 40, "step": 1, "unit": "px", "label": "Tamaño del precio", "default": 22 },
 
-    { "type": "header", "content": "México - Columna 2" },
-    { "type": "text", "id": "mx_2_price", "label": "Precio" },
-    { "type": "text", "id": "mx_2_subtitle", "label": "Subtítulo" },
-    { "type": "textarea", "id": "mx_2_desc", "label": "Descripción" },
-    { "type": "text", "id": "mx_2_btn", "label": "Texto botón", "default": "Seleccionar" },
-    { "type": "url", "id": "mx_2_link", "label": "Link botón" },
+    { "type": "color", "id": "subtitle_color", "label": "Color del subtítulo", "default": "#000000" },
+    { "type": "range", "id": "subtitle_size", "min": 12, "max": 30, "step": 1, "unit": "px", "label": "Tamaño del subtítulo", "default": 16 },
 
-    { "type": "header", "content": "México - Columna 3" },
-    { "type": "text", "id": "mx_3_price", "label": "Precio" },
-    { "type": "text", "id": "mx_3_subtitle", "label": "Subtítulo" },
-    { "type": "textarea", "id": "mx_3_desc", "label": "Descripción" },
-    { "type": "text", "id": "mx_3_btn", "label": "Texto botón", "default": "Seleccionar" },
-    { "type": "url", "id": "mx_3_link", "label": "Link botón" },
+    { "type": "color", "id": "desc_color", "label": "Color del texto", "default": "#000000" },
+    { "type": "range", "id": "desc_size", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Tamaño del texto", "default": 14 },
 
-    { "type": "header", "content": "México - Columna 4" },
-    { "type": "text", "id": "mx_4_price", "label": "Precio" },
-    { "type": "text", "id": "mx_4_subtitle", "label": "Subtítulo" },
-    { "type": "textarea", "id": "mx_4_desc", "label": "Descripción" },
-    { "type": "text", "id": "mx_4_btn", "label": "Texto botón", "default": "Seleccionar" },
-    { "type": "url", "id": "mx_4_link", "label": "Link botón" },
+    { "type": "header", "content": "Estilos de Botón" },
+    { "type": "color", "id": "btn_bg_color", "label": "Color de fondo", "default": "#000000" },
+    { "type": "color", "id": "btn_text_color", "label": "Color del texto", "default": "#ffffff" },
+    { "type": "range", "id": "btn_size", "min": 10, "max": 24, "step": 1, "unit": "px", "label": "Tamaño del texto del botón", "default": 14 },
 
-    { "type": "header", "content": "USA - Column 1" },
-    { "type": "text", "id": "usa_1_price", "label": "Price" },
-    { "type": "text", "id": "usa_1_subtitle", "label": "Subtitle" },
-    { "type": "textarea", "id": "usa_1_desc", "label": "Description" },
-    { "type": "text", "id": "usa_1_btn", "label": "Button text", "default": "Select" },
-    { "type": "url", "id": "usa_1_link", "label": "Button link" }
+    { "type": "range", "id": "spacing", "min": 0, "max": 40, "step": 2, "unit": "px", "label": "Espaciado entre elementos", "default": 10 },
 
-    // Repite esto mismo para usa_2, usa_3, usa_4 si necesitas
+    { "type": "header", "content": "México - Columnas 1 a 4" },
+    { "type": "text", "id": "mx_1_price", "label": "MX Col 1 - Precio" },
+    { "type": "text", "id": "mx_1_subtitle", "label": "MX Col 1 - Subtítulo" },
+    { "type": "textarea", "id": "mx_1_desc", "label": "MX Col 1 - Descripción" },
+    { "type": "text", "id": "mx_1_btn", "label": "MX Col 1 - Texto botón", "default": "Seleccionar" },
+    { "type": "url", "id": "mx_1_link", "label": "MX Col 1 - Link botón" },
+
+    { "type": "text", "id": "mx_2_price", "label": "MX Col 2 - Precio" },
+    { "type": "text", "id": "mx_2_subtitle", "label": "MX Col 2 - Subtítulo" },
+    { "type": "textarea", "id": "mx_2_desc", "label": "MX Col 2 - Descripción" },
+    { "type": "text", "id": "mx_2_btn", "label": "MX Col 2 - Texto botón", "default": "Seleccionar" },
+    { "type": "url", "id": "mx_2_link", "label": "MX Col 2 - Link botón" },
+
+    { "type": "text", "id": "mx_3_price", "label": "MX Col 3 - Precio" },
+    { "type": "text", "id": "mx_3_subtitle", "label": "MX Col 3 - Subtítulo" },
+    { "type": "textarea", "id": "mx_3_desc", "label": "MX Col 3 - Descripción" },
+    { "type": "text", "id": "mx_3_btn", "label": "MX Col 3 - Texto botón", "default": "Seleccionar" },
+    { "type": "url", "id": "mx_3_link", "label": "MX Col 3 - Link botón" },
+
+    { "type": "text", "id": "mx_4_price", "label": "MX Col 4 - Precio" },
+    { "type": "text", "id": "mx_4_subtitle", "label": "MX Col 4 - Subtítulo" },
+    { "type": "textarea", "id": "mx_4_desc", "label": "MX Col 4 - Descripción" },
+    { "type": "text", "id": "mx_4_btn", "label": "MX Col 4 - Texto botón", "default": "Seleccionar" },
+    { "type": "url", "id": "mx_4_link", "label": "MX Col 4 - Link botón" },
+
+    { "type": "header", "content": "USA - Columnas 1 a 4" },
+    { "type": "text", "id": "usa_1_price", "label": "USA Col 1 - Price" },
+    { "type": "text", "id": "usa_1_subtitle", "label": "USA Col 1 - Subtitle" },
+    { "type": "textarea", "id": "usa_1_desc", "label": "USA Col 1 - Description" },
+    { "type": "text", "id": "usa_1_btn", "label": "USA Col 1 - Button text", "default": "Select" },
+    { "type": "url", "id": "usa_1_link", "label": "USA Col 1 - Button link" },
+
+    { "type": "text", "id": "usa_2_price", "label": "USA Col 2 - Price" },
+    { "type": "text", "id": "usa_2_subtitle", "label": "USA Col 2 - Subtitle" },
+    { "type": "textarea", "id": "usa_2_desc", "label": "USA Col 2 - Description" },
+    { "type": "text", "id": "usa_2_btn", "label": "USA Col 2 - Button text", "default": "Select" },
+    { "type": "url", "id": "usa_2_link", "label": "USA Col 2 - Button link" },
+
+    { "type": "text", "id": "usa_3_price", "label": "USA Col 3 - Price" },
+    { "type": "text", "id": "usa_3_subtitle", "label": "USA Col 3 - Subtitle" },
+    { "type": "textarea", "id": "usa_3_desc", "label": "USA Col 3 - Description" },
+    { "type": "text", "id": "usa_3_btn", "label": "USA Col 3 - Button text", "default": "Select" },
+    { "type": "url", "id": "usa_3_link", "label": "USA Col 3 - Button link" },
+
+    { "type": "text", "id": "usa_4_price", "label": "USA Col 4 - Price" },
+    { "type": "text", "id": "usa_4_subtitle", "label": "USA Col 4 - Subtitle" },
+    { "type": "textarea", "id": "usa_4_desc", "label": "USA Col 4 - Description" },
+    { "type": "text", "id": "usa_4_btn", "label": "USA Col 4 - Button text", "default": "Select" },
+    { "type": "url", "id": "usa_4_link", "label": "USA Col 4 - Button link" }
   ],
   "presets": [
-    {
-      "name": "Custom Subscription Tabs Columns"
-    }
+    { "name": "Custom Subscription Tabs Columns" }
   ]
 }
 {% endschema %}
 
-<!-- Header -->
 <div class="subscription-tabs-header">
   <div class="title">{{ section.settings.title }}</div>
   <div class="tab-switch">
     <button class="tab-button active" data-tab="mexico">México</button>
-    <button class="tab-button" data-tab="usa">Estados Unidos</button>
+    {% assign usa_has_content = false %}
+    {% for i in (1..4) %}
+      {% assign key = 'usa_' | append: i | append: '_price' %}
+      {% if section.settings[key] != blank %}
+        {% assign usa_has_content = true %}
+      {% endif %}
+    {% endfor %}
+    {% if usa_has_content %}
+      <button class="tab-button" data-tab="usa">Estados Unidos</button>
+    {% endif %}
   </div>
 </div>
 
-<!-- México Columns -->
+<!-- MÉXICO -->
 <div class="tab-columns tab-mexico active">
   {% for i in (1..4) %}
     {% assign price_key = 'mx_' | append: i | append: '_price' %}
@@ -68,7 +104,6 @@
     {% assign desc_key = 'mx_' | append: i | append: '_desc' %}
     {% assign btn_key = 'mx_' | append: i | append: '_btn' %}
     {% assign link_key = 'mx_' | append: i | append: '_link' %}
-  
     <div class="column">
       <div class="price">{{ section.settings[price_key] }}</div>
       <div class="subtitle"><strong>{{ section.settings[subtitle_key] }}</strong></div>
@@ -80,29 +115,27 @@
   {% endfor %}
 </div>
 
-<!-- USA Columns -->
-<div class="tab-columns tab-usa">
-  {% for i in (1..4) %}
-  {% assign price_key = 'usa_' | append: i | append: '_price' %}
-  {% assign subtitle_key = 'usa_' | append: i | append: '_subtitle' %}
-  {% assign desc_key = 'usa_' | append: i | append: '_desc' %}
-  {% assign btn_key = 'usa_' | append: i | append: '_btn' %}
-  {% assign link_key = 'usa_' | append: i | append: '_link' %}
-
-  <div class="column">
-    <div class="price">{{ section.settings[price_key] }}</div>
-    <div class="subtitle"><strong>{{ section.settings[subtitle_key] }}</strong></div>
-    <div class="desc">{{ section.settings[desc_key] | newline_to_br }}</div>
-    {% if section.settings[link_key] %}
-      <a href="{{ section.settings[link_key] }}" class="btn">{{ section.settings[btn_key] }}</a>
-    {% endif %}
+<!-- USA -->
+{% if usa_has_content %}
+  <div class="tab-columns tab-usa">
+    {% for i in (1..4) %}
+      {% assign price_key = 'usa_' | append: i | append: '_price' %}
+      {% assign subtitle_key = 'usa_' | append: i | append: '_subtitle' %}
+      {% assign desc_key = 'usa_' | append: i | append: '_desc' %}
+      {% assign btn_key = 'usa_' | append: i | append: '_btn' %}
+      {% assign link_key = 'usa_' | append: i | append: '_link' %}
+      <div class="column">
+        <div class="price">{{ section.settings[price_key] }}</div>
+        <div class="subtitle"><strong>{{ section.settings[subtitle_key] }}</strong></div>
+        <div class="desc">{{ section.settings[desc_key] | newline_to_br }}</div>
+        {% if section.settings[link_key] %}
+          <a href="{{ section.settings[link_key] }}" class="btn">{{ section.settings[btn_key] }}</a>
+        {% endif %}
+      </div>
+    {% endfor %}
   </div>
-{% endfor %}
+{% endif %}
 
-  <!-- Agrega más columnas como usa_2, usa_3, usa_4 si lo deseas -->
-</div>
-
-<!-- Estilos -->
 <style>
 .subscription-tabs-header {
   background-color: #66ff5c;
@@ -148,26 +181,45 @@
   border-right: none;
 }
 .price {
-  font-size: 22px;
+  font-size: {{ section.settings.price_size }}px;
+  color: {{ section.settings.price_color }};
+  margin-bottom: {{ section.settings.spacing }}px;
   font-weight: bold;
 }
 .subtitle {
-  margin: 5px 0 10px;
+  font-size: {{ section.settings.subtitle_size }}px;
+  color: {{ section.settings.subtitle_color }};
+  margin-bottom: {{ section.settings.spacing }}px;
+}
+.desc {
+  font-size: {{ section.settings.desc_size }}px;
+  color: {{ section.settings.desc_color }};
+  margin-bottom: {{ section.settings.spacing }}px;
 }
 .btn {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: {{ section.settings.spacing }}px;
   padding: 10px 20px;
-  background: black;
-  color: white;
+  font-size: {{ section.settings.btn_size }}px;
+  background: {{ section.settings.btn_bg_color }};
+  color: {{ section.settings.btn_text_color }};
   text-align: center;
   font-weight: bold;
   text-decoration: none;
   border-radius: 6px;
 }
+@media screen and (max-width: 768px) {
+  .tab-columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 480px) {
+  .tab-columns {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
 
-<!-- Script funcional -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const buttons = document.querySelectorAll(".tab-button");
@@ -180,13 +232,14 @@ document.addEventListener("DOMContentLoaded", function () {
       button.classList.add("active");
 
       if (button.dataset.tab === "mexico") {
-        mexicoTab.classList.add("active");
-        usaTab.classList.remove("active");
+        mexicoTab?.classList.add("active");
+        usaTab?.classList.remove("active");
       } else {
-        usaTab.classList.add("active");
-        mexicoTab.classList.remove("active");
+        usaTab?.classList.add("active");
+        mexicoTab?.classList.remove("active");
       }
     });
   });
 });
 </script>
+
