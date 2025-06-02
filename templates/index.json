@@ -314,7 +314,7 @@
       "type": "custom-popular-works-table",
       "name": "Tabla de obras populares",
       "settings": {
-        "coleccion_obras": "frontpage"
+        "coleccion_obras": "disco-del-mes"
       }
     },
     "custom_product_section_waxPJa": {
