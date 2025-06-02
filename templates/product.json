@@ -207,7 +207,7 @@
         ".shopify-payment-button {display: none;}"
       ],
       "settings": {
-        "pr_layout": "default",
+        "pr_layout": "wide",
         "enable_sticky_info": true,
         "media_layout": "thumbnails_left",
         "media_size": "large",
