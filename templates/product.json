@@ -73,7 +73,7 @@
             "time": 6,
             "btn_txt": "3",
             "btn_icon": false,
-            "button_style": "outline",
+            "button_style": "default",
             "button_color": "dark",
             "button_effect": "sweep-to-top",
             "wishlist_color": "#222222",
