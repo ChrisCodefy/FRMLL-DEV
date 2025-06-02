@@ -6,19 +6,21 @@
       <div class="swiper-wrapper">
         {% for product in collections[section.settings.collection].products limit: section.settings.products_to_show %}
           <div class="swiper-slide">
-            <a href="{{ product.url }}">
-              <img src="{{ product.featured_image | img_url: '500x' }}" alt="{{ product.title }}" class="custom-product-image">
-            </a>
-            <div class="custom-product-details">
-              <h3 class="custom-product-title">{{ product.title }}</h3>
-              {% if product.compare_at_price > product.price %}
-                <p class="custom-product-price">
-                  <span class="custom-price-original">{{ product.compare_at_price | money }}</span>
-                  <span class="custom-price-sale">{{ product.price | money }}</span>
-                </p>
-              {% else %}
-                <p class="custom-product-price">{{ product.price | money }}</p>
-              {% endif %}
+            <div class="custom-product-card">
+              <a href="{{ product.url }}">
+                <img src="{{ product.featured_image | img_url: '500x' }}" alt="{{ product.title }}" class="custom-product-image">
+              </a>
+              <div class="custom-product-details">
+                <h3 class="custom-product-title">{{ product.title }}</h3>
+                {% if product.compare_at_price > product.price %}
+                  <p class="custom-product-price">
+                    <span class="custom-price-original">{{ product.compare_at_price | money }}</span>
+                    <span class="custom-price-sale">{{ product.price | money }}</span>
+                  </p>
+                {% else %}
+                  <p class="custom-product-price">{{ product.price | money }}</p>
+                {% endif %}
+              </div>
             </div>
           </div>
         {% endfor %}
@@ -44,11 +46,23 @@
   padding: 0 2rem;
 }
 
+.swiper-wrapper {
+  display: flex;
+}
+
 .swiper-slide {
+  width: auto;
+  flex-shrink: 0;
+}
+
+.custom-product-card {
   text-align: start;
   padding-bottom: 10px;
   border-block: 2px solid #000;
   border-inline: 1px solid #000;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
 }
 
 .custom-product-image {
