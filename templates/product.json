@@ -217,7 +217,7 @@
       "settings": {
         "pr_layout": "full",
         "enable_sticky_info": false,
-        "media_layout": "thumbnails_left",
+        "media_layout": "without_thumbnails",
         "media_size": "medium",
         "thumb_lr_size": "small",
         "image_ratio": "ratioadapt",
