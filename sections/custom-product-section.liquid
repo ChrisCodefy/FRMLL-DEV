@@ -1,26 +1,28 @@
-<!-- sections/custom-product-section.liquid -->
 <section class="custom-product-section">
   <div class="custom-container">
     <h2 class="custom-heading">{{ section.settings.heading }}</h2>
-    <div class="custom-products-grid">
-      {% for product in collections[section.settings.collection].products limit:4 %}
-        <div class="custom-product-card">
-          <a href="{{ product.url }}">
-            <img src="{{ product.featured_image | img_url: '500x' }}" alt="{{ product.title }}" class="custom-product-image">
-          </a>
-          <div class="custom-product-details">
-            <h3 class="custom-product-title">{{ product.title }}</h3>
-            {% if product.compare_at_price > product.price %}
-              <p class="custom-product-price">
-                <span class="custom-price-original">{{ product.compare_at_price | money }}</span>
-                <span class="custom-price-sale">{{ product.price | money }}</span>
-              </p>
-            {% else %}
-              <p class="custom-product-price">{{ product.price | money }}</p>
-            {% endif %}
+
+    <div class="swiper custom-swiper">
+      <div class="swiper-wrapper">
+        {% for product in collections[section.settings.collection].products limit: section.settings.products_to_show %}
+          <div class="swiper-slide">
+            <a href="{{ product.url }}">
+              <img src="{{ product.featured_image | img_url: '500x' }}" alt="{{ product.title }}" class="custom-product-image">
+            </a>
+            <div class="custom-product-details">
+              <h3 class="custom-product-title">{{ product.title }}</h3>
+              {% if product.compare_at_price > product.price %}
+                <p class="custom-product-price">
+                  <span class="custom-price-original">{{ product.compare_at_price | money }}</span>
+                  <span class="custom-price-sale">{{ product.price | money }}</span>
+                </p>
+              {% else %}
+                <p class="custom-product-price">{{ product.price | money }}</p>
+              {% endif %}
+            </div>
           </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
     </div>
   </div>
 </section>
@@ -38,12 +40,11 @@
   margin-left: 2rem;
 }
 
-.custom-products-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+.swiper {
+  padding: 0 2rem;
 }
 
-.custom-product-card {
+.swiper-slide {
   text-align: start;
   padding-bottom: 10px;
   border-block: 2px solid #000;
@@ -84,6 +85,26 @@
 }
 </style>
 
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Swiper('.custom-swiper', {
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 20,
+      breakpoints: {
+        640: { slidesPerView: 2 },
+        768: { slidesPerView: 3 },
+        1024: { slidesPerView: 4 }
+      },
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      }
+    });
+  });
+</script>
+
 {% schema %}
 {
   "name": "Custom Product Grid",
@@ -99,6 +120,15 @@
       "type": "collection",
       "id": "collection",
       "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Número de productos a mostrar",
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "default": 8
     }
   ],
   "presets": [
