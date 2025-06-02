@@ -215,7 +215,7 @@
         ".t4s-rte {color: #666666;}"
       ],
       "settings": {
-        "pr_layout": "full",
+        "pr_layout": "wide",
         "enable_sticky_info": false,
         "media_layout": "thumbnails_left",
         "media_size": "medium",
