@@ -204,7 +204,8 @@
         "56e67368-7424-4d73-8f14-dacdda4c59be"
       ],
       "custom_css": [
-        ".shopify-payment-button {display: none;}"
+        ".shopify-payment-button {display: none;}",
+        ".t4s-rte {color: black;}"
       ],
       "settings": {
         "pr_layout": "full",
