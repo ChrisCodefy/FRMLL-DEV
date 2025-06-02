@@ -560,8 +560,8 @@ endif -%}
                     endif
                   -%}
                 {% if product.metafields.custom.preventa.value != blank %}
-<p style="color: #e74c3c; font-weight: bold;">Preventa Envío estimado: {{ product.metafields.custom.preventa }}</p>
-{% endif %}
+                  <p style="color: #e74c3c; font-weight: bold;">Preventa Envío estimado: {{ product.metafields.custom.preventa }}</p>
+                  {% endif %}
               
 
                 {%- when 'size_delivery_ask' -%}
