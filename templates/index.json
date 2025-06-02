@@ -16,6 +16,7 @@
           "type": "image_parent",
           "settings": {
             "image": "shopify://shop_images/LOGO_FRMLL_2025_page-0001.jpg",
+            "image_mb": "shopify://shop_images/LogoM.webp",
             "image_position": "8",
             "cl_img": "",
             "link_img1": "shopify://collections",
@@ -46,7 +47,7 @@
             "br_opacity": 50,
             "br_style": "solid",
             "br_pd": 20,
-            "br_pd_mb": 10,
+            "br_pd_mb": 0,
             "time_animation": 1,
             "animation_delay": 30
           }
@@ -321,7 +322,8 @@
       "name": "Custom Product Grid",
       "settings": {
         "heading": "VINILOS QUE NO TE PUEDES PERDER",
-        "collection": "frontpage"
+        "collection": "frontpage",
+        "products_to_show": 8
       }
     }
   },
