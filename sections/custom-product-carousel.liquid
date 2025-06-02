@@ -246,7 +246,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const track = document.getElementById('carousel-track');
   const dotsContainer = document.getElementById('dots');
   const items = track.querySelectorAll('.carousel-item');
-  const totalSlides = items.length;
+  const slideWidth = items[0].offsetWidth + 20;
+  const halfSlides = items.length / 2;
   let currentSlide = 0;
   let isDragging = false;
   let startPos = 0;
@@ -254,14 +255,37 @@ document.addEventListener('DOMContentLoaded', function () {
   let prevTranslate = 0;
   let animationID = 0;
 
-  function updateCarousel() {
-    const slideWidth = items[0].offsetWidth + 20;
+  function updateCarousel(applyTransition = true) {
+    if (applyTransition) {
+      track.style.transition = 'transform 0.4s ease-in-out';
+    } else {
+      track.style.transition = 'none';
+    }
     track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
 
     const dots = dotsContainer.querySelectorAll('.dot');
     dots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === (currentSlide % (totalSlides / 2)));
+      dot.classList.toggle('active', index === (currentSlide % halfSlides));
     });
+  }
+
+  function handleLoopEdges() {
+    if (currentSlide >= items.length) {
+      currentSlide = currentSlide % halfSlides;
+      updateCarousel(false);
+    } else if (currentSlide < 0) {
+      currentSlide = halfSlides + (currentSlide % halfSlides);
+      updateCarousel(false);
+    }
+  }
+
+  function getPositionX(e) {
+    return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+  }
+
+  function animation() {
+    track.style.transform = `translateX(${currentTranslate}px)`;
+    animationID = requestAnimationFrame(animation);
   }
 
   function startDrag(e) {
@@ -280,34 +304,27 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function endDrag() {
-    if (isDragging) {
-      isDragging = false;
-      cancelAnimationFrame(animationID);
-      const movedBy = currentTranslate - prevTranslate;
-      const slideWidth = items[0].offsetWidth + 20;
+    if (!isDragging) return;
+    isDragging = false;
+    cancelAnimationFrame(animationID);
+    const movedBy = currentTranslate - prevTranslate;
 
-      if (Math.abs(movedBy) > slideWidth / 4) {
-        if (movedBy < 0) {
-          currentSlide = (currentSlide + 1) % totalSlides;
-        } else {
-          currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        }
+    if (Math.abs(movedBy) > slideWidth / 4) {
+      if (movedBy < 0) {
+        currentSlide++;
+      } else {
+        currentSlide--;
       }
-
-      track.style.transition = 'transform 0.4s ease-in-out';
-      updateCarousel();
     }
+
+    updateCarousel(true);
+
+    setTimeout(() => {
+      handleLoopEdges();
+    }, 410); // wait for transition to finish
   }
 
-  function getPositionX(e) {
-    return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-  }
-
-  function animation() {
-    track.style.transform = `translateX(${currentTranslate}px)`;
-    animationID = requestAnimationFrame(animation);
-  }
-
+  // INIT EVENTS
   track.addEventListener('mousedown', startDrag);
   track.addEventListener('touchstart', startDrag, { passive: true });
   track.addEventListener('mousemove', drag);
@@ -316,19 +333,23 @@ document.addEventListener('DOMContentLoaded', function () {
   track.addEventListener('touchend', endDrag);
   track.addEventListener('mouseleave', endDrag);
 
+  // ARROWS
   window.moveSlide = function (direction) {
-    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-    updateCarousel();
+    currentSlide += direction;
+    updateCarousel(true);
+    setTimeout(() => {
+      handleLoopEdges();
+    }, 410);
   };
 
-  const halfSlides = totalSlides / 2;
+  // DOTS
   for (let i = 0; i < halfSlides; i++) {
     const dot = document.createElement('div');
     dot.classList.add('dot');
     if (i === 0) dot.classList.add('active');
     dot.addEventListener('click', () => {
       currentSlide = i;
-      updateCarousel();
+      updateCarousel(true);
     });
     dotsContainer.appendChild(dot);
   }
@@ -336,3 +357,4 @@ document.addEventListener('DOMContentLoaded', function () {
   updateCarousel();
 });
 </script>
+
