@@ -60,7 +60,7 @@
         "custom_liquid_hfqtHp": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div class=\"product-info-additional\" style=\"margin-top: 20px;\">\n                    {% if product.metafields.custom.preventa.value != blank %}\n                      <p style=\"color: #e74c3c; font-weight: bold; margin-bottom: 10px;\">Preventa Envío estimado: {{ product.metafields.custom.preventa }}</p>\n                      <p style=\"font-size: 1.4rem; line-height: 1.5; color: #666;\">\n                        *Toma en cuenta que en caso de comprar este título con otros de nuestro catálogo, el pedido será enviado hasta que todos los productos de tu orden se encuentren en nuestra bodega.<br>\n                        En caso de querer recibir tus otros productos en stock, favor de colocar dos órdenes por separado.\n                      </p>\n                    {% endif %}\n                  </div>"
+            "custom_liquid": "{%- render 'Descripcion_preventa'-%}"
           }
         },
         "form": {
