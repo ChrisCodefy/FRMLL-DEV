@@ -21,6 +21,7 @@
     "logo_tr_width": 95,
     "mobile_nav_type": "1",
     "text_color": "#fff",
+    "accent_color": "#787a7b",
     "link_color_hover": "#ddd",
     "font_source": "2",
     "fnt_fm_sp2": "poppins_n4",
