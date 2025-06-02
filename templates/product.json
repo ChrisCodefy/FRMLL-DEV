@@ -104,7 +104,7 @@
             "icon": "2",
             "icon_name": "las la-truck",
             "ani": "none",
-            "txt": "conseguirlo entre [date_start] and [date_end]",
+            "txt": "conseguirlo entre [date_start] y el [date_end]",
             "ds": 10,
             "de": 15,
             "mode": "1",
