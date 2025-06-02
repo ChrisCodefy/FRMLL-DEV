@@ -205,7 +205,7 @@
       ],
       "custom_css": [
         ".shopify-payment-button {display: none;}",
-        ".t4s-rte {color: black;}"
+        ".t4s-rte {color: #666666;}"
       ],
       "settings": {
         "pr_layout": "full",
