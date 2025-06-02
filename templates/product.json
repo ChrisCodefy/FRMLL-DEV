@@ -69,7 +69,7 @@
             "selector_mode": "circle",
             "color_mode": "color",
             "enable_fit_ratio_img": false,
-            "color_size": "small",
+            "color_size": "large",
             "show_qty": true,
             "enable_wishlist": false,
             "enable_compare": false,
