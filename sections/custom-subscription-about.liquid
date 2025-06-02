@@ -14,7 +14,7 @@
       "type": "textarea",
       "id": "content",
       "label": "Content",
-      "default": "JOIN OUR SUBSCRIPTION PROGRAM AND DISCOVER A CURATED SELECTION OF ARTWORK DELIVERED STRAIGHT TO YOUR DOOR. OUR MEMBERS ENJOY EXCLUSIVE ACCESS TO NEW COLLECTIONS, ARTIST STORIES, AND BEHIND-THE-SCENES CONTENT. WHETHER YOU'RE AN ART ENTHUSIAST OR JUST STARTING YOUR COLLECTION, OUR PROGRAM IS DESIGNED TO INSPIRE AND DELIGHT."
+      "default": "JOIN OUR SUBSCRIPTION PROGRAM AND DISCOVER A CURATED SELECTION OF ARTWORK DELIVERED STRAIGHT TO YOUR DOOR..."
     },
     {
       "type": "color",
@@ -31,7 +31,7 @@
     {
       "type": "range",
       "id": "heading_font_size",
-      "label": "Heading font size (px)",
+      "label": "Heading font size (desktop, px)",
       "min": 20,
       "max": 80,
       "step": 2,
@@ -39,12 +39,30 @@
     },
     {
       "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading font size (mobile, px)",
+      "min": 14,
+      "max": 40,
+      "step": 1,
+      "default": 28
+    },
+    {
+      "type": "range",
       "id": "text_font_size",
-      "label": "Text font size (px)",
+      "label": "Text font size (desktop, px)",
       "min": 12,
       "max": 32,
       "step": 1,
       "default": 20
+    },
+    {
+      "type": "range",
+      "id": "text_font_size_mobile",
+      "label": "Text font size (mobile, px)",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "default": 16
     }
   ],
   "presets": [
@@ -57,10 +75,16 @@
 
 <section class="custom-subscription-about-wrapper" style="background-color: {{ section.settings.background_color }};">
   <div class="page-width">
-    <h2 class="subscription-heading" style="font-size: {{ section.settings.heading_font_size }}px;">
+    <h2 
+      class="subscription-heading" 
+      style="font-size: {{ section.settings.heading_font_size }}px;"
+    >
       {{ section.settings.heading }}
     </h2>
-    <p class="subscription-text" style="font-size: {{ section.settings.text_font_size }}px; color: {{ section.settings.text_color }};">
+    <p 
+      class="subscription-text" 
+      style="font-size: {{ section.settings.text_font_size }}px; color: {{ section.settings.text_color }};"
+    >
       {{ section.settings.content | newline_to_br }}
     </p>
   </div>
@@ -87,11 +111,11 @@
 
   @media screen and (max-width: 768px) {
     .subscription-heading {
-      font-size: calc({{ section.settings.heading_font_size }}px * 0.6);
+      font-size: {{ section.settings.heading_font_size_mobile }}px !important;
     }
 
     .subscription-text {
-      font-size: calc({{ section.settings.text_font_size }}px * 0.9);
+      font-size: {{ section.settings.text_font_size_mobile }}px !important;
     }
   }
 </style>
