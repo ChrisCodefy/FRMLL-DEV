@@ -559,7 +559,7 @@ endif -%}
                       render 'grouped-form', product: product, bk_stts: bk_stts, pr_se_id: pr_se_id, product_list: product_list, shopify_attributes: block.shopify_attributes, cus_qty: cus_qty
                     endif
                   -%}
-                <div class="product-info-additional" style="margin-top: 20px; padding: 15px; background: #f8f8f8; border-radius: 8px;">
+                <div class="product-info-additional" style="margin-top: 20px;">
                     {% if product.metafields.custom.preventa.value != blank %}
                       <p style="color: #e74c3c; font-weight: bold; margin-bottom: 10px;">Preventa Envío estimado: {{ product.metafields.custom.preventa }}</p>
                       <p style="font-size: 1.4rem; line-height: 1.5; color: #666;">
