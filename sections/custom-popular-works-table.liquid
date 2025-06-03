@@ -35,8 +35,8 @@
           <td data-label="ARTISTA">{{ producto.vendor }}</td>
           <td data-label="PRECIO">
             {% if producto.compare_at_price > producto.price %}
-              <span class="precio-anterior">€{{ producto.compare_at_price | money_without_currency }}</span>
-              <span class="precio-descuento">€{{ producto.price | money_without_currency }}</span>
+              <span class="precio-anterior">${{ producto.compare_at_price | money_without_currency }}</span>
+              <span class="precio-descuento">${{ producto.price | money_without_currency }}</span>
             {% else %}
               DESDE €{{ producto.price | money_without_currency }}
             {% endif %}
