@@ -32,9 +32,10 @@
       {% for producto in productos_populares %}
         <tr 
           class="fila-producto"
-          onmouseover="mostrarTooltip(event, '{{ producto.featured_image | image_url: width: 400 }}')"
-          onmousemove="moverTooltip(event)"
+          onclick="window.location='{{ producto.url }}'"
+          onmouseover="mostrarTooltip('{{ producto.featured_image | image_url: width: 600 }}')"
           onmouseout="ocultarTooltip()"
+          style="cursor: pointer;"
         >
           <td data-label="TÍTULO">{{ producto.title }}</td>
           <td data-label="ARTISTA">{{ producto.vendor }}</td>
@@ -51,8 +52,8 @@
     </tbody>
   </table>
 
-  <!-- Tooltip de imagen -->
-  <div id="tooltip-imagen-producto" style="display:none;">
+  <!-- Tooltip centrado -->
+  <div id="tooltip-imagen-producto">
     <img id="tooltip-img" src="" alt="Vista previa" />
   </div>
 </section>
@@ -109,20 +110,26 @@
     font-weight: 600;
   }
 
+  /* Tooltip centrado */
   #tooltip-imagen-producto {
-    position: absolute;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 9999;
     pointer-events: none;
     display: none;
-    padding: 4px;
+    padding: 10px;
     background: #fff;
     border: 1px solid #ccc;
     border-radius: 6px;
     box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.15);
+    justify-content: center;
+    align-items: center;
   }
 
   #tooltip-imagen-producto img {
-    max-width: 200px;
+    max-width: 400px;
     height: auto;
     display: block;
   }
@@ -187,18 +194,11 @@ function ordenarTabla(indiceColumna) {
   filas.forEach(fila => tabla.appendChild(fila));
 }
 
-function mostrarTooltip(e, imagenUrl) {
+function mostrarTooltip(imagenUrl) {
   const tooltip = document.getElementById('tooltip-imagen-producto');
   const img = document.getElementById('tooltip-img');
   img.src = imagenUrl;
-  tooltip.style.display = 'block';
-  moverTooltip(e);
-}
-
-function moverTooltip(e) {
-  const tooltip = document.getElementById('tooltip-imagen-producto');
-  tooltip.style.left = (e.pageX + 20) + 'px';
-  tooltip.style.top = (e.pageY + 20) + 'px';
+  tooltip.style.display = 'flex';
 }
 
 function ocultarTooltip() {
