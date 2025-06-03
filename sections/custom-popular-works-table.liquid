@@ -30,27 +30,38 @@
     <tbody>
       {% assign productos_populares = section.settings.coleccion_obras.products %}
       {% for producto in productos_populares %}
-        <tr>
+        <tr 
+          class="fila-producto"
+          onmouseover="mostrarTooltip(event, '{{ producto.featured_image | image_url: width: 400 }}')"
+          onmousemove="moverTooltip(event)"
+          onmouseout="ocultarTooltip()"
+        >
           <td data-label="TÍTULO">{{ producto.title }}</td>
           <td data-label="ARTISTA">{{ producto.vendor }}</td>
           <td data-label="PRECIO">
             {% if producto.compare_at_price > producto.price %}
-              <span class="precio-anterior">${{ producto.compare_at_price | money_without_currency }}</span>
-              <span class="precio-descuento">${{ producto.price | money_without_currency }}</span>
+              <span class="precio-anterior">${{ producto.compare_at_price | money_without_currency }} MXN</span>
+              <span class="precio-descuento">${{ producto.price | money_without_currency }} MXN</span>
             {% else %}
-              DESDE €{{ producto.price | money_without_currency }}
+              DESDE ${{ producto.price | money_without_currency }} MXN
             {% endif %}
           </td>
         </tr>
       {% endfor %}
     </tbody>
   </table>
+
+  <!-- Tooltip de imagen -->
+  <div id="tooltip-imagen-producto" style="display:none;">
+    <img id="tooltip-img" src="" alt="Vista previa" />
+  </div>
 </section>
 
 <style>
   .obras-populares {
     background: #f3f2eb;
     padding: 2rem 0;
+    font-family: 'Helvetica Neue', sans-serif;
   }
 
   .obras-populares h2 {
@@ -65,15 +76,6 @@
     width: 100%;
     border-collapse: collapse;
     background-color: transparent;
-    overflow: hidden;
-  }
-  #tabla-obras-populares table, td, th {
-    border: 2px solid #000;
-  }
-  
-
-  #tabla-obras-populares thead {
-    background-color: Transparent;
   }
 
   #tabla-obras-populares th,
@@ -105,6 +107,24 @@
   .precio-descuento {
     color: #c92064;
     font-weight: 600;
+  }
+
+  #tooltip-imagen-producto {
+    position: absolute;
+    z-index: 9999;
+    pointer-events: none;
+    display: none;
+    padding: 4px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  #tooltip-imagen-producto img {
+    max-width: 200px;
+    height: auto;
+    display: block;
   }
 
   @media (max-width: 768px) {
@@ -165,5 +185,24 @@ function ordenarTabla(indiceColumna) {
   });
   tabla.setAttribute("data-orden", ordenAsc ? "asc" : "desc");
   filas.forEach(fila => tabla.appendChild(fila));
+}
+
+function mostrarTooltip(e, imagenUrl) {
+  const tooltip = document.getElementById('tooltip-imagen-producto');
+  const img = document.getElementById('tooltip-img');
+  img.src = imagenUrl;
+  tooltip.style.display = 'block';
+  moverTooltip(e);
+}
+
+function moverTooltip(e) {
+  const tooltip = document.getElementById('tooltip-imagen-producto');
+  tooltip.style.left = (e.pageX + 20) + 'px';
+  tooltip.style.top = (e.pageY + 20) + 'px';
+}
+
+function ocultarTooltip() {
+  const tooltip = document.getElementById('tooltip-imagen-producto');
+  tooltip.style.display = 'none';
 }
 </script>
