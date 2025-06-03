@@ -29,7 +29,7 @@
     </thead>
     <tbody>
       {% assign productos_populares = section.settings.coleccion_obras.products %}
-      {% for producto in productos_populares %}
+      {% for producto in productos_populares limit: 10 %}
         <tr 
           class="fila-producto"
           onclick="window.location='{{ producto.url }}'"
@@ -137,7 +137,7 @@
   table, td, th {
     border: 0px solid var(--border-color);
     vertical-align: middle;
-}
+  }
 
   @media (max-width: 768px) {
     #tabla-obras-populares,
@@ -152,10 +152,6 @@
 
     #tabla-obras-populares thead {
       display: none;
-    }
-
-    #tabla-obras-populares tr {
-      
     }
 
     #tabla-obras-populares tr {
