@@ -272,14 +272,14 @@
         "collection_column_Ui3cUY": {
           "type": "collection_column",
           "settings": {
-            "collection": "ediciones-especiales",
+            "collection": "preventas",
             "position": "top-left"
           }
         },
         "collection_column_8EjV4f": {
           "type": "collection_column",
           "settings": {
-            "collection": "accesorios",
+            "collection": "disco-del-mes",
             "position": "top-left"
           }
         },
