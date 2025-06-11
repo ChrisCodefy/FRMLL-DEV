@@ -2834,7 +2834,8 @@ header {
 .t4s-type__lv0_drop> .t4s-sub-menu {
      position: absolute;
      min-width: 250px;
-     background-color: var(--t4s-body-background);
+     /* background-color: var(--t4s-body-background); */
+     background-color: #000;
      top: 100%;
      z-index: 101;
      padding: 0;
