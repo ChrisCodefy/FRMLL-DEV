@@ -177,6 +177,7 @@
         },
         "ce2a8456-1d79-4523-8329-3afa244c8b98": {
           "type": "3",
+          "disabled": true,
           "settings": {
             "breadcrumb_color": "#f2f2f2",
             "brc_mgb": 5
