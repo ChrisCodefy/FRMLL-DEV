@@ -41,7 +41,7 @@
     left: 100%;
     opacity: 0;
     box-shadow: inset 0 0 0 1px #eaeaea, 0 5px 20px rgb(0 0 0 / 15%);
-    background: #fff;
+    background: #000;
     visibility: visible;
     pointer-events: none;
 }
