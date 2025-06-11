@@ -9,6 +9,7 @@
  */
 {
   "current": {
+    "body_bg": "#f5f3eb",
     "use_rtl": "0",
     "header_design": "inline",
     "logo": "shopify://shop_images/LOGO_FRMLL_2025_page-0001.jpg",
@@ -665,9 +666,9 @@
               "open_link": "_self",
               "icon": "",
               "cus_cl": false,
-              "cl": "#ec0101",
+              "cl": "#61ff5c",
               "lb": "",
-              "lb_cl": ""
+              "lb_cl": "#ffffff"
             }
           },
           "9883384a-d19a-4abe-9a94-388d91fce9b6": {
@@ -816,7 +817,7 @@
           "hover": "hover_sideup",
           "enable_active": false,
           "h_navmb": 60,
-          "bgnav": "#ffffff",
+          "bgnav": "#fff",
           "opnav": 100,
           "clnav": "#222222",
           "clnav_hover": "#61ff5c",
@@ -1484,7 +1485,7 @@
           "552902be-02b1-40ca-8475-982bbdb75ed7"
         ],
         "settings": {
-          "bg": ""
+          "bg": "#222222"
         }
       },
       "mb_nav": {
