@@ -1360,7 +1360,7 @@
               "open_link": "_self",
               "menu": "menu-superior-prueba",
               "lb": "",
-              "lb_cl": "",
+              "lb_cl": "#222222",
               "icons_op": "2",
               "icon": ""
             }
@@ -1370,48 +1370,6 @@
             "settings": {
               "title": "Únete al Club",
               "url": "shopify://products/analogue-resin-strap",
-              "open_link": "_self",
-              "menu": "",
-              "lb": "",
-              "lb_cl": "",
-              "icons_op": "2",
-              "icon": ""
-            }
-          },
-          "25fa7ecf-2db0-4747-b093-a1299099917e": {
-            "type": "menu",
-            "disabled": true,
-            "settings": {
-              "title": "Portfolio",
-              "url": "",
-              "open_link": "_self",
-              "menu": "",
-              "lb": "",
-              "lb_cl": "",
-              "icons_op": "2",
-              "icon": ""
-            }
-          },
-          "58800ed8-befe-449a-b8f8-ea86620bef6f": {
-            "type": "menu",
-            "disabled": true,
-            "settings": {
-              "title": "Lookbook",
-              "url": "",
-              "open_link": "_self",
-              "menu": "",
-              "lb": "",
-              "lb_cl": "",
-              "icons_op": "2",
-              "icon": ""
-            }
-          },
-          "mb_nav-3": {
-            "type": "menu",
-            "disabled": true,
-            "settings": {
-              "title": "Blog",
-              "url": "shopify://blogs/fashion",
               "open_link": "_self",
               "menu": "",
               "lb": "",
@@ -1456,15 +1414,15 @@
           "mb_nav-0",
           "mb_nav-1",
           "mb_nav-2",
-          "25fa7ecf-2db0-4747-b093-a1299099917e",
-          "58800ed8-befe-449a-b8f8-ea86620bef6f",
-          "mb_nav-3",
           "mb_nav-4",
           "mb_nav-5",
           "mb_nav-6",
           "mb_nav-7",
           "mb_nav-8",
           "mb_nav-9"
+        ],
+        "custom_css": [
+          ".t4s-mb__menu .t4s-sub-menu li>a {padding-left: 30px; color: #000;}"
         ],
         "settings": {}
       },
