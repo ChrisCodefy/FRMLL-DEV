@@ -1,0 +1,453 @@
+{% comment %}
+SNIPPET: Carrusel de Colecciones Relacionadas
+
+INSTRUCCIONES DE USO:
+1. Crea un metacampo para colecciones en tu admin de Shopify:
+   - Ve a Configuración > Metacampos > Colección > Agregar definición.
+   - Nombre: Colecciones Relacionadas
+   - Tipo: Lista de referencias > Colección
+   - Guarda la definición.
+2. En cada colección, selecciona las colecciones relacionadas usando el nuevo campo.
+3. Copia este archivo a la carpeta 'snippets/' de tu tema y nómbralo 'related-collections-carousel.liquid'.
+4. En tu plantilla de colección (por ejemplo, 'main-collection.liquid' o 'collection.liquid'), incluye el snippet donde quieras mostrar el carrusel:
+   {% raw %}{% render 'related-collections-carousel' %}{% endraw %}
+5. Aplica tus estilos o integra un slider JS si lo deseas.
+{% endcomment %}
+
+{%- comment -%}
+  BLOQUE DE BREADCRUMBS ELIMINADO
+{%- endcomment -%}
+
+{%- comment -%} Ahora usamos el metafield custom.coleccion_relaciones {%- endcomment -%}
+{% assign related_collections = collection.metafields.custom.coleccion_relaciones.value 
+   | default: collection.metafields.custom.coleccion_relaciones %}
+{% assign valid_collections    = '' %}
+{% assign has_valid_collections = false %}
+
+{% if related_collections != blank %}
+  {% for related in related_collections %}
+    {% assign related_handle = related.handle | default: related %}
+    {% if collections[related_handle] and collections[related_handle].products_count > 0 %}
+      {% assign valid_collections = valid_collections | append: related_handle | append: ',' %}
+    {% endif %}
+  {% endfor %}
+  
+  {% assign valid_collections_array = valid_collections | split: ',' | uniq %}
+  {% if valid_collections_array.size > 0 and valid_collections_array[0] != '' %}
+    {% assign has_valid_collections = true %}
+  {% endif %}
+{% endif %}
+
+<div class="colecciones-relacionadas">
+
+{% if has_valid_collections %}
+  <p class="related-collections-title-sub">
+    SUBCATEGORÍAS
+  </p>
+  <div class="related-collections-carousel-wrapper">
+   
+    <button class="related-carousel-arrow prev" aria-label="Anterior">
+      <span class="arrow-circle">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </button>
+    <div class="related-collections-carousel">
+      {% for related_handle in valid_collections_array %}
+        {% if related_handle != '' %}
+          {% assign related_collection = collections[related_handle] %}
+          {% if related_collection.products_count > 0 %}
+            <div class="related-collection-card-outer fadeInUp" style="animation-delay: {{ forloop.index0 | times: 80 }}ms;">
+              <a href="{{ related_collection.url }}" class="related-collection-card">
+                <div class="related-collection-img-bg">
+                  {% assign first_product = related_collection.products.first %}
+                  {% if first_product and first_product.featured_image %}
+                    <img src="{{ first_product.featured_image | img_url: '600x600' }}"
+                         alt="{{ related_collection.title }}"
+                         class="related-collection-img"
+                         width="600" height="600">
+                  {% elsif related_collection.image %}
+                    <img src="{{ related_collection.image | img_url: '600x600' }}"
+                         alt="{{ related_collection.title }}"
+                         class="related-collection-img"
+                         width="600" height="600">
+                  {% else %}
+                    {{ 'collection-1' | placeholder_svg_tag: 'related-collection-img' }}
+                  {% endif %}
+                </div>
+              </a>
+              <div class="related-collection-title">{{ related_collection.title }}</div>
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    <button class="related-carousel-arrow next" aria-label="Siguiente">
+      <span class="arrow-circle">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 6L15 12L9 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </button>
+  </div>
+{% endif %}
+</div>
+
+
+<style>
+
+  .breadcrumb-current {
+    font-size: 2rem;
+  }
+
+
+  .related-collections-title-sub {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: inherit;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    letter-spacing: -0.01em;
+    margin: 0 !important;
+    color: #7c153b;
+  }
+/* Elimina el wrapper personalizado y usa el de page-width */
+.related-collections-wrapper {
+  padding: 0;
+  max-width: none;
+}
+.page-width {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+@media (max-width: 600px) {
+  .page-width {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+.related-collections-header {
+  margin-bottom: 1.5rem;
+  margin-top: 8px;
+  text-align: left;
+}
+.breadcrumb {
+  font-size: 0.92rem;
+  color: #888;
+  margin-bottom: 4px;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+.breadcrumb a {
+  color: #888;
+  text-decoration: none;
+  font-weight: 400;
+}
+.breadcrumb-separator {
+  margin: 0 6px;
+  color: #bbb;
+}
+.breadcrumb-current {
+  color: #222;
+  font-weight: 400;
+}
+.related-collections-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-align: left;
+  margin-bottom: 2.5rem;
+  margin-top: 0;
+  letter-spacing: -0.01em;
+}
+@media (max-width: 600px) {
+  .related-collections-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  .related-collections-header {
+    margin-bottom: 0rem;
+  }
+}
+.related-collections-carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+.related-collections-carousel {
+  
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scroll-behavior: smooth;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+.related-collections-carousel::-webkit-scrollbar {
+  display: none;
+}
+.related-collections-carousel {
+  scrollbar-width: none;
+  
+}
+.related-carousel-arrow {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  z-index: 2;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.95;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.related-carousel-arrow[disabled] {
+  opacity: 0;
+  pointer-events: none;
+}
+.related-carousel-arrow.prev { 
+  left: 0; 
+  padding-left: 0px;
+}
+.related-carousel-arrow.next { 
+  right: 0; 
+  padding-right: 0px;
+}
+.arrow-circle {
+  background: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.related-carousel-arrow:hover .arrow-circle {
+  background: #fff;
+  transform: scale(1.08);
+  border-color: rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.related-carousel-arrow svg path {
+  stroke: #e91e63;
+  stroke-width: 2.5;
+}
+.related-collection-card-outer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 15%;
+  max-width: 140px;
+  min-width: 120px;
+  height: 100%;
+  animation: fadeInUp 0.5s both;
+  
+}
+.related-collection-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  text-decoration: none;
+  color: inherit;
+  min-width: 120px;
+  max-width: 140px;
+  width: 100%;
+  transition: box-shadow 0.2s, transform 0.2s;
+  height: 100%;
+}
+.related-collection-card:hover {
+  box-shadow: 0 6px 24px rgba(233,30,99,0.12);
+  transform: scale(1.01) translateY(-2px);
+  border-radius: 18px;
+  z-index: 2;
+}
+.related-collection-img-bg {
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fbe8f2;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.related-collection-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.related-collection-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 15px 0 10px 0;
+  text-align: center;
+  padding: 0 8px;
+  width: 100%;
+  color: #000;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+
+@media (max-width: 1200px) {
+  .related-collection-card-outer {
+    flex: 0 0 18%;
+    max-width: 150px;
+    min-width: 130px;
+  }
+}
+@media (min-width: 1025px) {
+    .related-collections-carousel {
+      justify-content: center !important;
+}
+}
+@media (max-width: 900px) {
+  .related-collection-card-outer {
+    flex: 0 0 22%;
+    max-width: 22%;
+    min-width: 110px;
+ 
+  }
+  .related-collection-title {
+    font-size: 0.95rem;
+    margin: 12px 0 8px 0;
+    font-weight: 700;
+    padding: 0 6px;
+  }
+}
+@media (max-width: 600px) {
+  .related-collections-carousel {
+    gap: 15px;
+    padding-bottom: 0px !important;
+  }
+  .related-collection-card-outer {
+    flex: 0 0 28%;
+    max-width: 28%;
+    min-width: 28%;
+  }
+  .related-collection-card {
+    min-width: 90px;
+    max-width: 90px;
+  }
+  .related-collection-title {
+    font-size: 0.85rem;
+    margin: 8px 0 4px 0;
+    font-weight: 600;
+    padding: 0 4px;
+    line-height: 1.2;
+  }
+  .related-carousel-arrow.prev { 
+    left: -8px;
+  }
+  .related-carousel-arrow.next { 
+    right: -8px;
+  }
+  .arrow-circle {
+    width: 28px;
+    height: 28px;
+  }
+  .related-carousel-arrow svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
+<script>
+(function() {
+  const wrapper = document.querySelector('.related-collections-carousel-wrapper');
+  if (!wrapper) return;
+  const track = wrapper.querySelector('.related-collections-carousel');
+  const cards = wrapper.querySelectorAll('.related-collection-card-outer');
+  const prevBtn = wrapper.querySelector('.related-carousel-arrow.prev');
+  const nextBtn = wrapper.querySelector('.related-carousel-arrow.next');
+  let current = 0;
+  const visibleCards = () => {
+    if(window.innerWidth <= 600) return 2.2;
+    if(window.innerWidth <= 900) return 3.2;
+    if(window.innerWidth <= 1200) return 3.2;
+    return 4.2;
+  };
+  function updateArrows() {
+    const maxCurrent = Math.max(0, Math.round(cards.length - visibleCards()));
+    const isDesktop = window.innerWidth > 600;
+    const trackWidth = track.scrollWidth;
+    const containerWidth = wrapper.offsetWidth;
+    const hasOverflow = trackWidth > containerWidth;
+
+    if (isDesktop) {
+      // En desktop, solo mostrar flechas si hay overflow
+      prevBtn.style.display = hasOverflow ? 'flex' : 'none';
+      nextBtn.style.display = hasOverflow ? 'flex' : 'none';
+    } else {
+      // En móvil, mantener el comportamiento actual
+      prevBtn.style.display = 'flex';
+      nextBtn.style.display = 'flex';
+    }
+
+    prevBtn.disabled = current <= 0;
+    nextBtn.disabled = current >= maxCurrent;
+  }
+  function scrollToCard(idx) {
+    const maxCurrent = Math.max(0, Math.round(cards.length - visibleCards()));
+    current = Math.max(0, Math.min(idx, maxCurrent));
+    const card = cards[current];
+    if(card) {
+      card.scrollIntoView({behavior: 'smooth', inline: 'start', block: 'nearest'});
+    }
+  }
+  prevBtn.addEventListener('click', function() {
+    scrollToCard(current - 1);
+    updateArrows();
+  });
+  nextBtn.addEventListener('click', function() {
+    scrollToCard(current + 1);
+    updateArrows();
+  });
+  window.addEventListener('resize', function() {
+    scrollToCard(current);
+    updateArrows();
+  });
+  // Touch scroll: actualiza flechas al hacer scroll manual
+  track.addEventListener('scroll', function() {
+    const cardWidth = cards[0]?.offsetWidth || 1;
+    current = Math.round(track.scrollLeft / (cardWidth + 24));
+    updateArrows();
+  });
+  // Actualizar flechas al cargar la página
+  updateArrows();
+})();
+</script>
