@@ -18,9 +18,9 @@ INSTRUCCIONES DE USO:
   BLOQUE DE BREADCRUMBS ELIMINADO
 {%- endcomment -%}
 
-{%- comment -%} Ahora usamos el metafield custom.coleccion_relaciones {%- endcomment -%}
-{% assign related_collections = collection.metafields.custom.coleccion_relaciones.value 
-   | default: collection.metafields.custom.coleccion_relaciones %}
+{%- comment -%} Ahora usamos el metafield custom.subcoleccion {%- endcomment -%}
+{% assign related_collections = collection.metafields.custom.subcoleccion.value 
+   | default: collection.metafields.custom.subcoleccion %}
 {% assign valid_collections    = '' %}
 {% assign has_valid_collections = false %}
 
