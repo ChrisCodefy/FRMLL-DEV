@@ -626,7 +626,7 @@
               "open_link": "_self",
               "menu": "menu-superior-prueba",
               "icon": "",
-              "cus_cl": true,
+              "cus_cl": false,
               "cl": "#222222",
               "lb": "",
               "lb_cl": "#222222",
@@ -1333,7 +1333,7 @@
           "552902be-02b1-40ca-8475-982bbdb75ed7"
         ],
         "settings": {
-          "bg": "#222222"
+          "bg": "#ffffff"
         }
       },
       "mb_nav": {
