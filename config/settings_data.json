@@ -626,7 +626,7 @@
               "open_link": "_self",
               "menu": "menu-superior-prueba",
               "icon": "",
-              "cus_cl": false,
+              "cus_cl": true,
               "cl": "#222222",
               "lb": "",
               "lb_cl": "#222222",
