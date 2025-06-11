@@ -605,27 +605,6 @@
       "header-inline": {
         "type": "header-inline",
         "blocks": {
-          "9a73cf8b-993e-4dbe-9f11-6e990bfb91c0": {
-            "type": "mega",
-            "disabled": true,
-            "settings": {
-              "title": "Blog",
-              "url": "https://demo-kalles-4-1.myshopify.com/blogs/fashion?preview_theme_id=",
-              "open_link": "_self",
-              "icon": "",
-              "cus_cl": false,
-              "cl": "#ec0101",
-              "lb": "",
-              "lb_cl": "#00badb",
-              "pos_sub": "bottom",
-              "wid": "cus",
-              "cus_wid": 950,
-              "id": 5,
-              "enable_packery": true,
-              "r_s_h_item": "20",
-              "r_s_v_item": "30"
-            }
-          },
           "base_WwN4nj": {
             "type": "base",
             "settings": {
@@ -670,143 +649,12 @@
               "lb": "",
               "lb_cl": "#ffffff"
             }
-          },
-          "9883384a-d19a-4abe-9a94-388d91fce9b6": {
-            "type": "mega",
-            "disabled": true,
-            "settings": {
-              "title": "Únete al club",
-              "url": "https://demo-kalles-4-1.myshopify.com/",
-              "open_link": "_self",
-              "icon": "",
-              "cus_cl": false,
-              "cl": "#ec0101",
-              "lb": "",
-              "lb_cl": "#00badb",
-              "pos_sub": "bottom-start",
-              "wid": "cus",
-              "cus_wid": 1050,
-              "id": 1,
-              "enable_packery": true,
-              "r_s_h_item": "20",
-              "r_s_v_item": "30"
-            }
-          },
-          "e0be43d6-bf02-4962-a06e-4294c6d6bd53": {
-            "type": "mega",
-            "disabled": true,
-            "settings": {
-              "title": "Shop",
-              "url": "shopify://collections",
-              "open_link": "_self",
-              "icon": "",
-              "cus_cl": false,
-              "cl": "#ec0101",
-              "lb": "New",
-              "lb_cl": "#00badb",
-              "pos_sub": "bottom",
-              "wid": "cus",
-              "cus_wid": 1000,
-              "id": 2,
-              "enable_packery": true,
-              "r_s_h_item": "20",
-              "r_s_v_item": "30"
-            }
-          },
-          "3944a4f5-3618-4f4b-9d13-238ddb1b72f2": {
-            "type": "mega",
-            "disabled": true,
-            "settings": {
-              "title": "Product",
-              "url": "shopify://collections/all",
-              "open_link": "_self",
-              "icon": "",
-              "cus_cl": false,
-              "cl": "#ec0101",
-              "lb": "",
-              "lb_cl": "#00badb",
-              "pos_sub": "bottom",
-              "wid": "cus",
-              "cus_wid": 1100,
-              "id": 3,
-              "enable_packery": true,
-              "r_s_h_item": "20",
-              "r_s_v_item": "30"
-            }
-          },
-          "4a281327-6e12-4cd4-af83-0ce2f502e7b8": {
-            "type": "mega",
-            "disabled": true,
-            "settings": {
-              "title": "Sale",
-              "url": "shopify://collections",
-              "open_link": "_self",
-              "icon": "",
-              "cus_cl": false,
-              "cl": "#ec0101",
-              "lb": "Sale",
-              "lb_cl": "#ffa800",
-              "pos_sub": "bottom",
-              "wid": "cus",
-              "cus_wid": 1200,
-              "id": 4,
-              "enable_packery": true,
-              "r_s_h_item": "20",
-              "r_s_v_item": "30"
-            }
-          },
-          "334013b4-82f3-4046-8371-eaf3c3340153": {
-            "type": "drop",
-            "disabled": true,
-            "settings": {
-              "title": "Portfolio",
-              "url": "https://demo-kalles-4-1.myshopify.com/blogs/portfolio/?preview_theme_id=128644972750",
-              "open_link": "_self",
-              "menu": "",
-              "icon": "",
-              "cus_cl": false,
-              "cl": "#ec0101",
-              "lb": "",
-              "lb_cl": "",
-              "lazy_mn": true,
-              "pos_sub": "bottom",
-              "pos": "left",
-              "item_fsize": 13,
-              "sp_bettewn_item": 20
-            }
-          },
-          "556a85dc-041d-4d44-8c22-263ed70a8b48": {
-            "type": "drop",
-            "disabled": true,
-            "settings": {
-              "title": "Lookbook",
-              "url": "https://demo-kalles-4-1.myshopify.com",
-              "open_link": "_self",
-              "menu": "",
-              "icon": "",
-              "cus_cl": false,
-              "cl": "#ec0101",
-              "lb": "",
-              "lb_cl": "",
-              "lazy_mn": true,
-              "pos_sub": "bottom",
-              "pos": "left",
-              "item_fsize": 13,
-              "sp_bettewn_item": 20
-            }
           }
         },
         "block_order": [
-          "9a73cf8b-993e-4dbe-9f11-6e990bfb91c0",
           "base_WwN4nj",
           "drop_nCU8aU",
-          "base_cYfXmQ",
-          "9883384a-d19a-4abe-9a94-388d91fce9b6",
-          "e0be43d6-bf02-4962-a06e-4294c6d6bd53",
-          "3944a4f5-3618-4f4b-9d13-238ddb1b72f2",
-          "4a281327-6e12-4cd4-af83-0ce2f502e7b8",
-          "334013b4-82f3-4046-8371-eaf3c3340153",
-          "556a85dc-041d-4d44-8c22-263ed70a8b48"
+          "base_cYfXmQ"
         ],
         "settings": {
           "layout": "logo_left",
