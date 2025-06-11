@@ -207,6 +207,22 @@
         "code_cus_css": ".SectionID {\nbackground-color:red\n}"
       }
     },
+    "custom_liquid_GQCXmU": {
+      "type": "custom-liquid",
+      "name": "Custom Liquid",
+      "settings": {
+        "custom_liquid": "{% render 'carrusel-collection-metafield' %}",
+        "layout": "t4s-container-wrap",
+        "cl_bg": "",
+        "cl_bg_gradient": "",
+        "mg": ",,50px,",
+        "pd": "",
+        "mg_tb": "",
+        "pd_tb": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
     "main": {
       "type": "main-collection",
       "blocks": {
@@ -411,6 +427,7 @@
   "order": [
     "top",
     "heading_template",
+    "custom_liquid_GQCXmU",
     "main",
     "sidebar",
     "featured_collection_RiVkzM"
