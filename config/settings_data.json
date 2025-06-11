@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "body_bg": "#f5f3eb",
+    "body_bg": "#ffffff",
     "use_rtl": "0",
     "header_design": "inline",
     "logo": "shopify://shop_images/LOGO_FRMLL_2025_page-0001.jpg",
@@ -1422,7 +1422,7 @@
           "mb_nav-9"
         ],
         "custom_css": [
-          ".t4s-mb__menu .t4s-sub-menu li>a {padding-left: 30px; color: #000;}"
+          ".t4s-mb__menu .t4s-sub-menu li > a {padding-left: 30px; color: #000;}"
         ],
         "settings": {}
       },
