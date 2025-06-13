@@ -1,21 +1,27 @@
 {% schema %}
 {
-  "name": "Custom Hover Collections",
+  "name": "Hover Collections",
   "settings": [
     {
       "type": "header",
-      "content": "Colecciones destacadas con hover"
+      "content": "Colecciones con nombre personalizado y hover"
     }
   ],
   "blocks": [
     {
       "type": "collection_item",
-      "name": "Colección",
+      "name": "Colección personalizada",
       "settings": [
         {
           "type": "collection",
           "id": "collection",
           "label": "Seleccionar colección"
+        },
+        {
+          "type": "text",
+          "id": "custom_name",
+          "label": "Nombre que se muestra",
+          "default": "Mi colección"
         },
         {
           "type": "image_picker",
@@ -25,10 +31,9 @@
       ]
     }
   ],
-  "max_blocks": 20,
   "presets": [
     {
-      "name": "Hover Collections",
+      "name": "Hover Collections Avanzado",
       "category": "Custom"
     }
   ]
@@ -45,6 +50,8 @@
     gap: 10px;
     line-height: 1.2;
     position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
   .collection-item {
@@ -52,6 +59,7 @@
     text-decoration: none;
     cursor: pointer;
     position: relative;
+    white-space: nowrap;
   }
 
   .collection-item:hover {
@@ -79,12 +87,14 @@
 <div class="collection-list">
   {% for block in section.blocks %}
     {% assign collection = block.settings.collection %}
+    {% assign label = block.settings.custom_name | strip %}
+    {% assign image = block.settings.hover_image | image_url %}
     {% if collection %}
       <a
         href="{{ collection.url }}"
         class="collection-item"
-        data-image-url="{{ block.settings.hover_image | image_url }}">
-        {{ collection.title }}
+        data-image-url="{{ image }}">
+        {{ label | default: collection.title }}
       </a>
       {% if forloop.last == false %} &nbsp;•&nbsp; {% endif %}
     {% endif %}
