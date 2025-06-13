@@ -10,6 +10,28 @@
       "max": 8,
       "step": 0.1,
       "default": 3.5
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Peso del texto",
+      "default": "700",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medio" },
+        { "value": "600", "label": "Semi Negrita" },
+        { "value": "700", "label": "Negrita" },
+        { "value": "800", "label": "Extra Negrita" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "line_height",
+      "label": "Altura de línea",
+      "min": 1,
+      "max": 2,
+      "step": 0.1,
+      "default": 1.2
     }
   ],
   "blocks": [
@@ -48,11 +70,9 @@
 {% stylesheet %}
 <style>
   .collection-list {
-    font-weight: 700;
     flex-wrap: wrap;
     display: flex;
     gap: 10px;
-    line-height: 1.2;
     position: relative;
     flex-direction: row;
     flex-wrap: wrap;
@@ -72,11 +92,8 @@
 
   .collection-image-preview {
     position: absolute;
-    top: 50px;
-    left: 50%;
-    transform: translateX(-50%);
     display: none;
-    z-index: 10;
+    z-index: 100;
     pointer-events: none;
   }
 
@@ -88,17 +105,28 @@
 </style>
 {% endstylesheet %}
 
-<div class="collection-list" style="font-size: {{ section.settings.font_size }}vw;">
+<div class="collection-list" style="
+  font-size: {{ section.settings.font_size }}vw;
+  font-weight: {{ section.settings.font_weight }};
+  line-height: {{ section.settings.line_height }};
+">
   {% for block in section.blocks %}
     {% assign collection = block.settings.collection %}
     {% assign label = block.settings.custom_name | strip %}
-    {% assign custom_img = block.settings.hover_image %}
-    {% assign hover_img = custom_img | default: collection.featured_image %}
+    {% assign hover_image = block.settings.hover_image %}
     {% if collection %}
+      {% if hover_image %}
+        {% assign image_url = hover_image | image_url %}
+      {% elsif collection.featured_image %}
+        {% assign image_url = collection.featured_image | image_url %}
+      {% else %}
+        {% assign image_url = "" %}
+      {% endif %}
+
       <a
         href="{{ collection.url }}"
         class="collection-item"
-        data-image-url="{{ hover_img | image_url }}">
+        data-image-url="{{ image_url }}">
         {{ label | default: collection.title }}
       </a>
       {% if forloop.last == false %} &nbsp;•&nbsp; {% endif %}
@@ -118,7 +146,7 @@
     const img = preview.querySelector('img');
 
     items.forEach(item => {
-      item.addEventListener('mouseenter', () => {
+      item.addEventListener('mouseenter', (e) => {
         const imageUrl = item.getAttribute('data-image-url');
         if (imageUrl) {
           img.src = imageUrl;
