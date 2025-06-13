@@ -211,7 +211,11 @@
         "collection_item_rrptze"
       ],
       "name": "Hover Collections Avanzado",
-      "settings": {}
+      "settings": {
+        "font_size": 4.6,
+        "font_weight": "600",
+        "line_height": 1
+      }
     },
     "custom_about_us_home_nMP3ma": {
       "type": "custom-about-us-home",
