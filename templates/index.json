@@ -148,6 +148,71 @@
         "margin": "0px 0"
       }
     },
+    "custom_hover_collections_tnhmg3": {
+      "type": "custom-hover-collections",
+      "blocks": {
+        "collection_item_Dbzm6L": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "12-ep",
+            "custom_name": "12\" Ep"
+          }
+        },
+        "collection_item_WEBwi3": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "7",
+            "custom_name": "7\""
+          }
+        },
+        "collection_item_QjbEDY": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "accesorios",
+            "custom_name": "ACCESORIOS"
+          }
+        },
+        "collection_item_cejy7r": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "disco-del-mes",
+            "custom_name": "DISCO DEL MES"
+          }
+        },
+        "collection_item_KFDqCL": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "ediciones-especiales",
+            "custom_name": "EDICIONES ESPECIALES"
+          }
+        },
+        "collection_item_8ijcQj": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "preventas",
+            "custom_name": "PREVENTAS"
+          }
+        },
+        "collection_item_rrptze": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "vinilos",
+            "custom_name": "VINILOS"
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_Dbzm6L",
+        "collection_item_WEBwi3",
+        "collection_item_QjbEDY",
+        "collection_item_cejy7r",
+        "collection_item_KFDqCL",
+        "collection_item_8ijcQj",
+        "collection_item_rrptze"
+      ],
+      "name": "Hover Collections Avanzado",
+      "settings": {}
+    },
     "custom_about_us_home_nMP3ma": {
       "type": "custom-about-us-home",
       "name": "Custom - Sobre Nosotros Inicio",
@@ -330,6 +395,7 @@
   "order": [
     "1646028739ae283905",
     "marquee_frmll_rDa88m",
+    "custom_hover_collections_tnhmg3",
     "custom_about_us_home_nMP3ma",
     "image_text_enM8b3",
     "custom_product_carousel_Hj3xck",
