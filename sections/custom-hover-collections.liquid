@@ -1,0 +1,126 @@
+{% schema %}
+{
+  "name": "Hover Collections",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colecciones destacadas con hover"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_item",
+      "name": "Colección",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Seleccionar colección"
+        },
+        {
+          "type": "image_picker",
+          "id": "hover_image",
+          "label": "Imagen para hover"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "Hover Collections",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+<style>
+  .collection-list {
+    font-size: 3.5vw;
+    font-weight: 700;
+    flex-wrap: wrap;
+    display: flex;
+    gap: 10px;
+    line-height: 1.2;
+    position: relative;
+  }
+
+  .collection-item {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .collection-item:hover {
+    color: deeppink;
+  }
+
+  .collection-image-preview {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .collection-image-preview img {
+    max-width: 300px;
+    border: 2px solid #000;
+    background: white;
+  }
+</style>
+{% endstylesheet %}
+
+<div class="collection-list">
+  {% for block in section.blocks %}
+    {% assign collection = block.settings.collection %}
+    {% if collection %}
+      <a
+        href="{{ collection.url }}"
+        class="collection-item"
+        data-image-url="{{ block.settings.hover_image | image_url }}">
+        {{ collection.title }}
+      </a>
+      {% if forloop.last == false %} &nbsp;•&nbsp; {% endif %}
+    {% endif %}
+  {% endfor %}
+</div>
+
+<div class="collection-image-preview" id="imagePreview">
+  <img src="" alt="Vista previa">
+</div>
+
+{% javascript %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const items = document.querySelectorAll('.collection-item');
+    const preview = document.getElementById('imagePreview');
+    const img = preview.querySelector('img');
+
+    items.forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        const imageUrl = item.getAttribute('data-image-url');
+        if (imageUrl) {
+          img.src = imageUrl;
+          preview.style.display = 'block';
+        }
+      });
+
+      item.addEventListener('mousemove', (e) => {
+        preview.style.top = `${e.pageY + 20}px`;
+        preview.style.left = `${e.pageX}px`;
+      });
+
+      item.addEventListener('mouseleave', () => {
+        preview.style.display = 'none';
+        img.src = "";
+      });
+    });
+  });
+</script>
+{% endjavascript %}
