@@ -3,8 +3,13 @@
   "name": "Hover Collections",
   "settings": [
     {
-      "type": "header",
-      "content": "Colecciones con nombre personalizado y hover"
+      "type": "range",
+      "id": "font_size",
+      "label": "Tamaño del texto (vw)",
+      "min": 1,
+      "max": 8,
+      "step": 0.1,
+      "default": 3.5
     }
   ],
   "blocks": [
@@ -26,7 +31,7 @@
         {
           "type": "image_picker",
           "id": "hover_image",
-          "label": "Imagen para hover"
+          "label": "Imagen para hover (opcional)"
         }
       ]
     }
@@ -43,7 +48,6 @@
 {% stylesheet %}
 <style>
   .collection-list {
-    font-size: 3.5vw;
     font-weight: 700;
     flex-wrap: wrap;
     display: flex;
@@ -84,16 +88,17 @@
 </style>
 {% endstylesheet %}
 
-<div class="collection-list">
+<div class="collection-list" style="font-size: {{ section.settings.font_size }}vw;">
   {% for block in section.blocks %}
     {% assign collection = block.settings.collection %}
     {% assign label = block.settings.custom_name | strip %}
-    {% assign image = block.settings.hover_image | image_url %}
+    {% assign custom_img = block.settings.hover_image %}
+    {% assign hover_img = custom_img | default: collection.featured_image %}
     {% if collection %}
       <a
         href="{{ collection.url }}"
         class="collection-item"
-        data-image-url="{{ image }}">
+        data-image-url="{{ hover_img | image_url }}">
         {{ label | default: collection.title }}
       </a>
       {% if forloop.last == false %} &nbsp;•&nbsp; {% endif %}
