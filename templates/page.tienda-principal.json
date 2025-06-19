@@ -382,6 +382,67 @@
         "padding_vertical": 50,
         "padding_horizontal": 20
       }
+    },
+    "custom_collection_video_section_LbKpGb": {
+      "type": "custom-collection-video-section",
+      "blocks": {
+        "collection_column_J7WMLd": {
+          "type": "collection_column",
+          "settings": {
+            "collection": "12-ep",
+            "position": "top-left"
+          }
+        },
+        "collection_column_zVzry8": {
+          "type": "collection_column",
+          "settings": {
+            "collection": "accesorios",
+            "position": "top-left"
+          }
+        },
+        "collection_column_h8f4eC": {
+          "type": "collection_column",
+          "settings": {
+            "collection": "ediciones-especiales",
+            "position": "top-left"
+          }
+        },
+        "collection_column_Ek34cT": {
+          "type": "collection_column",
+          "settings": {
+            "collection": "disco-del-mes",
+            "position": "top-left"
+          }
+        },
+        "video_block_cdHrVf": {
+          "type": "video_block",
+          "disabled": true,
+          "settings": {
+            "video_url": "",
+            "title": "",
+            "subtitle": "",
+            "button_text": "SHOP NOW →",
+            "button_link": "",
+            "title_color": "#ffffff",
+            "title_size": 32,
+            "title_align": "left",
+            "subtitle_color": "#ffffff",
+            "subtitle_size": 18,
+            "subtitle_align": "left",
+            "button_bg": "#ffffff",
+            "button_text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "collection_column_J7WMLd",
+        "collection_column_zVzry8",
+        "collection_column_h8f4eC",
+        "collection_column_Ek34cT",
+        "video_block_cdHrVf"
+      ],
+      "name": "Colección con Video",
+      "settings": {}
     }
   },
   "order": [
@@ -389,6 +450,7 @@
     "main",
     "sidebar-page",
     "slideshow_UfYD6D",
-    "custom_about_us_home_xphP9n"
+    "custom_about_us_home_xphP9n",
+    "custom_collection_video_section_LbKpGb"
   ]
 }
