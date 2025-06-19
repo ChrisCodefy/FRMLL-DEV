@@ -431,8 +431,8 @@
         "font_weight": "bold",
         "text_align": "center",
         "font_family": "Arial, sans-serif",
-        "padding_vertical": 50,
-        "padding_horizontal": 20
+        "padding_vertical": 20,
+        "padding_horizontal": 10
       }
     },
     "custom_collection_video_section_LbKpGb": {
