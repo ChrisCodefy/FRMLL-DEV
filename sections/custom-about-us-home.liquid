@@ -33,6 +33,31 @@
             {{ section.settings.link2_text }}
           </a>.
         {% endif %}
+
+        {% if section.settings.link3_text != blank and section.settings.link3_url != blank %}
+          <a href="{{ section.settings.link3_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
+            {{ section.settings.link3_text }}
+          </a>.
+        {% endif %}
+
+        {% if section.settings.link4_text != blank and section.settings.link4_url != blank %}
+          <a href="{{ section.settings.link4_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
+            {{ section.settings.link4_text }}
+          </a>.
+        {% endif %}
+
+        {% if section.settings.link5_text != blank and section.settings.link5_url != blank %}
+          <a href="{{ section.settings.link5_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
+            {{ section.settings.link5_text }}
+          </a>.
+        {% endif %}
+
+        {% if section.settings.link6_text != blank and section.settings.link6_url != blank %}
+          <a href="{{ section.settings.link6_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
+            {{ section.settings.link6_text }}
+          </a>.
+        {% endif %}
+
       </p>
     </div>
   </div>
@@ -51,57 +76,63 @@
     {
       "type": "text",
       "id": "link1_text",
-      "label": "Texto del primer enlace",
+      "label": "Texto del enlace 1",
       "default": "Lee nuestra historia aquí"
-    },
-    {
-      "type": "text",
-      "id": "link3_text",
-      "label": "Texto del primer enlace",
-      "default": "Lee nuestra historia aquí"
-    },
-    {
-      "type": "url",
-      "id": "link4_url",
-      "label": "URL del primer enlace"
-    },
-    {
-      "type": "text",
-      "id": "link4_text",
-      "label": "Texto del primer enlace",
-      "default": "Lee nuestra historia aquí"
-    },
-    {
-      "type": "text",
-      "id": "link5_text",
-      "label": "Texto del primer enlace",
-      "default": "Lee nuestra historia aquí"
-    },
-    {
-      "type": "url",
-      "id": "link5_url",
-      "label": "URL del primer enlace"
-    },
-    {
-      "type": "url",
-      "id": "link3_url",
-      "label": "URL del primer enlace"
     },
     {
       "type": "url",
       "id": "link1_url",
-      "label": "URL del primer enlace"
+      "label": "URL del enlace 1"
     },
     {
       "type": "text",
       "id": "link2_text",
-      "label": "Texto del segundo enlace",
-      "default": "Compra algunas de nuestras obras"
+      "label": "Texto del enlace 2"
     },
     {
       "type": "url",
       "id": "link2_url",
-      "label": "URL del segundo enlace"
+      "label": "URL del enlace 2"
+    },
+    {
+      "type": "text",
+      "id": "link3_text",
+      "label": "Texto del enlace 3"
+    },
+    {
+      "type": "url",
+      "id": "link3_url",
+      "label": "URL del enlace 3"
+    },
+    {
+      "type": "text",
+      "id": "link4_text",
+      "label": "Texto del enlace 4"
+    },
+    {
+      "type": "url",
+      "id": "link4_url",
+      "label": "URL del enlace 4"
+    },
+    {
+      "type": "text",
+      "id": "link5_text",
+      "label": "Texto del enlace 5"
+    },
+    {
+      "type": "url",
+      "id": "link5_url",
+      "label": "URL del enlace 5"
+    },
+    {
+      "type": "text",
+      "id": "link6_text",
+      "label": "Texto del enlace 6"
+    },
+    {
+      "type": "url",
+      "id": "link6_url",
+      "label": "URL del enlace 6"
     },
     {
       "type": "color",
@@ -189,7 +220,6 @@
       "unit": "px",
       "default": 20
     }
-
   ],
   "presets": [
     {
@@ -199,3 +229,4 @@
   ]
 }
 {% endschema %}
+
