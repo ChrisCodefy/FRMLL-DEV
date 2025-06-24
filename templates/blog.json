@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "heading": {
@@ -6,10 +15,10 @@
         "3fcc5c0e-3b55-4490-bb0f-778533d18142": {
           "type": "1",
           "settings": {
-            "heading": "Page Heading",
+            "heading": "BLOG",
             "fontf": "inherit",
-            "text_cl": "#ffffff",
-            "text_fs": 20,
+            "text_cl": "#222222",
+            "text_fs": 30,
             "text_lh": 0,
             "text_fw": 400,
             "text_ls": 0,
@@ -18,52 +27,23 @@
             "text_shadow": false,
             "text_mgb": 15,
             "hidden_mobile": false,
-            "text_fs_mb": 20,
+            "text_fs_mb": 25,
             "text_lh_mb": 0,
             "text_ls_mb": 0,
             "text_mgb_mobile": 10
           }
-        },
-        "190dccc0-921d-4bc6-8dbb-51e27461095d": {
-          "type": "2",
-          "settings": {
-            "content": "<p>Sub title page content<\/p>",
-            "fontf": "inherit",
-            "text_cl": "#ffffff",
-            "text_fs": 16,
-            "text_lh": 0,
-            "text_fw": 400,
-            "text_ls": 0,
-            "font_italic": false,
-            "font_uppercase": false,
-            "text_shadow": false,
-            "text_mgb": 0,
-            "hidden_mobile": false,
-            "text_fs_mb": 16,
-            "text_lh_mb": 0,
-            "text_ls_mb": 0,
-            "text_mgb_mobile": 0
-          }
-        },
-        "9c516f81-c531-4ce6-903a-a0493715b39a": {
-          "type": "3",
-          "settings": {
-            "breadcrumb_color": "#f2f2f2",
-            "brc_mgb": 5
-          }
         }
       },
       "block_order": [
-        "3fcc5c0e-3b55-4490-bb0f-778533d18142",
-        "190dccc0-921d-4bc6-8dbb-51e27461095d",
-        "9c516f81-c531-4ce6-903a-a0493715b39a"
+        "3fcc5c0e-3b55-4490-bb0f-778533d18142"
       ],
-      "disabled": true,
       "settings": {
+        "heading_fullwidth": false,
+        "use_specify_image": false,
         "parallax": false,
-        "color": "#000000",
-        "overlay": 54,
-        "padding": 50,
+        "color": "#fd5234",
+        "overlay": 100,
+        "padding": 22,
         "paddingmb": 50,
         "mg_b": 50,
         "mg_bmb": 50,
@@ -77,6 +57,7 @@
     },
     "slider": {
       "type": "blog_slider",
+      "disabled": true,
       "settings": {
         "blog": "fashion",
         "limit": 6,
@@ -117,6 +98,8 @@
         "cl_bg_gradient": "",
         "mg": ",,,",
         "pd": "",
+        "mg_tb": "",
+        "pd_tb": "",
         "mg_mb": ",,30px,",
         "pd_mb": "",
         "use_cus_css": false,
@@ -133,10 +116,11 @@
         "show_cate": false,
         "show_tags": false,
         "show_cnt": false,
-        "show_au": true,
+        "show_au": false,
         "show_dt": true,
         "show_cm": false,
         "show_rm": false,
+        "show_irm": false,
         "text_align": "start",
         "col_dk": "2",
         "col_tb": "2",
@@ -165,6 +149,8 @@
         "cl_bg_gradient": "",
         "mg": "60px,,60px,",
         "pd": "",
+        "mg_tb": "",
+        "pd_tb": "",
         "mg_mb": "30px,,30px,",
         "pd_mb": ""
       }
