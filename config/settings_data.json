@@ -611,7 +611,7 @@
             "type": "base",
             "settings": {
               "title": "Blog",
-              "url": "/",
+              "url": "shopify://blogs/news",
               "open_link": "_self",
               "icon": "",
               "cus_cl": false,
