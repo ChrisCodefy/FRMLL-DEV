@@ -474,9 +474,8 @@
         },
         "video_block_cdHrVf": {
           "type": "video_block",
-          "disabled": true,
           "settings": {
-            "video_url": "",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/ddd4b8267987413fa98c1baaa49b541f.mp4",
             "title": "",
             "subtitle": "",
             "button_text": "SHOP NOW →",
