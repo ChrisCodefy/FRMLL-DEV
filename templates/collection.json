@@ -214,7 +214,7 @@
         "description_text": "",
         "description_text_mobile": "",
         "font_size_mobile": 18,
-        "padding_vertical_mobile": 40,
+        "padding_vertical_mobile": 10,
         "padding_horizontal_mobile": 10,
         "link1_text": "DISCO DEL MES",
         "link1_url": "shopify://collections/disco-del-mes",
