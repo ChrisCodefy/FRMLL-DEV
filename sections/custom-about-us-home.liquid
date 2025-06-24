@@ -1,67 +1,91 @@
-<div style="
-  width: 100%;
-  background-color: {{ section.settings.background_color }};
-  padding: {{ section.settings.padding_vertical }}px 0;
-">
-  <div style="
-    max-width: 100%;
-    padding: 0 {{ section.settings.padding_horizontal }}px;
-  ">
-    <div style="
-      width: 100%;
-      margin: 0 auto;
-      color: {{ section.settings.text_color }};
-      text-align: {{ section.settings.text_align }};
-      font-family: {{ section.settings.font_family }};
-    ">
-      <p style="
-        font-size: {{ section.settings.font_size }}px;
-        font-weight: {{ section.settings.font_weight }};
-        text-transform: uppercase;
-        line-height: {{ section.settings.line_height }};
-      ">
+<div class="custom-nosotros-section">
+  <div class="container-nosotros">
+    <p class="description-nosotros">
+      {% if section.settings.description_text_mobile != blank %}
+        <span class="desktop-only">{{ section.settings.description_text }}</span>
+        <span class="mobile-only">{{ section.settings.description_text_mobile }}</span>
+      {% else %}
         {{ section.settings.description_text }}
+      {% endif %}
 
-        {% if section.settings.link1_text != blank and section.settings.link1_url != blank %}
-          <a href="{{ section.settings.link1_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
-            {{ section.settings.link1_text }}
-          </a>.
-        {% endif %}
-
-        {% if section.settings.link2_text != blank and section.settings.link2_url != blank %}
-          <a href="{{ section.settings.link2_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
-            {{ section.settings.link2_text }}
-          </a>.
-        {% endif %}
-
-        {% if section.settings.link3_text != blank and section.settings.link3_url != blank %}
-          <a href="{{ section.settings.link3_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
-            {{ section.settings.link3_text }}
-          </a>.
-        {% endif %}
-
-        {% if section.settings.link4_text != blank and section.settings.link4_url != blank %}
-          <a href="{{ section.settings.link4_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
-            {{ section.settings.link4_text }}
-          </a>.
-        {% endif %}
-
-        {% if section.settings.link5_text != blank and section.settings.link5_url != blank %}
-          <a href="{{ section.settings.link5_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
-            {{ section.settings.link5_text }}
-          </a>.
-        {% endif %}
-
-        {% if section.settings.link6_text != blank and section.settings.link6_url != blank %}
-          <a href="{{ section.settings.link6_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
-            {{ section.settings.link6_text }}
-          </a>.
-        {% endif %}
-
-      </p>
-    </div>
+      {% if section.settings.link1_text != blank and section.settings.link1_url != blank %}
+        <a href="{{ section.settings.link1_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
+          {{ section.settings.link1_text }}
+        </a>.
+      {% endif %}
+      {% if section.settings.link2_text != blank and section.settings.link2_url != blank %}
+        <a href="{{ section.settings.link2_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
+          {{ section.settings.link2_text }}
+        </a>.
+      {% endif %}
+      {% if section.settings.link3_text != blank and section.settings.link3_url != blank %}
+        <a href="{{ section.settings.link3_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
+          {{ section.settings.link3_text }}
+        </a>.
+      {% endif %}
+      {% if section.settings.link4_text != blank and section.settings.link4_url != blank %}
+        <a href="{{ section.settings.link4_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
+          {{ section.settings.link4_text }}
+        </a>.
+      {% endif %}
+      {% if section.settings.link5_text != blank and section.settings.link5_url != blank %}
+        <a href="{{ section.settings.link5_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
+          {{ section.settings.link5_text }}
+        </a>.
+      {% endif %}
+      {% if section.settings.link6_text != blank and section.settings.link6_url != blank %}
+        <a href="{{ section.settings.link6_url }}" style="color: {{ section.settings.text_color }}; text-decoration: underline;">
+          {{ section.settings.link6_text }}
+        </a>.
+      {% endif %}
+    </p>
   </div>
 </div>
+
+{% style %}
+.custom-nosotros-section {
+  width: 100%;
+  background-color: {{ section.settings.background_color }};
+}
+
+.container-nosotros {
+  max-width: 100%;
+  margin: 0 auto;
+  color: {{ section.settings.text_color }};
+  text-align: {{ section.settings.text_align }};
+  font-family: {{ section.settings.font_family }};
+  padding: {{ section.settings.padding_vertical }}px {{ section.settings.padding_horizontal }}px;
+}
+
+.description-nosotros {
+  font-size: {{ section.settings.font_size }}px;
+  font-weight: {{ section.settings.font_weight }};
+  text-transform: uppercase;
+  line-height: {{ section.settings.line_height }};
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .container-nosotros {
+    padding: {{ section.settings.padding_vertical_mobile }}px {{ section.settings.padding_horizontal_mobile }}px;
+  }
+
+  .description-nosotros {
+    font-size: {{ section.settings.font_size_mobile }}px;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: inline;
+  }
+}
+{% endstyle %}
 
 {% schema %}
 {
@@ -72,6 +96,45 @@
       "id": "description_text",
       "label": "Texto principal",
       "default": "Somos una casa de arte digital con base en Ciudad de México y Barcelona."
+    },
+    {
+      "type": "header",
+      "content": "Configuración para móvil"
+    },
+    {
+      "type": "text",
+      "id": "description_text_mobile",
+      "label": "Texto principal para móvil",
+      "info": "Si está vacío, se usará el texto principal"
+    },
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "label": "Tamaño de texto (px) en móvil",
+      "min": 12,
+      "max": 36,
+      "step": 2,
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical_mobile",
+      "label": "Padding vertical (arriba y abajo) en móvil",
+      "min": 0,
+      "max": 160,
+      "step": 10,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "label": "Padding horizontal (lados) en móvil",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 10
     },
     {
       "type": "text",
@@ -229,4 +292,5 @@
   ]
 }
 {% endschema %}
+
 
