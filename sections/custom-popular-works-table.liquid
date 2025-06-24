@@ -29,7 +29,7 @@
     </thead>
     <tbody>
       {% assign productos_populares = section.settings.coleccion_obras.products %}
-      {% for producto in productos_populares limit: 10 %}
+      {% for producto in productos_populares limit: 5 %}
         <tr 
           class="fila-producto"
           onclick="window.location='{{ producto.url }}'"
