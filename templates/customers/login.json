@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "heading": {
@@ -6,10 +15,10 @@
         "5ceb80b4-7249-43c6-bab2-723276f6f6a2": {
           "type": "1",
           "settings": {
-            "heading": "",
+            "heading": "Iniciar sesión",
             "fontf": "inherit",
-            "text_cl": "#ffffff",
-            "text_fs": 20,
+            "text_cl": "#000000",
+            "text_fs": 26,
             "text_lh": 20,
             "text_fw": 500,
             "text_ls": 0,
@@ -29,10 +38,11 @@
         "5ceb80b4-7249-43c6-bab2-723276f6f6a2"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/bg-heading.jpg",
+        "heading_fullwidth": false,
+        "use_specify_image": true,
         "parallax": false,
-        "color": "#000000",
-        "overlay": 54,
+        "color": "#fd5234",
+        "overlay": 100,
         "padding": 50,
         "paddingmb": 50,
         "mg_b": 50,
